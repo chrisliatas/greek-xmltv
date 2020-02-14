@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from scrapy_splash import SplashRequest
 
 from . import DIGEA_EPG_GR
 
@@ -47,7 +48,7 @@ class DigeaSpider(scrapy.Spider):
                 # }
                 yield response.follow(next_page, callback=self.parse_channels)
 
-    // *[ @ id = "channel-100"]
+    # // *[ @ id = "channel-100"]
     def parse_channels(self, response):
         print('parsing channels...')
         # main_img = response.xpath(
