@@ -11,4 +11,8 @@ import scrapy
 class XmltvItem(scrapy.Item):
     # define the fields for your item here like:
     # name = scrapy.Field()
-    pass
+    # pass
+    id = scrapy.Field()
+    name = scrapy.Field()
+    img_url = scrapy.Field()
+    programmes = scrapy.Field()
