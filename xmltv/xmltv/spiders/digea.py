@@ -1,8 +1,9 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy_splash import SplashRequest
+from datetime import datetime, timedelta
 
-from ..items import XmltvItem
+from ..items import XmltvItem, Programme
 from . import DIGEA_EPG_GR
 
 START_URL = DIGEA_EPG_GR
@@ -13,13 +14,13 @@ class DigeaSpider(scrapy.Spider):
     allowed_domains = ['digea.gr']
     start_urls = [START_URL]
     custom_settings = {"FEED_FORMAT": "jsonlines", "FEED_URI": "export/digea_%(time)s.jsonl"}
+    today = datetime.today()
 
     def start_requests(self):
         for url in self.start_urls:
             yield SplashRequest(url, self.parse, args={'wait': 5})
 
     def parse(self, response):
-        channel = XmltvItem()
         National_section = response.xpath('//*[@id="Nationwide"]')
         National_channels_imgs = National_section.xpath('./div[1]/div/div/div[1]/ul/*')
         National_channels = National_section.xpath('./div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')
@@ -34,15 +35,26 @@ class DigeaSpider(scrapy.Spider):
         # National channels:
         # Fields: id, tv:channel,
         for i, chanl in enumerate(National_channels):
+            channel = XmltvItem()
             # returns channels ids, from html id.
             channel["id"] = chanl.xpath('@id').get()
             # returns: ALPHA, ANT1, OPEN BEYOND,...
             channel["name"] = chanl.xpath('@*[name()="tv:channel"]').get()
             # image urls
             channel["img_url"] = nat_chanl_imgs[i]
-            # //*[@id="epgpop"]
-            # //*[@id="popupCalled10007450613"]
-            # //*[@id="channel-100"]/li[1]
+            dt_prevT = datetime.strptime('06.00', '%H.%M').time()
+            for prg in chanl:
+                p = Programme()
+                p["desc"] = prg.xpath('./div/div/text()').get().strip()
+                newT = prg.xpath('./li/p[@class="time"]/text()').get()
+                p["start"] = newT
+                dt_newT = datetime.strptime(newT, '%H.%M').time()
+                if dt_newT > dt_prevT:
+                    p["date"] = datetime.today().strftime('%Y%m%d')
+                else:
+                    p["date"] = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
+                dt_prevT = dt_newT
+                p["title"] = prg.xpath('./li/p[3]/a/text()').get()
             yield channel
 
         # Regional_section = response.xpath('//*[@id="Regional"]')

@@ -16,3 +16,14 @@ class XmltvItem(scrapy.Item):
     name = scrapy.Field()
     img_url = scrapy.Field()
     programmes = scrapy.Field()
+
+
+class Programme(scrapy.Item):
+    start = scrapy.Field()
+    stop = scrapy.Field()
+    channel = scrapy.Field()
+    date = scrapy.Field()
+    title = scrapy.Field()
+    desc = scrapy.Field()
+    category = scrapy.Field()
+    audio = scrapy.Field()
