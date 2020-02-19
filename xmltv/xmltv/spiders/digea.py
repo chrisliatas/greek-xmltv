@@ -13,7 +13,7 @@ class DigeaSpider(scrapy.Spider):
     name = 'digea'
     allowed_domains = ['digea.gr']
     start_urls = [START_URL]
-    custom_settings = {"FEED_FORMAT": "jsonlines", "FEED_URI": "export/digea_%(time)s.jsonl"}
+    custom_settings = {"FEED_FORMAT": "json", "FEED_URI": "export/digea_%(time)s.json"}
     today = datetime.today()
 
     def start_requests(self):
@@ -42,6 +42,7 @@ class DigeaSpider(scrapy.Spider):
             channel["name"] = chanl.xpath('@*[name()="tv:channel"]').get()
             # image urls
             channel["img_url"] = nat_chanl_imgs[i]
+            channel["programmes"] = []
             dt_prevT = datetime.strptime('06.00', '%H.%M').time()
             for prg in chanl:
                 p = Programme()
@@ -55,6 +56,7 @@ class DigeaSpider(scrapy.Spider):
                     p["date"] = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
                 dt_prevT = dt_newT
                 p["title"] = prg.xpath('./li/p[3]/a/text()').get()
+                channel["programmes"].append(p)
             yield channel
 
         # Regional_section = response.xpath('//*[@id="Regional"]')
