@@ -4,21 +4,23 @@ from scrapy_splash import SplashRequest
 from datetime import datetime, timedelta
 
 from ..items import XmltvItem, Programme
-from . import DIGEA_EPG_GR
 
-START_URL = DIGEA_EPG_GR
+START_URL = 'https://www.digea.gr/EPG/el'
 
 
 class DigeaSpider(scrapy.Spider):
     name = 'digea'
     allowed_domains = ['digea.gr']
     start_urls = [START_URL]
-    custom_settings = {"FEED_FORMAT": "json", "FEED_URI": "export/digea_%(time)s.json"}
-    today = datetime.today()
+    custom_settings = {"FEED_FORMAT": "json",
+                       "FEED_URI": "export/digea_%(time)s.json",
+                       "USER_AGENT": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) '
+                                     'Chrome/80.0.3987.106 Safari/537.36'
+                       }
 
     def start_requests(self):
         for url in self.start_urls:
-            yield SplashRequest(url, self.parse, args={'wait': 5})
+            yield SplashRequest(url, self.parse, args={'wait': 0.5})
 
     def parse(self, response):
         National_section = response.xpath('//*[@id="Nationwide"]')
@@ -44,10 +46,12 @@ class DigeaSpider(scrapy.Spider):
             channel["img_url"] = nat_chanl_imgs[i]
             channel["programmes"] = []
             dt_prevT = datetime.strptime('06.00', '%H.%M').time()
-            for prg in chanl:
+            # Below for loop breaks as we have divs and li's interchanging so cannot be processed together.
+            for prg in chanl.xpath('./*'):
+                print(prg)
                 p = Programme()
-                p["desc"] = prg.xpath('./div/div/text()').get().strip()
-                newT = prg.xpath('./li/p[@class="time"]/text()').get()
+                p["desc"] = prg.xpath('./div/text()').get().strip()
+                newT = prg.xpath('./p[@class="time"]/text()').get()
                 p["start"] = newT
                 dt_newT = datetime.strptime(newT, '%H.%M').time()
                 if dt_newT > dt_prevT:
@@ -55,7 +59,7 @@ class DigeaSpider(scrapy.Spider):
                 else:
                     p["date"] = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
                 dt_prevT = dt_newT
-                p["title"] = prg.xpath('./li/p[3]/a/text()').get()
+                p["title"] = prg.xpath('./p[3]/a/text()').get()
                 channel["programmes"].append(p)
             yield channel
 
