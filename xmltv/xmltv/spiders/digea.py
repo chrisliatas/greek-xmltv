@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import scrapy
+from scrapy.loader import ItemLoader
 from scrapy_splash import SplashRequest
 from datetime import datetime, timedelta
 
-from ..items import XmltvItem, Programme
+from ..items import XmltvItem
 
 START_URL = 'https://www.digea.gr/EPG/el'
 
@@ -37,31 +38,32 @@ class DigeaSpider(scrapy.Spider):
         # National channels:
         # Fields: id, tv:channel,
         for i, chanl in enumerate(National_channels):
-            channel = XmltvItem()
+            l = ItemLoader(item=XmltvItem(), selector=chanl)
             # returns channels ids, from html id.
-            channel["id"] = chanl.xpath('@id').get()
+            l.add_xpath('id', '@id')
             # returns: ALPHA, ANT1, OPEN BEYOND,...
-            channel["name"] = chanl.xpath('@*[name()="tv:channel"]').get()
+            l.add_xpath('name', '@*[name()="tv:channel"]')
             # image urls
-            channel["img_url"] = nat_chanl_imgs[i]
-            channel["programmes"] = []
-            dt_prevT = datetime.strptime('06.00', '%H.%M').time()
+            l.add_value('img_url', nat_chanl_imgs[i])
+            dt_prevT = datetime.strptime('06:00', '%H:%M').time()
             # Below for loop breaks as we have divs and li's interchanging so cannot be processed together.
-            for prg in chanl.xpath('./*'):
-                print(prg)
-                p = Programme()
-                p["desc"] = prg.xpath('./div/text()').get().strip()
-                newT = prg.xpath('./p[@class="time"]/text()').get()
-                p["start"] = newT
-                dt_newT = datetime.strptime(newT, '%H.%M').time()
+            progsx = chanl.xpath('./*')
+            for prg_div, prg_li in zip(progsx[::2], progsx[1::2]):
+                newT = prg_li.xpath('./p[@class="time"]/text()').get()
+                dt_newT = datetime.strptime(newT, '%H:%M').time()
                 if dt_newT > dt_prevT:
-                    p["date"] = datetime.today().strftime('%Y%m%d')
+                    p_date = datetime.today().strftime('%Y%m%d')
                 else:
-                    p["date"] = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
+                    p_date = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
                 dt_prevT = dt_newT
-                p["title"] = prg.xpath('./p[3]/a/text()').get()
-                channel["programmes"].append(p)
-            yield channel
+                p = {
+                    "desc": prg_div.xpath('./div/text()').get().strip(),
+                    "start": newT,
+                    "date": p_date,
+                    "title": prg_li.xpath('./p[3]/a/text()').get()
+                }
+                l.add_value('programmes', p)
+            return l.load_item()
 
         # Regional_section = response.xpath('//*[@id="Regional"]')
         # Regional_subsections = Regional_section.xpath('//*[@id="myTabContentInside"]/div[contains(@class,"tab-pane")]')

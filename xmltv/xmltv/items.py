@@ -18,8 +18,8 @@ class XmltvItem(scrapy.Item):
     programmes = scrapy.Field()
 
 
-class Programme(scrapy.Item):
-    start = scrapy.Field()
-    date = scrapy.Field()
-    title = scrapy.Field()
-    desc = scrapy.Field()
+# class Programme(scrapy.Item):
+#     start = scrapy.Field()
+#     date = scrapy.Field()
+#     title = scrapy.Field()
+#     desc = scrapy.Field()
