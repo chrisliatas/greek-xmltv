@@ -13,8 +13,9 @@ class DigeaSpider(scrapy.Spider):
     name = 'digea'
     allowed_domains = ['digea.gr']
     start_urls = [START_URL]
-    custom_settings = {"FEED_FORMAT": "json",
-                       "FEED_URI": "export/digea_%(time)s.json",
+    custom_settings = {"FEED_FORMAT": 'json',
+                       "FEED_URI": 'export/digea_%(time)s.json',
+                       "FEED_EXPORT_ENCODING": 'utf-8',
                        "USER_AGENT": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) '
                                      'Chrome/80.0.3987.106 Safari/537.36'
                        }
@@ -32,11 +33,10 @@ class DigeaSpider(scrapy.Spider):
         print(f"National channels found: {len(National_channels)}")
         # Get National channel images
         nat_chanl_imgs = [
-            response.urljoin(i)
-            for i in National_channels_imgs.xpath('./a/img/@src').get()
+            response.urljoin(i.xpath('./a/img/@src').get())
+            for i in National_channels_imgs
         ]
         # National channels:
-        # Fields: id, tv:channel,
         for i, chanl in enumerate(National_channels):
             l = ItemLoader(item=XmltvItem(), selector=chanl)
             # returns channels ids, from html id.
@@ -45,25 +45,24 @@ class DigeaSpider(scrapy.Spider):
             l.add_xpath('name', '@*[name()="tv:channel"]')
             # image urls
             l.add_value('img_url', nat_chanl_imgs[i])
-            dt_prevT = datetime.strptime('06:00', '%H:%M').time()
-            # Below for loop breaks as we have divs and li's interchanging so cannot be processed together.
+            tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 6, 0, 0)
             progsx = chanl.xpath('./*')
             for prg_div, prg_li in zip(progsx[::2], progsx[1::2]):
-                newT = prg_li.xpath('./p[@class="time"]/text()').get()
-                dt_newT = datetime.strptime(newT, '%H:%M').time()
-                if dt_newT > dt_prevT:
-                    p_date = datetime.today().strftime('%Y%m%d')
+                newt = prg_li.xpath('./p[@class="time"]/text()').get()
+                h = int(newt[:2])
+                m = int(newt[-2:])
+                if tprg.time() <= datetime.strptime(newt, '%H:%M').time():
+                    tprg = tprg + timedelta(hours=(h - tprg.hour), minutes=(m - tprg.minute))
                 else:
-                    p_date = (datetime.today() + timedelta(days=1)).strftime('%Y%m%d')
-                dt_prevT = dt_newT
+                    tprg = tprg + timedelta(days=1, hours=(h - tprg.hour), minutes=(m - tprg.minute))
                 p = {
                     "desc": prg_div.xpath('./div/text()').get().strip(),
-                    "start": newT,
-                    "date": p_date,
+                    "start": newt,
+                    "date": tprg.strftime('%Y%m%d'),
                     "title": prg_li.xpath('./p[3]/a/text()').get()
                 }
                 l.add_value('programmes', p)
-            return l.load_item()
+            yield l.load_item()
 
         # Regional_section = response.xpath('//*[@id="Regional"]')
         # Regional_subsections = Regional_section.xpath('//*[@id="myTabContentInside"]/div[contains(@class,"tab-pane")]')
