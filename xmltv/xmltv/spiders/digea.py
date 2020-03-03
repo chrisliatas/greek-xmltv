@@ -7,6 +7,21 @@ from datetime import datetime, timedelta
 from ..items import XmltvItem
 
 START_URL = 'https://www.digea.gr/EPG/el'
+prefered_areas = [
+    'Nationwide',
+    # 'E-Macedonia-Thrace-R-Z-1',
+    # 'C-Macedonia-R-Z-2-3',
+    # 'W-Macedonia-R-Z-4',
+    # 'W-Greece-R-Z-5',
+    # 'Peloponnese-R-Z-6',
+    # 'Thessaly-R-Z-7',
+    # 'C-Greece-R-Z-8',
+    'Attica-R-Z-9',
+    # 'Crete-R-Z-10',
+    # 'Dodecanese-Samos-R-Z-11',
+    # 'Cyclades-R-Z-12',
+    # 'NE-Aegean-R-Z-13',
+]
 
 
 class DigeaSpider(scrapy.Spider):
@@ -25,33 +40,34 @@ class DigeaSpider(scrapy.Spider):
             yield SplashRequest(url, self.parse, args={'wait': 0.5})
 
     def parse(self, response):
-        National_section = response.xpath('//*[@id="Nationwide"]')
-        National_channels_imgs = National_section.xpath('./div[1]/div/div/div[1]/ul/*')
-        National_channels = National_section.xpath('./div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')
+        # Create section (areas) list to parse channels from
+        all_sections = ['//*[@id="Nationwide"]']
+        for subsection in response.xpath('//*[@id="myTabContentInside"]/div[contains(@class,"tab-pane")]'):
+            all_sections.append(f'//*[@id="{subsection.xpath("@id").get()}"]')
 
-        # Get National channel images
-        nat_chanl_imgs = [response.urljoin(i.xpath('./a/img/@src').get()) for i in National_channels_imgs]
-        # National channels:
-        for i, chanl in enumerate(National_channels):
-            loader = ItemLoader(item=XmltvItem(), selector=chanl)
-            # returns channels ids, from html id.
-            loader.add_xpath('id', '@id')
-            # returns: ALPHA, ANT1, OPEN BEYOND,...
-            loader.add_xpath('name', '@*[name()="tv:channel"]')
-            # image urls
-            loader.add_value('img_url', nat_chanl_imgs[i])
-            # parse each channel's programmes
-            loader.add_value('programmes', self.parse_programs(chanl))
-            yield loader.load_item()
+        # Reduce the number of parsed areas by choosing only specific areas to parse
+        if len(prefered_areas) > 0:
+            sections = [i for i in all_sections if any(b in i for b in prefered_areas)]
+        else:
+            sections = all_sections
 
-        Regional_section = response.xpath('//*[@id="Regional"]')
-        Regional_subsecs = Regional_section.xpath('//*[@id="myTabContentInside"]/div[contains(@class,"tab-pane")]')
-        # Regional_subsecs_names = [i.xpath('@id').get() for i in Regional_subsecs]
+        # Start parsing each section.
+        for section in sections:
+            # sub_loader = loader.nested_xpath(section)
+            section_imgs = [response.urljoin(i.xpath('./a/img/@src').get())
+                            for i in response.xpath(f'{section}/div[1]/div/div/div[1]/ul/*')]
 
-        # for section in pages.xpath('./ul[@id="epgTabInside"]'):
-        #     for channels in section.xpath('./ul[@id="epgTabInside"]'):
-        #         next_page = channels.css("h4 a::attr(href)").get()
-                # yield response.follow(next_page, callback=self.parse_channels)
+            for i, chanl in enumerate(response.xpath(f'{section}/div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')):
+                loader = ItemLoader(item=XmltvItem(), selector=chanl)
+                # returns channels ids, from html id.
+                loader.add_xpath('id', '@id')
+                # returns: ALPHA, ANT1, OPEN BEYOND,...
+                loader.add_xpath('name', '@*[name()="tv:channel"]')
+                # image urls
+                loader.add_value('img_url', section_imgs[i])
+                # parse each channel's programmes
+                loader.add_value('programmes', self.parse_programs(chanl))
+                yield loader.load_item()
 
     def parse_programs(self, response):
         tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 6, 0, 0)
@@ -70,9 +86,3 @@ class DigeaSpider(scrapy.Spider):
                 "date": tprg.strftime('%Y%m%d'),
                 "title": prg_li.xpath('./p[3]/a/text()').get()
             }
-        # yield {
-        #     "art_ts": response.xpath('//*[contains(@id,"article-")]//time/@datetime').get(),
-        #     "art_url": response.xpath('/html/head/link/@href').get(),
-        #     "art_title": response.xpath('/html/head/title/text()').get(),
-        #     "file_urls": art_imgs,
-        # }
