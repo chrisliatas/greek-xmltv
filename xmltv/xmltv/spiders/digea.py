@@ -3,6 +3,7 @@ import scrapy
 from scrapy.loader import ItemLoader
 from scrapy_splash import SplashRequest
 from datetime import datetime, timedelta
+from urllib.parse import urljoin
 
 from ..items import XmltvItem
 
@@ -27,7 +28,7 @@ prefered_areas = [
 class DigeaSpider(scrapy.Spider):
     name = 'digea'
     allowed_domains = ['digea.gr']
-    start_urls = [START_URL]
+    start_urls = [urljoin(START_URL, f'#!{x}') for x in prefered_areas]
     custom_settings = {"FEED_FORMAT": 'json',
                        "FEED_URI": 'export/digea_%(time)s.json',
                        "FEED_EXPORT_ENCODING": 'utf-8',
@@ -40,34 +41,22 @@ class DigeaSpider(scrapy.Spider):
             yield SplashRequest(url, self.parse, args={'wait': 0.5})
 
     def parse(self, response):
-        # Create section (areas) list to parse channels from
-        all_sections = ['//*[@id="Nationwide"]']
-        for subsection in response.xpath('//*[@id="myTabContentInside"]/div[contains(@class,"tab-pane")]'):
-            all_sections.append(f'//*[@id="{subsection.xpath("@id").get()}"]')
+        # Get coverage area name from response url to get the name of the section to parse:
+        section = f'//*[@id="{response.url[29:]}"]'
+        section_imgs = [response.urljoin(i.xpath('./a/img/@src').get())
+                        for i in response.xpath(f'{section}/div[1]/div/div/div[1]/ul/*')]
 
-        # Reduce the number of parsed areas by choosing only specific areas to parse
-        if len(prefered_areas) > 0:
-            sections = [i for i in all_sections if any(b in i for b in prefered_areas)]
-        else:
-            sections = all_sections
-
-        # Start parsing each section.
-        for section in sections:
-            # sub_loader = loader.nested_xpath(section)
-            section_imgs = [response.urljoin(i.xpath('./a/img/@src').get())
-                            for i in response.xpath(f'{section}/div[1]/div/div/div[1]/ul/*')]
-
-            for i, chanl in enumerate(response.xpath(f'{section}/div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')):
-                loader = ItemLoader(item=XmltvItem(), selector=chanl)
-                # returns channels ids, from html id.
-                loader.add_xpath('id', '@id')
-                # returns: ALPHA, ANT1, OPEN BEYOND,...
-                loader.add_xpath('name', '@*[name()="tv:channel"]')
-                # image urls
-                loader.add_value('img_url', section_imgs[i])
-                # parse each channel's programmes
-                loader.add_value('programmes', self.parse_programs(chanl))
-                yield loader.load_item()
+        for i, chanl in enumerate(response.xpath(f'{section}/div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')):
+            loader = ItemLoader(item=XmltvItem(), selector=chanl)
+            # returns channels ids, from html id.
+            loader.add_xpath('id', '@id')
+            # returns: ALPHA, ANT1, OPEN BEYOND,...
+            loader.add_xpath('name', '@*[name()="tv:channel"]')
+            # image urls
+            loader.add_value('img_url', section_imgs[i])
+            # parse each channel's programmes
+            loader.add_value('programmes', self.parse_programs(chanl))
+            yield loader.load_item()
 
     def parse_programs(self, response):
         tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 6, 0, 0)
