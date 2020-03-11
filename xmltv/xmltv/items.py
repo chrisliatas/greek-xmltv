@@ -13,6 +13,7 @@ class XmltvItem(scrapy.Item):
     # name = scrapy.Field()
     # pass
     id = scrapy.Field()
+    region = scrapy.Field()
     name = scrapy.Field()
     img_url = scrapy.Field()
     programmes = scrapy.Field()

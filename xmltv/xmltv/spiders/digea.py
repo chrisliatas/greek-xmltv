@@ -50,6 +50,8 @@ class DigeaSpider(scrapy.Spider):
             loader = ItemLoader(item=XmltvItem(), selector=chanl)
             # returns channels ids, from html id.
             loader.add_xpath('id', '@id')
+            # returns region name
+            loader.add_value('region', f'{response.url[29:]}')
             # returns: ALPHA, ANT1, OPEN BEYOND,...
             loader.add_xpath('name', '@*[name()="tv:channel"]')
             # image urls
