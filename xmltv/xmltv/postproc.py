@@ -4,17 +4,22 @@
 # https://github.com/XMLTV/xmltv/blob/master/xmltv.dtd
 # https://github.com/kgroeneveld/tv_grab_sd_json/blob/master/tv_grab_sd_json
 
-import os
-from pathlib import Path
 import json
-import lxml.etree as et
+import os
 from collections import OrderedDict
+from datetime import datetime
+from pathlib import Path
+
+import lxml.etree as et
+from pytz import timezone
 
 COUNTRY = 'GREECE'
 JSON_FILE_PATH = 'export/'
-JSON_FILE = 'digea_2020-03-11T14-48-30.json'
+JSON_FILE = 'digea_2020-03-12T12-34-03.json'
 XMLTV_FILE_PATH = 'export/'
 XMLTV_FILE = f'xmltv_{COUNTRY}.xml'
+LOCAL_TZ = 'Europe/Athens'
+LANG = 'el'
 
 
 def json_prettyprint(j, *args, **kwargs):
@@ -41,21 +46,17 @@ class JsonToXmltv:
     """
     Functionality to create a Xmltv-formatted file from a json file with station/programme data
     """
-    def __init__(self,
-                 json_file_path=JSON_FILE_PATH,
-                 json_file=JSON_FILE,
-                 xmltv_file_path=XMLTV_FILE_PATH,
-                 xmltv_file=XMLTV_FILE):
+    def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file=''):
         self.json_data = None
         self.prog_cache = None
-        self.project_dir = Path(__file__).parent.parent  # /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
-        self.json_file_path = json_file_path
-        self.json_file = json_file
-        self.xmltv_file_path = xmltv_file_path
-        self.xmltv_file = xmltv_file
+        self._project_dir = Path(__file__).parent.parent  # /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
+        self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
+        self.json_file = json_file or JSON_FILE
+        self.xmltv_file_path = xmltv_file_path or os.path.join(self._project_dir, XMLTV_FILE_PATH)
+        self.xmltv_file = xmltv_file or XMLTV_FILE
 
     def load_data(self):
-        f = os.path.join(self.project_dir, self.json_file_path + self.json_file)
+        f = os.path.join(self.json_file_path + self.json_file)
         if not os.path.isfile(f):
             print('No such file in directory:', self.json_file_path)
             self.json_data = {}
@@ -70,6 +71,7 @@ class JsonToXmltv:
     def write_xmltv_file(self):
         """
         Write the xmltv.xml EPG file.
+        Ref: https://github.com/essandess/sd-py/blob/master/sd_json.py
         :return: None
         """
         self.load_data()
@@ -92,12 +94,35 @@ class JsonToXmltv:
 
         # programs
         for stn in self.json_data:
-            for prgm in stn["programmes"]:
-                attrib_lang = None
+            for i, prgm in enumerate(stn["programmes"]):
+                attrib_lang = {"lang": LANG}
                 # programme
+                start = datetime.strptime(prgm["airDateTime"], "%Y%m%d%H%M%S %z")
+                #   calculate duration
+                try:
+                    next_start = datetime.strptime(stn["programmes"][i + 1]["airDateTime"], "%Y%m%d%H%M%S %z")
+                except IndexError:
+                    next_start = start.replace(hour=6, minute=0)
+                duration = next_start - start  # duration is eg. datetime.timedelta(seconds=5400)
+                stop = start + duration
+                programme_attrib = {
+                    "start": start.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
+                    "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
+                    "channel": stationID_map_dict[stn["id"][0]]["id"]}
+                programme = et.SubElement(root, "programme", attrib=programme_attrib)
+                # programme title
+                et.SubElement(programme, "title", attrib=attrib_lang).text = prgm["title"]
+                # description
+                et.SubElement(programme, "desc", attrib=attrib_lang).text = prgm["desc"]
 
+        # (re-)write the XML file
+        f = os.path.join(self.xmltv_file_path + self.xmltv_file)
+        with et.xmlfile(f, encoding="ISO-8859-1") as xf:
+            xf.write_declaration()
+            xf.write_doctype('<!DOCTYPE tv SYSTEM "xmltv.dtd">')
+            xf.write(root, pretty_print=True)
 
-        print(et.tostring(root, pretty_print=True, xml_declaration=True, encoding="ISO-8859-1", doctype='<!DOCTYPE tv SYSTEM "xmltv.dtd">').decode())
+        # print(et.tostring(root, pretty_print=True, xml_declaration=True, encoding="ISO-8859-1", doctype='<!DOCTYPE tv SYSTEM "xmltv.dtd">').decode())
 
 
 if __name__ == '__main__':
