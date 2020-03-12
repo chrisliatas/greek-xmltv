@@ -3,6 +3,7 @@ import scrapy
 from scrapy.loader import ItemLoader
 from scrapy_splash import SplashRequest
 from datetime import datetime, timedelta
+from pytz import timezone
 from urllib.parse import urljoin
 
 from ..items import XmltvItem
@@ -23,6 +24,7 @@ prefered_areas = [
     # 'Cyclades-R-Z-12',
     # 'NE-Aegean-R-Z-13',
 ]
+LOCAL_TIMEZONE = 'Europe/Athens'
 
 
 class DigeaSpider(scrapy.Spider):
@@ -62,6 +64,7 @@ class DigeaSpider(scrapy.Spider):
 
     def parse_programs(self, response):
         tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 6, 0, 0)
+        tprg = timezone(LOCAL_TIMEZONE).localize(tprg)
         progsx = response.xpath('./*')
         for prg_div, prg_li in zip(progsx[::2], progsx[1::2]):
             newt = prg_li.xpath('./p[@class="time"]/text()').get()
@@ -75,5 +78,6 @@ class DigeaSpider(scrapy.Spider):
                 "desc": prg_div.xpath('./div/text()').get().strip(),
                 "start": newt,
                 "date": tprg.strftime('%Y%m%d'),
+                "airDateTime": tprg.strftime('%Y%m%d%H%M%S %z'),
                 "title": prg_li.xpath('./p[3]/a/text()').get()
             }
