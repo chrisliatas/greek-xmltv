@@ -1,12 +1,14 @@
 # -*- coding: utf-8 -*-
-import scrapy
-from scrapy.loader import ItemLoader
-from scrapy_splash import SplashRequest
 from datetime import datetime, timedelta
-from pytz import timezone
 from urllib.parse import urljoin
 
+import scrapy
+from pytz import timezone
+from scrapy.loader import ItemLoader
+from scrapy_splash import SplashRequest
+
 from ..items import XmltvItem
+from ..postproc import JsonToXmltv
 
 START_URL = 'https://www.digea.gr/EPG/el'
 prefered_areas = [
@@ -24,7 +26,7 @@ prefered_areas = [
     # 'Cyclades-R-Z-12',
     # 'NE-Aegean-R-Z-13',
 ]
-LOCAL_TIMEZONE = 'Europe/Athens'
+LOCAL_TZ = 'Europe/Athens'
 
 
 class DigeaSpider(scrapy.Spider):
@@ -64,7 +66,7 @@ class DigeaSpider(scrapy.Spider):
 
     def parse_programs(self, response):
         tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 6, 0, 0)
-        tprg = timezone(LOCAL_TIMEZONE).localize(tprg)
+        tprg = timezone(LOCAL_TZ).localize(tprg)
         progsx = response.xpath('./*')
         for prg_div, prg_li in zip(progsx[::2], progsx[1::2]):
             newt = prg_li.xpath('./p[@class="time"]/text()').get()
@@ -81,3 +83,7 @@ class DigeaSpider(scrapy.Spider):
                 "airDateTime": tprg.strftime('%Y%m%d%H%M%S %z'),
                 "title": prg_li.xpath('./p[3]/a/text()').get()
             }
+
+    def close(self, reason):
+        jtoXtv = JsonToXmltv()
+        jtoXtv.write_xmltv_file()

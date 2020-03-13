@@ -4,6 +4,7 @@
 # https://github.com/XMLTV/xmltv/blob/master/xmltv.dtd
 # https://github.com/kgroeneveld/tv_grab_sd_json/blob/master/tv_grab_sd_json
 
+import glob
 import json
 import os
 from collections import OrderedDict
@@ -15,7 +16,7 @@ from pytz import timezone
 
 COUNTRY = 'GREECE'
 JSON_FILE_PATH = 'export/'
-JSON_FILE = 'digea_2020-03-12T12-34-03.json'
+JSON_FILE = '*.json'
 XMLTV_FILE_PATH = 'export/'
 XMLTV_FILE = f'xmltv_{COUNTRY}.xml'
 LOCAL_TZ = 'Europe/Athens'
@@ -51,16 +52,19 @@ class JsonToXmltv:
         self.prog_cache = None
         self._project_dir = Path(__file__).parent.parent  # /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
-        self.json_file = json_file or JSON_FILE
+        if not json_file:
+            # get latest .json file from the directory specified
+            self.json_file = max(glob.iglob(os.path.join(self.json_file_path + JSON_FILE)), key=os.path.getctime)
+        else:
+            self.json_file = os.path.join(self.json_file_path + json_file)
         self.xmltv_file_path = xmltv_file_path or os.path.join(self._project_dir, XMLTV_FILE_PATH)
         self.xmltv_file = xmltv_file or XMLTV_FILE
 
     def load_data(self):
-        f = os.path.join(self.json_file_path + self.json_file)
-        if not os.path.isfile(f):
+        if not os.path.isfile(self.json_file):
             print('No such file in directory:', self.json_file_path)
             self.json_data = {}
-        with open(f) as fh:
+        with open(self.json_file) as fh:
             try:
                 self.json_data = json.load(fh, object_pairs_hook=OrderedDict)
                 # json_prettyprint(self.json_data)
@@ -81,7 +85,8 @@ class JsonToXmltv:
                                   "generator-info-url": "https://liatas.com"})
         # channels
         stationID_map_dict = {
-            sid["id"][0]: {"id": f'I{k}.{sid["region"][0]}.{sid["id"][0]}.digea.gr', "channel": str(int(sid["id"][0][8:]))}
+            sid["id"][0]: {"id": f'I{k}.{sid["region"][0]}.{sid["id"][0]}.digea.gr',
+                           "channel": str(int(sid["id"][0][8:]))}
             for k, sid in enumerate(self.json_data)}
 
         for stn in self.json_data:
