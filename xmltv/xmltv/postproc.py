@@ -50,7 +50,7 @@ class JsonToXmltv:
     def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file=''):
         self.json_data = None
         self.prog_cache = None
-        self._project_dir = Path(__file__).parent.parent  # /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
+        self._project_dir = get_project_root()  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
         if not json_file:
             # get latest .json file from the directory specified
