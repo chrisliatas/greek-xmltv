@@ -15,7 +15,3 @@ services:
     restart: on-failure:3
   splash:
     image: scrapinghub/splash
-#    ports:
-#      - "8050:8050"
-#    expose:
-#      - "8050"

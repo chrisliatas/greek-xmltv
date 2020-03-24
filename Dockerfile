@@ -17,6 +17,5 @@ RUN apk update \
     && apk del .build-deps
 
 COPY . .
-#WORKDIR /app/xmltv
-#CMD [ "scrapy", "crawl", "digea" ]
+
 CMD [ "scrapy", "version" ]
