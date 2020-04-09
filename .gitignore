@@ -133,3 +133,4 @@ dmypy.json
 !/xmltv/export/
 xmltv/export/
 scrapy_export
+/xmltv/xmltv/export/
