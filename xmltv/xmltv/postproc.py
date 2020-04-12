@@ -7,7 +7,6 @@
 import glob
 import json
 import os
-from collections import OrderedDict
 from datetime import datetime
 from pathlib import Path
 
@@ -47,30 +46,44 @@ class JsonToXmltv:
     """
     Functionality to create a Xmltv-formatted file from a json file with station/programme data
     """
-    def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file=''):
+    def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file='', multi_json=False):
         self.json_data = None
         self.prog_cache = None
         self._project_dir = get_project_root()  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
-        if not json_file:
-            # get latest .json file from the directory specified
-            self.json_file = max(glob.iglob(os.path.join(self.json_file_path + JSON_FILE)), key=os.path.getctime)
-        else:
-            self.json_file = os.path.join(self.json_file_path + json_file)
+        self.multi_json = multi_json
+        if not self.multi_json:
+            if not json_file:
+                # get latest .json file from the directory specified
+                self.json_file = max(glob.iglob(os.path.join(self.json_file_path + JSON_FILE)), key=os.path.getctime)
+            else:
+                self.json_file = os.path.join(self.json_file_path + json_file)
         self.xmltv_file_path = xmltv_file_path or os.path.join(self._project_dir, XMLTV_FILE_PATH)
         self.xmltv_file = xmltv_file or XMLTV_FILE
 
     def load_data(self):
-        if not os.path.isfile(self.json_file):
-            print('No such file in directory:', self.json_file_path)
-            self.json_data = {}
-        with open(self.json_file) as fh:
-            try:
-                self.json_data = json.load(fh, object_pairs_hook=OrderedDict)
-                # json_prettyprint(self.json_data)
-            except Exception as e:
-                print(f'Json read error while processing the file - {e}')
+        if not self.multi_json:
+            if not os.path.isfile(self.json_file):
+                print('No such file in directory:', self.json_file_path)
                 self.json_data = {}
+                return
+            with open(self.json_file) as fh:
+                try:
+                    self.json_data = json.load(fh)
+                    # json_prettyprint(self.json_data)
+                except Exception as ex:
+                    print(f'Json read error while processing the file - {ex}')
+                    self.json_data = {}
+        else:
+            # Load and merge all json files from a directory into a single OrderedDict
+            self.json_data = []
+            for f in glob.glob(os.path.join(self.json_file_path + JSON_FILE)):
+                with open(f) as json_file:
+                    try:
+                        self.json_data += json.load(json_file)
+                    except Exception as ex:
+                        print(f'Json read error while processing the file - {ex}')
+                        self.json_data = []
 
     def write_xmltv_file(self):
         """
@@ -81,11 +94,12 @@ class JsonToXmltv:
         self.load_data()
 
         root = et.Element("tv",
-                          attrib={"source-info-name": "Digea.gr", "generator-info-name": "greek-xmltv",
+                          attrib={"source-info-name": "Digea.gr-Ert.gr", "generator-info-name": "greek-xmltv",
                                   "generator-info-url": "https://liatas.com"})
         # channels
         stationID_map_dict = {
-            sid["id"][0]: {"id": f'I{k}.{sid["region"][0]}.{sid["id"][0]}.digea.gr',
+            sid["id"][0]: {"id": f'I{k}.{sid["region"][0]}.{sid["id"][0]}.'
+                                 f'{"ert.gr" if int(sid["id"][0][8:]) < 100 else "digea.gr"}',
                            "channel": str(int(sid["id"][0][8:]))}
             for k, sid in enumerate(self.json_data)}
 

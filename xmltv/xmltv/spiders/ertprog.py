@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
+from itertools import count
 from urllib.parse import urljoin
 
 import scrapy
@@ -22,6 +23,8 @@ ert_channels = [
     # 'programma-ertsportshd',
 ]
 LOCAL_TZ = 'Europe/Athens'
+# Counter to create channel id numbers similar to digea ones.
+chnl_cntr = count(start=10, step=10)
 
 
 class ErtprogSpider(scrapy.Spider):
@@ -41,7 +44,7 @@ class ErtprogSpider(scrapy.Spider):
         chanl_img = response.urljoin(main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get())
         # date_txt = main_t[2].xpath('./td/table/tr/td[2]/table/tr/td[2]/b/text()').get()[-10:]
         loader = ItemLoader(item=XmltvItem(), response=response)
-        loader.add_value('id', f'{response.url.split("/")[3]}-public')
+        loader.add_value('id', f'channel-0{str(next(chnl_cntr))}')
         loader.add_value('region', 'National-public')
         loader.add_value('name', f'{response.url.split("/")[3]}')
         loader.add_value('img_url', chanl_img)

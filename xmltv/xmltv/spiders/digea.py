@@ -8,7 +8,6 @@ from scrapy.loader import ItemLoader
 from scrapy_splash import SplashRequest
 
 from ..items import XmltvItem
-from ..postproc import JsonToXmltv
 
 START_URL = 'https://www.digea.gr/EPG/el'
 prefered_areas = [
@@ -84,6 +83,6 @@ class DigeaSpider(scrapy.Spider):
                 "title": prg_li.xpath('./p[3]/a/text()').get()
             }
 
-    def close(self, reason):
-        jtoXtv = JsonToXmltv()
-        jtoXtv.write_xmltv_file()
+    # def close(self, reason):
+    #     jtoXtv = JsonToXmltv()
+    #     jtoXtv.write_xmltv_file()
