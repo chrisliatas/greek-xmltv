@@ -19,7 +19,8 @@ JSON_FILE = '*.json'
 XMLTV_FILE_PATH = 'export/'
 XMLTV_FILE = f'xmltv_{COUNTRY}.xml'
 LOCAL_TZ = 'Europe/Athens'
-LANG = 'el'
+LANG_GR = 'el'
+LANG_EN = 'en'
 
 
 def json_prettyprint(j, *args, **kwargs):
@@ -93,8 +94,12 @@ class JsonToXmltv:
         """
         self.load_data()
 
+        current_datetime = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
+
         root = et.Element("tv",
-                          attrib={"source-info-name": "Digea.gr-Ert.gr", "generator-info-name": "greek-xmltv",
+                          attrib={"date": current_datetime,
+                                  "source-info-name": "Digea.gr-Ert.gr",
+                                  "generator-info-name": "greek-xmltv",
                                   "generator-info-url": "https://liatas.com"})
         # channels
         stationID_map_dict = {
@@ -105,16 +110,16 @@ class JsonToXmltv:
 
         for stn in self.json_data:
             channel = et.SubElement(root, "channel", attrib={"id": stationID_map_dict[stn["id"][0]]["id"]})
-            et.SubElement(channel, "display-name").text = f'{stationID_map_dict[stn["id"][0]]["channel"]} {stn["name"][0]}'
-            et.SubElement(channel, "display-name").text = stn["name"][0]
-            et.SubElement(channel, "display-name").text = stationID_map_dict[stn["id"][0]]["channel"]
+            # et.SubElement(channel, "display-name").text = f'{stationID_map_dict[stn["id"][0]]["channel"]} {stn["name"][0]}'
+            et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = stn["name"][0]
+            # et.SubElement(channel, "display-name").text = stationID_map_dict[stn["id"][0]]["channel"]
             if "img_url" in stn:
                 icon = et.SubElement(channel, "icon", attrib={"src": stn["img_url"][0]})
 
         # programs
         for stn in self.json_data:
             for i, prgm in enumerate(stn["programmes"]):
-                attrib_lang = {"lang": LANG}
+                attrib_lang = {"lang": LANG_GR}
                 # programme
                 start = datetime.strptime(prgm["airDateTime"], "%Y%m%d%H%M%S %z")
                 #   calculate duration
@@ -129,16 +134,20 @@ class JsonToXmltv:
                     "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "channel": stationID_map_dict[stn["id"][0]]["id"]}
                 programme = et.SubElement(root, "programme", attrib=programme_attrib)
+                (rating_value, title) = prgm["title"].split(maxsplit=1)
                 # programme title
-                et.SubElement(programme, "title", attrib=attrib_lang).text = prgm["title"]
+                et.SubElement(programme, "title", attrib=attrib_lang).text = title
                 # description
                 et.SubElement(programme, "desc", attrib=attrib_lang).text = prgm["desc"]
+                # rating
+                rating = et.SubElement(programme, "rating", attrib={"system": "Greek"})
+                et.SubElement(rating, "value").text = rating_value.strip('[]')
 
         # (re-)write the XML file
         f = os.path.join(self.xmltv_file_path + self.xmltv_file)
-        with et.xmlfile(f, encoding="ISO-8859-1") as xf:
+        with et.xmlfile(f, encoding="UTF-8") as xf:
             xf.write_declaration()
-            xf.write_doctype('<!DOCTYPE tv SYSTEM "xmltv.dtd">')
+            xf.write_doctype('<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
             xf.write(root, pretty_print=True)
 
         # print(et.tostring(root, pretty_print=True, xml_declaration=True, encoding="ISO-8859-1", doctype='<!DOCTYPE tv SYSTEM "xmltv.dtd">').decode())
