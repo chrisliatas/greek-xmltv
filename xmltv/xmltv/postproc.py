@@ -7,6 +7,7 @@
 import glob
 import json
 import os
+from copy import deepcopy
 from datetime import datetime
 from pathlib import Path
 
@@ -21,6 +22,15 @@ XMLTV_FILE = f'xmltv_{COUNTRY}.xml'
 LOCAL_TZ = 'Europe/Athens'
 LANG_GR = 'el'
 LANG_EN = 'en'
+HD_CHANNELS = {
+    # 'ERT SPORTS',   # ERT SPORTS HD
+    'ALPHA': '41',        # ALPHA HD
+    'ANT1': '51',         # ANT1 HD
+    'OPEN BEYOND': '61',  # OPEN BEYOND HD
+    'M.tv': '71',         # m.tv HD
+    'SKAI': '81',         # SKAI HD
+    'STAR': '91'          # STAR HD
+}
 
 
 def json_prettyprint(j, *args, **kwargs):
@@ -115,6 +125,12 @@ class JsonToXmltv:
             # et.SubElement(channel, "display-name").text = stationID_map_dict[stn["id"][0]]["channel"]
             if "img_url" in stn:
                 icon = et.SubElement(channel, "icon", attrib={"src": stn["img_url"][0]})
+            if stn["name"][0] in HD_CHANNELS.keys():
+                hd_num = int(stn["id"][0][8:]) + 10  # create channel number for HD channels.
+                # create random new HD channels id.
+                hd_stn_id = f'I{HD_CHANNELS[stn["name"][0]]}.{stn["region"][0]}.channel-{hd_num}.digea.gr'
+                channel = et.SubElement(root, "channel", attrib={"id": hd_stn_id})
+                et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = f'{stn["name"][0]} HD'
 
         # programs
         for stn in self.json_data:
@@ -139,9 +155,26 @@ class JsonToXmltv:
                 et.SubElement(programme, "title", attrib=attrib_lang).text = title
                 # description
                 et.SubElement(programme, "desc", attrib=attrib_lang).text = prgm["desc"]
+                # video
+                video = et.SubElement(programme, "video")
+                et.SubElement(video, "present").text = 'yes'
+                et.SubElement(video, "colour").text = 'yes'
+                et.SubElement(video, "aspect").text = '16:9'
+                et.SubElement(video, "quality").text = 'SDTV'
+                # audio
+                audio = et.SubElement(programme, "audio")
+                et.SubElement(audio, "present").text = 'yes'
+                et.SubElement(audio, "stereo").text = 'stereo'
                 # rating
                 rating = et.SubElement(programme, "rating", attrib={"system": "Greek"})
                 et.SubElement(rating, "value").text = rating_value.strip('[]')
+                if stn["name"][0] in HD_CHANNELS.keys():
+                    hd_num = int(stn["id"][0][8:]) + 10  # create channel number for HD channels.
+                    # create random new HD channels id.
+                    hd_stn_id = f'I{HD_CHANNELS[stn["name"][0]]}.{stn["region"][0]}.channel-{hd_num}.digea.gr'
+                    root.append(deepcopy(programme))
+                    root[-1].attrib["channel"] = hd_stn_id
+                    root[-1].getchildren()[-3].getchildren()[-1].set("quality", "HDTV")
 
         # (re-)write the XML file
         f = os.path.join(self.xmltv_file_path + self.xmltv_file)
