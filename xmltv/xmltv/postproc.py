@@ -174,7 +174,7 @@ class JsonToXmltv:
                     hd_stn_id = f'I{HD_CHANNELS[stn["name"][0]]}.{stn["region"][0]}.channel-{hd_num}.digea.gr'
                     root.append(deepcopy(programme))
                     root[-1].attrib["channel"] = hd_stn_id
-                    root[-1].getchildren()[-3].getchildren()[-1].set("quality", "HDTV")
+                    root[-1].getchildren()[-3].getchildren()[-1].text = 'HDTV'
 
         # (re-)write the XML file
         f = os.path.join(self.xmltv_file_path + self.xmltv_file)
