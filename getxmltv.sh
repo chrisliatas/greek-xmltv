@@ -9,7 +9,7 @@ appdir=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 compose_file="${appdir}/docker-compose.yml"
 export_dir="${appdir}/scrapy_export"
 target_dir="/mnt/storage/Downloads/xmltv"
-generated_xmltv_dir="/generated_xmltv"
+generated_xmltv_dir="${appdir}/generated_xmltv"
 xmltv_filename="xmltv_GREECE"
 
 echo "$(timestamp): getxmltv - Starting docker-compose services"
