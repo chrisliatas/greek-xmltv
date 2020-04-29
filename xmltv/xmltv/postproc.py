@@ -72,6 +72,8 @@ class JsonToXmltv:
     def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file='', multi_json=False):
         self.json_data = None
         self.chnl_cache = None
+        self._newcache = False
+        self._create_cachefile = False
         self._project_dir = get_project_root()  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
         self.multi_json = multi_json
@@ -109,6 +111,12 @@ class JsonToXmltv:
                         print(f'Json read error while processing the file - {ex}')
                         self.json_data = []
 
+    def invalidate_cache(self, cache_file):
+        self.chnl_cache = {}
+        if os.path.isfile(cache_file):
+            os.remove(cache_file)
+        self._create_cachefile = True
+
     def load_cache(self, cache_file=''):
         cachef = cache_file or os.path.join(self._cache_path, CACHE_FILE)
         if not cache_file:
@@ -120,6 +128,21 @@ class JsonToXmltv:
                 except Exception as ex:
                     print(f'Json read error while processing the cache file - {ex}')
                     self.chnl_cache = {}
+            # validate loaded cache file, else invalidate and create new
+            if not self._newcache:
+                if len(self.json_data) == len(self.chnl_cache):
+                    for stn in self.json_data:
+                        if stn["id"][0] in self.chnl_cache:
+                            continue
+                        else:
+                            self.invalidate_cache(cachef)
+                            break
+                else:
+                    self.invalidate_cache(cachef)
+        else:
+            self._create_cachefile = True
+        if self._create_cachefile:
+            self.create_channel_cache()
 
     def create_channel_cache(self):
         hd_cntr = count(start=len(self.json_data) + 1)
@@ -127,9 +150,10 @@ class JsonToXmltv:
             sid["id"][0]: {"id": str(k), "channel": str(int(sid["id"][0][8:])),
                            "hashd": True if sid["name"][0] in HD_CHANNELS else False,
                            "hdid": str(next(hd_cntr)) if sid["name"][0] in HD_CHANNELS else '00'}
-            for k, sid in enumerate(self.json_data)}
+            for k, sid in enumerate(self.json_data, start=1)}
         with open(os.path.join(self._cache_path, CACHE_FILE), 'w', encoding='utf-8') as fh:
             json.dump(stationID_map_dict, fh, ensure_ascii=False, indent=4)
+        self._newcache = True
         self.load_cache()
 
     def write_xmltv_file(self):
