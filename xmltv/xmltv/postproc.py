@@ -74,26 +74,27 @@ class JsonToXmltv:
         self.chnl_cache = None
         self._newcache = False
         self._create_cachefile = False
-        self._project_dir = get_project_root()  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
-        self.json_file_path = json_file_path or os.path.join(self._project_dir, JSON_FILE_PATH)
+        self._project_dir = Path(get_project_root())  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
+        self.json_file_path = json_file_path or self._project_dir/JSON_FILE_PATH
         self.multi_json = multi_json
         if not self.multi_json:
             if not json_file:
                 # get latest .json file from the directory specified
-                self.json_file = max(glob.iglob(os.path.join(self.json_file_path + JSON_FILE)), key=os.path.getctime)
+                self.json_file = max(glob.iglob(str(self.json_file_path/JSON_FILE)), key=os.path.getctime)
             else:
-                self.json_file = os.path.join(self.json_file_path + json_file)
-        self.xmltv_file_path = xmltv_file_path or os.path.join(self._project_dir, XMLTV_FILE_PATH)
+                self.json_file = self.json_file_path/json_file
+        self.xmltv_file_path = xmltv_file_path or self._project_dir/XMLTV_FILE_PATH
         self.xmltv_file = xmltv_file or XMLTV_FILE
-        self._cache_path = os.path.join(self._project_dir, CACHE_DIR)
+        self._cache_path = self._project_dir/CACHE_DIR
+        self._cache_file = None
 
     def load_data(self):
         if not self.multi_json:
-            if not os.path.isfile(self.json_file):
+            if not self.json_file.is_file():
                 print('No such file in directory:', self.json_file_path)
                 self.json_data = {}
                 return
-            with open(self.json_file) as fh:
+            with self.json_file.open() as fh:
                 try:
                     self.json_data = json.load(fh)
                     # json_prettyprint(self.json_data)
@@ -103,7 +104,7 @@ class JsonToXmltv:
         else:
             # Load and merge all json files from a directory into a single OrderedDict
             self.json_data = []
-            for f in glob.glob(os.path.join(self.json_file_path + JSON_FILE)):
+            for f in glob.glob(str(self.json_file_path/JSON_FILE)):
                 with open(f) as json_file:
                     try:
                         self.json_data += json.load(json_file)
@@ -111,18 +112,14 @@ class JsonToXmltv:
                         print(f'Json read error while processing the file - {ex}')
                         self.json_data = []
 
-    def invalidate_cache(self, cache_file):
-        self.chnl_cache = {}
-        if os.path.isfile(cache_file):
-            os.remove(cache_file)
-        self._create_cachefile = True
-
     def load_cache(self, cache_file=''):
-        cachef = cache_file or os.path.join(self._cache_path, CACHE_FILE)
         if not cache_file:
-            Path(self._cache_path).mkdir(parents=True, exist_ok=True)
-        if os.path.isfile(cachef):
-            with open(cachef) as cf:
+            self._cache_path.mkdir(parents=True, exist_ok=True)
+            self._cache_file = self._cache_path/CACHE_FILE
+        else:
+            self._cache_file = Path(cache_file)
+        if self._cache_file.is_file():
+            with self._cache_file.open() as cf:
                 try:
                     self.chnl_cache = json.load(cf)
                 except Exception as ex:
@@ -135,25 +132,33 @@ class JsonToXmltv:
                         if stn["id"][0] in self.chnl_cache:
                             continue
                         else:
-                            self.invalidate_cache(cachef)
+                            self.invalidate_cache()
                             break
                 else:
-                    self.invalidate_cache(cachef)
+                    self.invalidate_cache()
         else:
             self._create_cachefile = True
         if self._create_cachefile:
             self.create_channel_cache()
 
+    def invalidate_cache(self):
+        self.chnl_cache = {}
+        if self._cache_file.is_file():
+            self._cache_file.unlink()
+        self._create_cachefile = True
+
     def create_channel_cache(self):
+        # Create dictionary mapping for channel: number(id) and cache file
         hd_cntr = count(start=len(self.json_data) + 1)
         stationID_map_dict = {
             sid["id"][0]: {"id": str(k), "channel": str(int(sid["id"][0][8:])),
                            "hashd": True if sid["name"][0] in HD_CHANNELS else False,
                            "hdid": str(next(hd_cntr)) if sid["name"][0] in HD_CHANNELS else '00'}
             for k, sid in enumerate(self.json_data, start=1)}
-        with open(os.path.join(self._cache_path, CACHE_FILE), 'w', encoding='utf-8') as fh:
+        with self._cache_file.open(mode='w', encoding='utf-8') as fh:
             json.dump(stationID_map_dict, fh, ensure_ascii=False, indent=4)
         self._newcache = True
+        self._create_cachefile = False
         self.load_cache()
 
     def write_xmltv_file(self):
@@ -164,9 +169,6 @@ class JsonToXmltv:
         """
         self.load_data()
         self.load_cache()
-        # Create dictionary mapping for channel: number(id) and cache file
-        if not self.chnl_cache:
-            self.create_channel_cache()
 
         current_datetime = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
 
@@ -227,8 +229,7 @@ class JsonToXmltv:
                     root[-1].getchildren()[-3].getchildren()[-1].text = 'HDTV'
 
         # (re-)write the XML file
-        f = os.path.join(self.xmltv_file_path + self.xmltv_file)
-        with et.xmlfile(f, encoding="UTF-8") as xf:
+        with et.xmlfile(str(self.xmltv_file_path/self.xmltv_file), encoding="UTF-8") as xf:
             xf.write_declaration()
             xf.write_doctype('<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
             xf.write(root, pretty_print=True)
