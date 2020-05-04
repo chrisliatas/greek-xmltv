@@ -14,4 +14,6 @@ process.start()
 # process will block here until both spiders have finished.
 # Merge the json files produced:
 jtoXtv = JsonToXmltv(multi_json=True)
-jtoXtv.write_xmltv_file()
+jtoXtv.generate_xmltv()
+# jtoXtv_all = JsonToXmltv(xmltv_file='grxmltv_el.xml', multi_json=True)
+# jtoXtv_all.generate_xmltv()

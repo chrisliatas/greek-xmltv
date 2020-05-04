@@ -34,22 +34,24 @@ HD_CHANNELS = (
     'SKAI',           # SKAI HD
     'STAR'            # STAR HD
 )
-# HD_CHANNELS = {
-#     # 'ERT SPORTS',   # ERT SPORTS HD
-#     'ALPHA': '41',        # ALPHA HD
-#     'ANT1': '51',         # ANT1 HD
-#     'OPEN BEYOND': '61',  # OPEN BEYOND HD
-#     'M.tv': '71',         # m.tv HD
-#     'SKAI': '81',         # SKAI HD
-#     'STAR': '91'          # STAR HD
-# }
+default_regions = (
+    'Nationwide',
+    # 'E-Macedonia-Thrace-R-Z-1',
+    # 'C-Macedonia-R-Z-2-3',
+    # 'W-Macedonia-R-Z-4',
+    # 'W-Greece-R-Z-5',
+    # 'Peloponnese-R-Z-6',
+    # 'Thessaly-R-Z-7',
+    # 'C-Greece-R-Z-8',
+    'Attica-R-Z-9',
+    # 'Crete-R-Z-10',
+    # 'Dodecanese-Samos-R-Z-11',
+    # 'Cyclades-R-Z-12',
+    # 'NE-Aegean-R-Z-13',
+)
 
 
-def json_prettyprint(j, *args, **kwargs):
-    print(json.dumps(j, indent=4, sort_keys=True, ensure_ascii=False), *args, **kwargs)
-
-
-def get_project_root():
+def get_project_root() -> str:
     """
     There is no way in python to get project root. This function uses a trick.
     We know that the function that is currently running is in the project.
@@ -67,32 +69,38 @@ def get_project_root():
 
 class JsonToXmltv:
     """
-    Functionality to create a Xmltv-formatted file from a json file with station/programme data
+    Functionality to create a Xmltv-formatted file from a json file with station/programme data for Greece.
     """
-    def __init__(self, json_file_path='', json_file='', xmltv_file_path='', xmltv_file='', multi_json=False):
-        self.json_data = None
-        self.chnl_cache = None
-        self._newcache = False
-        self._create_cachefile = False
+    json_data: list = None
+    chnl_cache: dict = None
+    _newcache: bool = False
+    _create_cachefile: bool = False
+    _cache_file: Path = None
+    root = et.Element("tv", attrib={"date": "placeholder",
+                                    "source-info-name": "Digea.gr-Ert.gr",
+                                    "generator-info-name": "greek-xmltv",
+                                    "generator-info-url": "https://liatas.com"})
+
+    def __init__(self, json_file_path: str = '', json_file: str = '',
+                 xmltv_file_path: str = '', xmltv_file: str = '', multi_json: bool = False) -> None:
         self._project_dir = Path(get_project_root())  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
-        self.json_file_path = json_file_path or self._project_dir/JSON_FILE_PATH
+        self.json_file_path = Path(json_file_path) if json_file_path else self._project_dir/JSON_FILE_PATH
         self.multi_json = multi_json
         if not self.multi_json:
             if not json_file:
                 # get latest .json file from the directory specified
-                self.json_file = max(glob.iglob(str(self.json_file_path/JSON_FILE)), key=os.path.getctime)
+                self.json_file = Path(max(glob.iglob(str(self.json_file_path/JSON_FILE)), key=os.path.getctime))
             else:
                 self.json_file = self.json_file_path/json_file
-        self.xmltv_file_path = xmltv_file_path or self._project_dir/XMLTV_FILE_PATH
+        self.xmltv_file_path = Path(xmltv_file_path) if xmltv_file_path else self._project_dir/XMLTV_FILE_PATH
         self.xmltv_file = xmltv_file or XMLTV_FILE
         self._cache_path = self._project_dir/CACHE_DIR
-        self._cache_file = None
 
-    def load_data(self):
+    def load_data(self) -> None:
         if not self.multi_json:
             if not self.json_file.is_file():
                 print('No such file in directory:', self.json_file_path)
-                self.json_data = {}
+                self.json_data = []
                 return
             with self.json_file.open() as fh:
                 try:
@@ -100,7 +108,7 @@ class JsonToXmltv:
                     # json_prettyprint(self.json_data)
                 except Exception as ex:
                     print(f'Json read error while processing the file - {ex}')
-                    self.json_data = {}
+                    self.json_data = []
         else:
             # Load and merge all json files from a directory into a single OrderedDict
             self.json_data = []
@@ -112,7 +120,7 @@ class JsonToXmltv:
                         print(f'Json read error while processing the file - {ex}')
                         self.json_data = []
 
-    def load_cache(self, cache_file=''):
+    def load_cache(self, cache_file='') -> None:
         if not cache_file:
             self._cache_path.mkdir(parents=True, exist_ok=True)
             self._cache_file = self._cache_path/CACHE_FILE
@@ -141,13 +149,13 @@ class JsonToXmltv:
         if self._create_cachefile:
             self.create_channel_cache()
 
-    def invalidate_cache(self):
+    def invalidate_cache(self) -> None:
         self.chnl_cache = {}
         if self._cache_file.is_file():
             self._cache_file.unlink()
         self._create_cachefile = True
 
-    def create_channel_cache(self):
+    def create_channel_cache(self) -> None:
         # Create dictionary mapping for channel: number(id) and cache file
         hd_cntr = count(start=len(self.json_data) + 1)
         stationID_map_dict = {
@@ -161,7 +169,7 @@ class JsonToXmltv:
         self._create_cachefile = False
         self.load_cache()
 
-    def write_xmltv_file(self):
+    def generate_xmltv(self, write_file=True) -> None:
         """
         Write the xmltv.xml EPG file.
         Ref: https://github.com/essandess/sd-py/blob/master/sd_json.py
@@ -170,21 +178,15 @@ class JsonToXmltv:
         self.load_data()
         self.load_cache()
 
-        current_datetime = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
-
-        root = et.Element("tv",
-                          attrib={"date": current_datetime,
-                                  "source-info-name": "Digea.gr-Ert.gr",
-                                  "generator-info-name": "greek-xmltv",
-                                  "generator-info-url": "https://liatas.com"})
+        self.root.attrib["date"] = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
 
         for stn in self.json_data:
-            channel = et.SubElement(root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["id"]})
+            channel = et.SubElement(self.root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["id"]})
             et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = stn["name"][0]
             if "img_url" in stn:
-                icon = et.SubElement(channel, "icon", attrib={"src": stn["img_url"][0]})
+                et.SubElement(channel, "icon", attrib={"src": stn["img_url"][0]})
             if self.chnl_cache[stn["id"][0]]["hashd"]:
-                channel = et.SubElement(root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["hdid"]})
+                channel = et.SubElement(self.root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["hdid"]})
                 et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = f'{stn["name"][0]} HD'
 
         # programs
@@ -204,7 +206,7 @@ class JsonToXmltv:
                     "start": start.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "channel": self.chnl_cache[stn["id"][0]]["id"]}
-                programme = et.SubElement(root, "programme", attrib=programme_attrib)
+                programme = et.SubElement(self.root, "programme", attrib=programme_attrib)
                 (rating_value, title) = prgm["title"].split(maxsplit=1)
                 # programme title
                 et.SubElement(programme, "title", attrib=attrib_lang).text = title
@@ -224,21 +226,25 @@ class JsonToXmltv:
                 rating = et.SubElement(programme, "rating", attrib={"system": "Greek"})
                 et.SubElement(rating, "value").text = rating_value.strip('[]')
                 if self.chnl_cache[stn["id"][0]]["hashd"]:
-                    root.append(deepcopy(programme))
-                    root[-1].attrib["channel"] = self.chnl_cache[stn["id"][0]]["hdid"]
-                    root[-1].getchildren()[-3].getchildren()[-1].text = 'HDTV'
+                    self.root.append(deepcopy(programme))
+                    self.root[-1].attrib["channel"] = self.chnl_cache[stn["id"][0]]["hdid"]
+                    self.root[-1].getchildren()[-3].getchildren()[-1].text = 'HDTV'
 
-        # (re-)write the XML file
-        with et.xmlfile(str(self.xmltv_file_path/self.xmltv_file), encoding="UTF-8") as xf:
+        if write_file:
+            self.write_xml_file()
+        else:
+            print(et.tostring(self.root, pretty_print=True, xml_declaration=True, encoding="UTF-8",
+                              doctype='<!DOCTYPE tv SYSTEM "grxmltv.dtd">').decode())
+
+    def write_xml_file(self) -> None:
+        with et.xmlfile(str(self.xmltv_file_path / self.xmltv_file), encoding="UTF-8") as xf:
             xf.write_declaration()
             xf.write_doctype('<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
-            xf.write(root, pretty_print=True)
-
-        # print(et.tostring(root, pretty_print=True, xml_declaration=True, encoding="UTF-8", doctype='<!DOCTYPE tv SYSTEM "xmltv.dtd">').decode())
+            xf.write(self.root, pretty_print=True)
 
 
 if __name__ == '__main__':
     xmltv_f = JsonToXmltv(multi_json=True)
-    xmltv_f.write_xmltv_file()
+    xmltv_f.generate_xmltv()
 
 
