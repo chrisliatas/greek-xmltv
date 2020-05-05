@@ -14,6 +14,8 @@ process.start()
 # process will block here until both spiders have finished.
 # Merge the json files produced:
 jtoXtv = JsonToXmltv(multi_json=True)
+# generate listings for all available Digea and Ert regions
 jtoXtv.generate_xmltv()
-# jtoXtv_all = JsonToXmltv(xmltv_file='grxmltv_el.xml', multi_json=True)
-# jtoXtv_all.generate_xmltv()
+# generate listings for National & Attica Digea and Ert regions
+jtoXtv.xmltv_file = 'grxmltv_nat_el.xml'
+jtoXtv.generate_xmltv(pref_regions=('Nationwide', 'Attica-R-Z-9', 'National-public'))

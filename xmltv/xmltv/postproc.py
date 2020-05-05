@@ -17,13 +17,13 @@ import lxml.etree as et
 from pytz import timezone
 
 COUNTRY = 'GREECE'
+LANG_GR = 'el'
+LANG_EN = 'en'
 JSON_FILE_PATH = 'export/'
 JSON_FILE = '*.json'
 XMLTV_FILE_PATH = 'export/'
-XMLTV_FILE = f'xmltv_{COUNTRY}.xml'
+XMLTV_FILE = f'xmltv_{COUNTRY}_{LANG_GR}.xml'
 LOCAL_TZ = 'Europe/Athens'
-LANG_GR = 'el'
-LANG_EN = 'en'
 CACHE_DIR = 'cache/'
 CACHE_FILE = 'channels_id.json'
 HD_CHANNELS = (
@@ -34,21 +34,6 @@ HD_CHANNELS = (
     'M.tv',           # m.tv HD
     'SKAI',           # SKAI HD
     'STAR'            # STAR HD
-)
-default_regions = (
-    'Nationwide',
-    # 'E-Macedonia-Thrace-R-Z-1',
-    # 'C-Macedonia-R-Z-2-3',
-    # 'W-Macedonia-R-Z-4',
-    # 'W-Greece-R-Z-5',
-    # 'Peloponnese-R-Z-6',
-    # 'Thessaly-R-Z-7',
-    # 'C-Greece-R-Z-8',
-    'Attica-R-Z-9',
-    # 'Crete-R-Z-10',
-    # 'Dodecanese-Samos-R-Z-11',
-    # 'Cyclades-R-Z-12',
-    # 'NE-Aegean-R-Z-13',
 )
 
 
