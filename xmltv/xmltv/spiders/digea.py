@@ -10,28 +10,28 @@ from scrapy_splash import SplashRequest
 from ..items import XmltvItem
 
 START_URL = 'https://www.digea.gr/EPG/el'
-prefered_areas = [
+preferred_areas = (
     'Nationwide',
-    # 'E-Macedonia-Thrace-R-Z-1',
-    # 'C-Macedonia-R-Z-2-3',
-    # 'W-Macedonia-R-Z-4',
-    # 'W-Greece-R-Z-5',
-    # 'Peloponnese-R-Z-6',
-    # 'Thessaly-R-Z-7',
-    # 'C-Greece-R-Z-8',
+    'E-Macedonia-Thrace-R-Z-1',
+    'C-Macedonia-R-Z-2-3',
+    'W-Macedonia-R-Z-4',
+    'W-Greece-R-Z-5',
+    'Peloponnese-R-Z-6',
+    'Thessaly-R-Z-7',
+    'C-Greece-R-Z-8',
     'Attica-R-Z-9',
-    # 'Crete-R-Z-10',
-    # 'Dodecanese-Samos-R-Z-11',
-    # 'Cyclades-R-Z-12',
-    # 'NE-Aegean-R-Z-13',
-]
+    'Crete-R-Z-10',
+    'Dodecanese-Samos-R-Z-11',
+    'Cyclades-R-Z-12',
+    'NE-Aegean-R-Z-13'
+)
 LOCAL_TZ = 'Europe/Athens'
 
 
 class DigeaSpider(scrapy.Spider):
     name = 'digea'
     allowed_domains = ['digea.gr']
-    start_urls = [urljoin(START_URL, f'#!{x}') for x in prefered_areas]
+    start_urls = [urljoin(START_URL, f'#!{x}') for x in preferred_areas]
     custom_settings = {"FEED_FORMAT": 'json',
                        "FEED_URI": 'export/digea_%(time)s.json',
                        "FEED_EXPORT_ENCODING": 'utf-8',
