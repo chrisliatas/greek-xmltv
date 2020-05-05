@@ -11,6 +11,7 @@ from copy import deepcopy
 from datetime import datetime
 from itertools import count
 from pathlib import Path
+from typing import Tuple
 
 import lxml.etree as et
 from pytz import timezone
@@ -82,7 +83,8 @@ class JsonToXmltv:
                                     "generator-info-url": "https://liatas.com"})
 
     def __init__(self, json_file_path: str = '', json_file: str = '',
-                 xmltv_file_path: str = '', xmltv_file: str = '', multi_json: bool = False) -> None:
+                 xmltv_file_path: str = '', xmltv_file: str = '',
+                 multi_json: bool = False) -> None:
         self._project_dir = Path(get_project_root())  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.json_file_path = Path(json_file_path) if json_file_path else self._project_dir/JSON_FILE_PATH
         self.multi_json = multi_json
@@ -158,20 +160,21 @@ class JsonToXmltv:
     def create_channel_cache(self) -> None:
         # Create dictionary mapping for channel: number(id) and cache file
         hd_cntr = count(start=len(self.json_data) + 1)
-        stationID_map_dict = {
+        stationID_map = {
             sid["id"][0]: {"id": str(k), "channel": str(int(sid["id"][0][8:])),
                            "hashd": True if sid["name"][0] in HD_CHANNELS else False,
                            "hdid": str(next(hd_cntr)) if sid["name"][0] in HD_CHANNELS else '00'}
             for k, sid in enumerate(self.json_data, start=1)}
         with self._cache_file.open(mode='w', encoding='utf-8') as fh:
-            json.dump(stationID_map_dict, fh, ensure_ascii=False, indent=4)
+            json.dump(stationID_map, fh, ensure_ascii=False, indent=4)
         self._newcache = True
         self._create_cachefile = False
         self.load_cache()
 
-    def generate_xmltv(self, write_file=True) -> None:
+    def generate_xmltv(self, pref_regions: Tuple[str] = (), write_file: bool = True) -> None:
         """
         Write the xmltv.xml EPG file.
+        Ref: https://github.com/XMLTV/xmltv/blob/master/xmltv.dtd
         Ref: https://github.com/essandess/sd-py/blob/master/sd_json.py
         :return: None
         """
@@ -180,24 +183,31 @@ class JsonToXmltv:
 
         self.root.attrib["date"] = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
 
-        for stn in self.json_data:
-            channel = et.SubElement(self.root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["id"]})
-            et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = stn["name"][0]
-            if "img_url" in stn:
-                et.SubElement(channel, "icon", attrib={"src": stn["img_url"][0]})
-            if self.chnl_cache[stn["id"][0]]["hashd"]:
-                channel = et.SubElement(self.root, "channel", attrib={"id": self.chnl_cache[stn["id"][0]]["hdid"]})
-                et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = f'{stn["name"][0]} HD'
+        _chnl = {"idx": 0}
 
-        # programs
-        for stn in self.json_data:
-            for i, prgm in enumerate(stn["programmes"]):
+        def add_channel(station: dict) -> None:
+            # add channels
+            channel = et.Element("channel", attrib={"id": self.chnl_cache[station["id"][0]]["id"]})
+            et.SubElement(channel, "display-name", attrib={"lang": LANG_EN}).text = station["name"][0]
+            if "img_url" in station:
+                et.SubElement(channel, "icon", attrib={"src": station["img_url"][0]})
+            self.root.insert(_chnl["idx"], channel)
+            _chnl["idx"] += 1
+            # if channel has HD version copy and adjust info
+            if self.chnl_cache[station["id"][0]]["hashd"]:
+                self.root.insert(_chnl["idx"], deepcopy(channel))
+                self.root[_chnl["idx"]].attrib["id"] = self.chnl_cache[station["id"][0]]["hdid"]
+                self.root[_chnl["idx"]].getchildren()[0].text = f'{station["name"][0]} HD'
+                _chnl["idx"] += 1
+
+        def add_chnl_programmes(station: dict) -> None:
+            for i, prgm in enumerate(station["programmes"]):
                 attrib_lang = {"lang": LANG_GR}
                 # programme
                 start = datetime.strptime(prgm["airDateTime"], "%Y%m%d%H%M%S %z")
                 #   calculate duration
                 try:
-                    next_start = datetime.strptime(stn["programmes"][i + 1]["airDateTime"], "%Y%m%d%H%M%S %z")
+                    next_start = datetime.strptime(station["programmes"][i + 1]["airDateTime"], "%Y%m%d%H%M%S %z")
                 except IndexError:
                     next_start = start.replace(hour=6, minute=0)
                 duration = next_start - start  # duration is eg. datetime.timedelta(seconds=5400)
@@ -205,7 +215,7 @@ class JsonToXmltv:
                 programme_attrib = {
                     "start": start.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
-                    "channel": self.chnl_cache[stn["id"][0]]["id"]}
+                    "channel": self.chnl_cache[station["id"][0]]["id"]}
                 programme = et.SubElement(self.root, "programme", attrib=programme_attrib)
                 (rating_value, title) = prgm["title"].split(maxsplit=1)
                 # programme title
@@ -225,10 +235,20 @@ class JsonToXmltv:
                 # rating
                 rating = et.SubElement(programme, "rating", attrib={"system": "Greek"})
                 et.SubElement(rating, "value").text = rating_value.strip('[]')
-                if self.chnl_cache[stn["id"][0]]["hashd"]:
+                # if channel has HD version copy and adjust programme info
+                if self.chnl_cache[station["id"][0]]["hashd"]:
                     self.root.append(deepcopy(programme))
-                    self.root[-1].attrib["channel"] = self.chnl_cache[stn["id"][0]]["hdid"]
-                    self.root[-1].getchildren()[-3].getchildren()[-1].text = 'HDTV'
+                    self.root[-1].attrib["channel"] = self.chnl_cache[station["id"][0]]["hdid"]
+                    self.root[-1].getchildren()[2].getchildren()[-1].text = 'HDTV'
+
+        for stn in self.json_data:
+            if pref_regions:
+                if stn["region"][0] in pref_regions:
+                    add_channel(stn)
+                    add_chnl_programmes(stn)
+            else:
+                add_channel(stn)
+                add_chnl_programmes(stn)
 
         if write_file:
             self.write_xml_file()
