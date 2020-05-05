@@ -12,6 +12,6 @@ services:
       - ./scrapy_export:/app/export
     depends_on:
       - splash
-    restart: on-failure:3
+    restart: on-failure:1
   splash:
     image: scrapinghub/splash

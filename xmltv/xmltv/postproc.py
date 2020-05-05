@@ -202,7 +202,11 @@ class JsonToXmltv:
                     "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "channel": self.chnl_cache[station["id"][0]]["id"]}
                 programme = et.SubElement(self.root, "programme", attrib=programme_attrib)
-                (rating_value, title) = prgm["title"].split(maxsplit=1)
+                try:
+                    (rating_value, title) = prgm["title"].split(maxsplit=1)
+                except ValueError:
+                    title = prgm["title"]
+                    rating_value = '[K16]'
                 # programme title
                 et.SubElement(programme, "title", attrib=attrib_lang).text = title
                 # description
