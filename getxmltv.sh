@@ -19,7 +19,7 @@ echo "$(timestamp): getxmltv - Stopped docker-compose services"
 [ ! -d "$target_dir" ] && mkdir -p "$target_dir" && chmod 777 "$target_dir"
 [ ! -d "$generated_xmltv_dir" ] && mkdir -p "$generated_xmltv_dir" && chmod 777 "$generated_xmltv_dir"
 cp "${export_dir}"/* "${target_dir}"/
-cp "${export_dir}/*.xml" "${generated_xmltv_dir}/"
+cp "${export_dir}"/*.xml "${generated_xmltv_dir}"/
 rm -f "${export_dir}"/*
 chmod 666 "${target_dir}"/*
 chmod 666 "${generated_xmltv_dir}"/*
