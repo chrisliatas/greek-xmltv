@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
 from itertools import count
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 
 import scrapy
 from pytz import timezone
@@ -23,6 +23,7 @@ ert_channels = [
     # 'programma-ertsportshd',
 ]
 LOCAL_TZ = 'Europe/Athens'
+DEFAULT_PRG_DECR_EL = 'Δεν υπάρχουν πληροφορίες προγράμματος'
 # Counter to create channel id numbers similar to digea ones.
 chnl_cntr = count(start=10, step=10)
 
@@ -41,7 +42,7 @@ class ErtprogSpider(scrapy.Spider):
     def parse(self, response):
         main_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[1]/*')
         night_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[2]/*')
-        chanl_img = response.urljoin(main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get())
+        chanl_img = response.urljoin(quote(main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get()))
         # date_txt = main_t[2].xpath('./td/table/tr/td[2]/table/tr/td[2]/b/text()').get()[-10:]
         loader = ItemLoader(item=XmltvItem(), response=response)
         loader.add_value('id', f'channel-0{str(next(chnl_cntr))}')
@@ -78,7 +79,7 @@ class ErtprogSpider(scrapy.Spider):
             elif details and not descritpion:
                 descritpion = details
             yield {
-                "desc": descritpion,
+                "desc": descritpion or DEFAULT_PRG_DECR_EL,
                 "start": newt,
                 "date": tprg.strftime('%Y%m%d'),
                 "airDateTime": tprg.strftime('%Y%m%d%H%M%S %z'),

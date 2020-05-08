@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from datetime import datetime, timedelta
-from urllib.parse import urljoin
+from urllib.parse import urljoin, quote
 
 import scrapy
 from pytz import timezone
@@ -26,6 +26,7 @@ preferred_areas = (
     'NE-Aegean-R-Z-13'
 )
 LOCAL_TZ = 'Europe/Athens'
+DEFAULT_PRG_DECR_EL = 'Δεν υπάρχουν πληροφορίες προγράμματος'
 
 
 class DigeaSpider(scrapy.Spider):
@@ -46,7 +47,7 @@ class DigeaSpider(scrapy.Spider):
     def parse(self, response):
         # Get coverage area name from response url to get the name of the section to parse:
         section = f'//*[@id="{response.url[29:]}"]'
-        section_imgs = [response.urljoin(i.xpath('./a/img/@src').get())
+        section_imgs = [response.urljoin(quote(i.xpath('./a/img/@src').get()))
                         for i in response.xpath(f'{section}/div[1]/div/div/div[1]/ul/*')]
 
         for i, chanl in enumerate(response.xpath(f'{section}/div[1]/div/div/div[2]/ul[contains(@id,"channel-")]')):
@@ -76,7 +77,7 @@ class DigeaSpider(scrapy.Spider):
             else:
                 tprg = tprg + timedelta(days=1, hours=(h - tprg.hour), minutes=(m - tprg.minute))
             yield {
-                "desc": prg_div.xpath('./div/text()').get().strip(),
+                "desc": prg_div.xpath('./div/text()').get().strip() or DEFAULT_PRG_DECR_EL,
                 "start": newt,
                 "date": tprg.strftime('%Y%m%d'),
                 "airDateTime": tprg.strftime('%Y%m%d%H%M%S %z'),

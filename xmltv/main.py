@@ -17,5 +17,5 @@ jtoXtv = JsonToXmltv(multi_json=True)
 # generate listings for all available Digea and Ert regions
 jtoXtv.generate_xmltv()
 # generate listings for National & Attica Digea and Ert regions
-jtoXtv.xmltv_file = 'grxmltv_nat_el.xml'
+jtoXtv.xmltv_file = ('grxmltv_nat_el.xml', True)
 jtoXtv.generate_xmltv(pref_regions=('Nationwide', 'Attica-R-Z-9', 'National-public'))

@@ -11,7 +11,7 @@ from copy import deepcopy
 from datetime import datetime
 from itertools import count
 from pathlib import Path
-from typing import Tuple
+from typing import Tuple, Optional, Union, List
 
 import lxml.etree as et
 from pytz import timezone
@@ -57,64 +57,101 @@ class JsonToXmltv:
     """
     Functionality to create a Xmltv-formatted file from a json file with station/programme data for Greece.
     """
-    json_data: list = None
-    chnl_cache: dict = None
-    _newcache: bool = False
-    _create_cachefile: bool = False
-    _cache_file: Path = None
-    root = et.Element("tv", attrib={"date": "placeholder",
-                                    "source-info-name": "Digea.gr-Ert.gr",
-                                    "generator-info-name": "greek-xmltv",
-                                    "generator-info-url": "https://liatas.com"})
 
-    def __init__(self, json_file_path: str = '', json_file: str = '',
-                 xmltv_file_path: str = '', xmltv_file: str = '',
-                 multi_json: bool = False) -> None:
+    def __init__(self, json_file: Optional[str] = None, xmltv_file: Optional[str] = None,
+                 cache_file: Optional[str] = None, use_proj_dir: bool = True, multi_json: bool = False) -> None:
         self._project_dir = Path(get_project_root())  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
-        self.json_file_path = Path(json_file_path) if json_file_path else self._project_dir/JSON_FILE_PATH
         self.multi_json = multi_json
-        if not self.multi_json:
-            if not json_file:
-                # get latest .json file from the directory specified
-                self.json_file = Path(max(glob.iglob(str(self.json_file_path/JSON_FILE)), key=os.path.getctime))
+        self.json_file = json_file
+        self.xmltv_file = (xmltv_file, use_proj_dir)
+        self.cache_file = (cache_file, use_proj_dir)
+        self.json_data: list = []
+        self.chnl_cache: dict = {}
+        self._dataloaded: bool = False
+        self._newcache: bool = False
+        self._create_cachefile: bool = False
+        self.tree_loaded = False
+        self.root = et.Element("tv", attrib={"date": "placeholder",
+                                             "source-info-name": "Digea.gr-Ert.gr",
+                                             "generator-info-name": "greek-xmltv",
+                                             "generator-info-url": "https://liatas.com"})
+        self.xtree = et.ElementTree(self.root)
+
+    @property
+    def json_file(self) -> Union[Path, List[str]]:
+        return self.__jsonfile
+
+    @json_file.setter
+    def json_file(self, jsonf: Optional[str]) -> None:
+        if self.multi_json:
+            if jsonf and Path(jsonf).parent.is_dir():
+                self.__jsonfile = glob.glob(jsonf)
             else:
-                self.json_file = self.json_file_path/json_file
-        self.xmltv_file_path = Path(xmltv_file_path) if xmltv_file_path else self._project_dir/XMLTV_FILE_PATH
-        self.xmltv_file = xmltv_file or XMLTV_FILE
-        self._cache_path = self._project_dir/CACHE_DIR
+                self.__jsonfile = glob.glob(str(self._project_dir / JSON_FILE_PATH / JSON_FILE))
+        else:
+            if jsonf and Path(jsonf).exists():
+                self.__jsonfile = Path(jsonf)
+            else:
+                self.__jsonfile = Path(max(glob.iglob(str(self._project_dir / JSON_FILE_PATH / JSON_FILE)),
+                                           key=os.path.getctime))
+        self._dataloaded = False
+
+    @property
+    def xmltv_file(self) -> Path:
+        return self.__xmltvfile
+
+    @xmltv_file.setter
+    def xmltv_file(self, values: Tuple[Optional[str], bool]) -> None:
+        (xmltvf, use_proj_dir) = values
+        if xmltvf and use_proj_dir:
+            self.__xmltvfile = self._project_dir / XMLTV_FILE_PATH / xmltvf
+        elif xmltvf and Path(xmltvf).parent.exists():
+            self.__xmltvfile = Path(xmltvf)
+        else:
+            self.__xmltvfile = self._project_dir / XMLTV_FILE_PATH / XMLTV_FILE
+
+    @property
+    def cache_file(self) -> Path:
+        return self.__cachefile
+
+    @cache_file.setter
+    def cache_file(self, values: Tuple[Optional[str], bool]) -> None:
+        (cachef, use_proj_dir) = values
+        if use_proj_dir:
+            (self._project_dir / CACHE_DIR).mkdir(parents=True, exist_ok=True)
+        if cachef and use_proj_dir:
+            self.__cachefile = self._project_dir / CACHE_DIR / cachef
+        elif cachef and Path(cachef).parent.exists():
+            self.__cachefile = Path(cachef)
+        else:
+            self.__cachefile = self._project_dir / CACHE_DIR / CACHE_FILE
 
     def load_data(self) -> None:
-        if not self.multi_json:
-            if not self.json_file.is_file():
-                print('No such file in directory:', self.json_file_path)
-                self.json_data = []
-                return
-            with self.json_file.open() as fh:
+        if isinstance(self.__jsonfile, Path):
+            with self.__jsonfile.open() as fh:
                 try:
                     self.json_data = json.load(fh)
-                    # json_prettyprint(self.json_data)
+                    self._dataloaded = True
                 except Exception as ex:
                     print(f'Json read error while processing the file - {ex}')
                     self.json_data = []
         else:
-            # Load and merge all json files from a directory into a single OrderedDict
+            # Load and merge all json files from a directory into a single list
+            # self.__jsonfile will be a list of file paths
             self.json_data = []
-            for f in glob.glob(str(self.json_file_path/JSON_FILE)):
+            for f in self.__jsonfile:
                 with open(f) as json_file:
                     try:
                         self.json_data += json.load(json_file)
+                        self._dataloaded = True
                     except Exception as ex:
                         print(f'Json read error while processing the file - {ex}')
                         self.json_data = []
 
-    def load_cache(self, cache_file='') -> None:
-        if not cache_file:
-            self._cache_path.mkdir(parents=True, exist_ok=True)
-            self._cache_file = self._cache_path/CACHE_FILE
-        else:
-            self._cache_file = Path(cache_file)
-        if self._cache_file.is_file():
-            with self._cache_file.open() as cf:
+    def load_cache(self) -> None:
+        if self.__cachefile.is_file():
+            # if cache file exists load it
+            with self.__cachefile.open() as cf:
                 try:
                     self.chnl_cache = json.load(cf)
                 except Exception as ex:
@@ -122,7 +159,7 @@ class JsonToXmltv:
                     self.chnl_cache = {}
             # validate loaded cache file, else invalidate and create new
             if not self._newcache:
-                if len(self.json_data) == len(self.chnl_cache):
+                if len(self.json_data) <= len(self.chnl_cache):
                     for stn in self.json_data:
                         if stn["id"][0] in self.chnl_cache:
                             continue
@@ -132,14 +169,15 @@ class JsonToXmltv:
                 else:
                     self.invalidate_cache()
         else:
+            # otherwise mark True to trigger the creation a new cache file
             self._create_cachefile = True
         if self._create_cachefile:
             self.create_channel_cache()
 
     def invalidate_cache(self) -> None:
         self.chnl_cache = {}
-        if self._cache_file.is_file():
-            self._cache_file.unlink()
+        if self.__cachefile.is_file():
+            self.__cachefile.unlink()
         self._create_cachefile = True
 
     def create_channel_cache(self) -> None:
@@ -150,21 +188,25 @@ class JsonToXmltv:
                            "hashd": True if sid["name"][0] in HD_CHANNELS else False,
                            "hdid": str(next(hd_cntr)) if sid["name"][0] in HD_CHANNELS else '00'}
             for k, sid in enumerate(self.json_data, start=1)}
-        with self._cache_file.open(mode='w', encoding='utf-8') as fh:
+        with self.__cachefile.open(mode='w', encoding='utf-8') as fh:
             json.dump(stationID_map, fh, ensure_ascii=False, indent=4)
         self._newcache = True
         self._create_cachefile = False
         self.load_cache()
 
-    def generate_xmltv(self, pref_regions: Tuple[str] = (), write_file: bool = True) -> None:
+    def generate_xmltv(self, pref_regions: Optional[Tuple[str, ...]] = None, write_file: bool = True) -> None:
         """
-        Write the xmltv.xml EPG file.
+        Generate the xmltv EPG context and optionally write the .xml file.
         Ref: https://github.com/XMLTV/xmltv/blob/master/xmltv.dtd
         Ref: https://github.com/essandess/sd-py/blob/master/sd_json.py
         :return: None
         """
-        self.load_data()
+        if not self._dataloaded:
+            self.load_data()
         self.load_cache()
+
+        if self.tree_loaded:
+            self._clear_doc_root()
 
         self.root.attrib["date"] = datetime.now().astimezone(timezone(LOCAL_TZ)).strftime('%Y-%m-%d %H:%M:%S')
 
@@ -244,16 +286,24 @@ class JsonToXmltv:
         else:
             print(et.tostring(self.root, pretty_print=True, xml_declaration=True, encoding="UTF-8",
                               doctype='<!DOCTYPE tv SYSTEM "grxmltv.dtd">').decode())
+        self.tree_loaded = True
 
     def write_xml_file(self) -> None:
-        with et.xmlfile(str(self.xmltv_file_path / self.xmltv_file), encoding="UTF-8") as xf:
-            xf.write_declaration()
-            xf.write_doctype('<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
-            xf.write(self.root, pretty_print=True)
+        with open(str(self.__xmltvfile), 'wb') as xf:
+            self.xtree.write(xf, encoding="UTF-8", pretty_print=True, xml_declaration=True,
+                            doctype='<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
+        # with et.xmlfile(str(self.__xmltvfile), encoding="UTF-8") as xf:
+        #     xf.write_declaration()
+        #     xf.write_doctype('<!DOCTYPE tv SYSTEM "grxmltv.dtd">')
+        #     xf.write(self.root, pretty_print=True)
+
+    def _clear_doc_root(self):
+        et.strip_elements(self.xtree, 'channel')
+        et.strip_elements(self.xtree, 'programme')
 
 
 if __name__ == '__main__':
     xmltv_f = JsonToXmltv(multi_json=True)
     xmltv_f.generate_xmltv()
-
-
+    xmltv_f.xmltv_file = ('grxmltv_nat_el.xml', True)
+    xmltv_f.generate_xmltv(pref_regions=('Nationwide', 'Attica-R-Z-9', 'National-public'))
