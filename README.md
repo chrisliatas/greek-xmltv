@@ -1,8 +1,5 @@
-# greek-xmltv
-Python grubber for Greek public channels. Produces a custom aggregated xmltv formated file for EPG.
-
 # Description
-Custom generated xmltv formatted guide(s) produced for Greek tv channel guide data, available from [Digea.gr][digeagr
+Python grubber for Greek public channels. Produces a custom aggregated xmltv formated file for EPG. Custom generated xmltv formatted guide(s) produced for Greek tv channel guide data, available from [Digea.gr][digeagr
 ] and [Ert.gr][ertgr]. May be used in Plex, Kodi, or similar as a custom guide for setting up a dvr EPG.
 
 # Usage
