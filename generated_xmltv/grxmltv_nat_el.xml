@@ -1,6 +1,26 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <!DOCTYPE tv SYSTEM "grxmltv.dtd">
-<tv date="2020-05-08 05:45:53" source-info-name="Digea.gr-Ert.gr" generator-info-name="greek-xmltv" generator-info-url="https://liatas.com">
+<tv date="2020-05-08 13:32:42" source-info-name="Digea.gr-Ert.gr" generator-info-name="greek-xmltv" generator-info-url="https://liatas.com">
+  <channel id="100">
+    <display-name lang="en">Ert1</display-name>
+    <icon src="https://program.ert.gr/images/ChannelLogo-ERT1.png"/>
+  </channel>
+  <channel id="101">
+    <display-name lang="en">Ert2</display-name>
+    <icon src="https://program.ert.gr/images/ChannelLogo-ERT2.png"/>
+  </channel>
+  <channel id="102">
+    <display-name lang="en">Ert3</display-name>
+    <icon src="https://program.ert.gr/images/ChannelLogo-ERT3.png"/>
+  </channel>
+  <channel id="103">
+    <display-name lang="en">ErtSportsHD</display-name>
+    <icon src="https://program.ert.gr/images/ChannelLogo-ERTsports.png"/>
+  </channel>
+  <channel id="104">
+    <display-name lang="en">Vouli</display-name>
+    <icon src="https://program.ert.gr/images/vouli_logo_big.png"/>
+  </channel>
   <channel id="1">
     <display-name lang="en">ALPHA</display-name>
     <icon src="https://www.digea.gr/images/channel-icons/alpha.png"/>
@@ -549,26 +569,1655 @@
     <display-name lang="en">TVM</display-name>
     <icon src="https://www.digea.gr/images/channel-icons/TVM (EPG).jpg"/>
   </channel>
-  <channel id="100">
-    <display-name lang="en">Ert1</display-name>
-    <icon src="https://program.ert.gr/images/ChannelLogo-ERT1.png"/>
-  </channel>
-  <channel id="101">
-    <display-name lang="en">Ert2</display-name>
-    <icon src="https://program.ert.gr/images/ChannelLogo-ERT2.png"/>
-  </channel>
-  <channel id="102">
-    <display-name lang="en">Ert3</display-name>
-    <icon src="https://program.ert.gr/images/ChannelLogo-ERT3.png"/>
-  </channel>
-  <channel id="103">
-    <display-name lang="en">ErtSportsHD</display-name>
-    <icon src="https://program.ert.gr/images/ChannelLogo-ERTsports.png"/>
-  </channel>
-  <channel id="104">
-    <display-name lang="en">Vouli</display-name>
-    <icon src="https://program.ert.gr/images/vouli_logo_big.png"/>
-  </channel>
+  <programme start="20200508053000 +0300" stop="20200508100000 +0300" channel="100">
+    <title lang="el">...ΑΠΟ ΤΙΣ ΕΞΙ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="100">
+    <title lang="el">ΕΠΙΚΟΙΝΩΝΙΑ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508120000 +0300" stop="20200508130000 +0300" channel="100">
+    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508130000 +0300" stop="20200508150000 +0300" channel="100">
+    <title lang="el">ΣΥΝΔΕΣΕΙΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508150000 +0300" stop="20200508160000 +0300" channel="100">
+    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508160000 +0300" stop="20200508173000 +0300" channel="100">
+    <title lang="el">COVID-19: ΣΥΝΕΧΗΣ ΕΝΗΜΕΡΩΣΗ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508173000 +0300" stop="20200508180000 +0300" channel="100">
+    <title lang="el">ΕΙΔΗΣΕΙΣ/ΔΕΛΤΙΟ ΣΤΗ ΝΟΗΜΑΤΙΚΗ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508180000 +0300" stop="20200508190000 +0300" channel="100">
+    <title lang="el">COVID-19: ΣΥΝΕΧΗΣ ΕΝΗΜΕΡΩΣΗ</title>
+    <desc lang="el">(συνέχεια εκπομπής)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508190000 +0300" stop="20200508203000 +0300" channel="100">
+    <title lang="el">ΚΕΝΤΡΙΚΟ ΔΕΛΤΙΟ ΕΙΔΗΣΕΩΝ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508203000 +0300" stop="20200508213000 +0300" channel="100">
+    <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508213000 +0300" stop="20200508231500 +0300" channel="100">
+    <title lang="el">Ο ΕΜΙΡΗΣ ΚΑΙ Ο ΚΑΚΟΜΟΙΡΗΣ (ΕΛΛΗΝΙΚΗ ΤΑΙΝΙΑ)</title>
+    <desc lang="el">Ταινία</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508231500 +0300" stop="20200509000000 +0300" channel="100">
+    <title lang="el">ΣΗΜΕΙΟ ΣΥΝΑΝΤΗΣΗΣ</title>
+    <desc lang="el">«Φώτης Σεργουλόπουλος-Τζένη Μπότση»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509000000 +0300" stop="20200509001500 +0300" channel="100">
+    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200509001500 +0300" stop="20200509011000 +0300" channel="100">
+    <title lang="el">FARGO  (Γ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 6 - «Ο Ανελέητος Κύριος» (The Lord of No Mercy)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200509011000 +0300" stop="20200509024500 +0300" channel="100">
+    <title lang="el">ΠΙΑΝΟ ΜΠΛΟΥΖ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509024500 +0300" stop="20200509034500 +0300" channel="100">
+    <title lang="el">ΤΑΞΙΔΕΥΟΝΤΑΣ ΣΤΗΝ ΕΛΛΑΔΑ</title>
+    <desc lang="el">Ντοκιμαντέρ «Φλώρινα»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509034500 +0300" stop="20200509041500 +0300" channel="100">
+    <title lang="el">ON THE ROAD</title>
+    <desc lang="el">Ντοκιμαντέρ «Πάρνηθα»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509041500 +0300" stop="20200509045000 +0300" channel="100">
+    <title lang="el">ΣΗΜΕΙΟ ΣΥΝΑΝΤΗΣΗΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509045000 +0300" stop="20200509054000 +0300" channel="100">
+    <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Σειρά</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509054000 +0300" stop="20200509060000 +0300" channel="100">
+    <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΤΟΝ 20ο ΑΙΩΝΑ</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508070000 +0300" stop="20200508074500 +0300" channel="101">
+    <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
+    <desc lang="el">Παιδικό Επεισόδια 1ο &amp; 2ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508074500 +0300" stop="20200508080000 +0300" channel="101">
+    <title lang="el">OLD TOM</title>
+    <desc lang="el">Παιδικό Eπεισόδιο 43</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508080000 +0300" stop="20200508083500 +0300" channel="101">
+    <title lang="el">Ο ΑΡΘΟΥΡΟΣ ΚΑΙ ΤΑ ΠΑΙΔΙΑ ΤΗΣ ΣΤΡΟΓΓΥΛΗΣ ΤΡΑΠΕΖΗΣ</title>
+    <desc lang="el">Παιδικό Επεισόδια 22ο &amp; 23ο &amp; 24ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508083500 +0300" stop="20200508090000 +0300" channel="101">
+    <title lang="el">ΜΟΥΚ</title>
+    <desc lang="el">Παιδικό Επεισόδια 19ο &amp; 20ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508090000 +0300" stop="20200508092000 +0300" channel="101">
+    <title lang="el">PAPRIKA</title>
+    <desc lang="el">Παιδικό Eπεισόδιο 19</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508092000 +0300" stop="20200508093000 +0300" channel="101">
+    <title lang="el">ΛΟΥΙ</title>
+    <desc lang="el">Παιδικό Eπεισόδιο 4</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508093000 +0300" stop="20200508095000 +0300" channel="101">
+    <title lang="el">MOLANG</title>
+    <desc lang="el">Παιδικό Επεισόδια 108ο &amp; 109ο &amp; 110ο &amp; 111ο &amp; 112ο &amp; 113ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508095000 +0300" stop="20200508100000 +0300" channel="101">
+    <title lang="el">ΓΙΑΚΑΡΙ - (SEASON 4 &amp; SEASON 5)</title>
+    <desc lang="el">Παιδικό Eπεισόδιο 4</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508100000 +0300" stop="20200508113000 +0300" channel="101">
+    <title lang="el">ΜΑΘΑΙΝΟΥΜΕ ΣΤΟ ΣΠΙΤΙ</title>
+    <desc lang="el">Eπεισόδιο 26 - «Διαθεματικό Β' &amp; Μαθηματικά Δ' - ΣΤ' &amp; Γλώσσα Δ' - ΣΤ' &amp; Γεωγραφία ΣΤ'»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508113000 +0300" stop="20200508113500 +0300" channel="101">
+    <title lang="el">ΙΣΤΟΡΙΕΣ ΓΙΑ ΠΑΙΔΙΑ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">«Η κουκουβάγια και η πέρδικα»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508113500 +0300" stop="20200508123000 +0300" channel="101">
+    <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
+    <desc lang="el">Παιδικό Επεισόδια 1ο &amp; 2ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508123000 +0300" stop="20200508130000 +0300" channel="101">
+    <title lang="el">1.000 ΧΡΩΜΑΤΑ ΤΟΥ ΧΡΗΣΤΟΥ (2019-2020)</title>
+    <desc lang="el">Eπεισόδιο 24 - «Μιχάλης - Άγγελος - Γιάννης - Βαγγέλης»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="101">
+    <title lang="el">ΑΓΡΙΟΙ ΟΡΙΖΟΝΤΕΣ ΤΗΣ ΑΦΡΙΚΗΣ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - «Η Μεγάλη Όαση της Αφρικής: Δέλτα του Οκαβάνγκο» (Africa’s Great Oasis - The Okavango)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508140000 +0300" stop="20200508143000 +0300" channel="101">
+    <title lang="el">ΟΛΑ ΓΙΑ ΤΟΝ ΚΗΠΟ</title>
+    <desc lang="el">«Πολυετείς πόες – Αρωματικά φυτά»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508143000 +0300" stop="20200508150000 +0300" channel="101">
+    <title lang="el">ΒΟΤΑΝΑ, ΜΥΣΤΙΚΑ ΚΑΙ ΘΕΡΑΠΕΙΕΣ</title>
+    <desc lang="el">Ντοκιμαντέρ «Καλή Βρύση Δράμας – Όρος Παγγαίο»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508150000 +0300" stop="20200508160000 +0300" channel="101">
+    <title lang="el">ΣΤΑ ΦΤΕΡΑ ΤΟΥ ΕΡΩΤΑ - Β΄ ΚΥΚΛΟΣ (EΡΤ ΑΡΧΕΙΟ)</title>
+    <desc lang="el">Σειρά Επεισόδια 111ο &amp; 112ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508160000 +0300" stop="20200508170000 +0300" channel="101">
+    <title lang="el">ΟΡΙΑΝ ΕΞΠΡΕΣ, ΑΓΑΠΗ ΜΟΥ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - «Βαρύ παρελθόν στο Μόναχο, ελαφρότητα στη Βιέννη»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="101">
+    <title lang="el">Η ΑΥΤΟΚΡΑΤΟΡΙΑ</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - «Κάνοντας καλό» (Doing Good)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508180000 +0300" stop="20200508194500 +0300" channel="101">
+    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ (Γ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Επεισόδια 149ο &amp; 150ο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508194500 +0300" stop="20200508200000 +0300" channel="101">
+    <title lang="el">ΕΝΤΟΣ ΑΤΤΙΚΗΣ</title>
+    <desc lang="el">«Κέντρο Γης και Πύργος Βασιλίσσης»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508200000 +0300" stop="20200508210000 +0300" channel="101">
+    <title lang="el">ΤΑ ΣΤΕΚΙΑ - ΙΣΤΟΡΙΕΣ ΑΓΟΡΑΙΟΥ ΠΟΛΙΤΙΣΜΟΥ (2020)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - «Ροκ-Πανκ στην Πλάκα»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508210000 +0300" stop="20200508230000 +0300" channel="101">
+    <title lang="el">Η ΑΥΛΗ ΤΩΝ ΧΡΩΜΑΤΩΝ</title>
+    <desc lang="el">«Αγαπημένα λαϊκά τραγούδια με την Φωτεινή Βελεσιώτου»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508230000 +0300" stop="20200509010000 +0300" channel="101">
+    <title lang="el">ΤΟ ΔΩΜΑΤΙΟ</title>
+    <desc lang="el">Ταινία</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="101">
+    <title lang="el">ΧΟΛΙΓΟΥΝΤ: ΟΧΙ ΑΛΛΟ ΣΕΞ, ΠΑΡΑΚΑΛΩ! (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509020000 +0300" stop="20200509030000 +0300" channel="101">
+    <title lang="el">ΤΑ ΣΤΕΚΙΑ - ΙΣΤΟΡΙΕΣ ΑΓΟΡΑΙΟΥ ΠΟΛΙΤΙΣΜΟΥ (2020)</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509030000 +0300" stop="20200509050000 +0300" channel="101">
+    <title lang="el">Η ΑΥΛΗ ΤΩΝ ΧΡΩΜΑΤΩΝ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509050000 +0300" stop="20200509060000 +0300" channel="101">
+    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ (Γ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508060000 +0300" stop="20200508063000 +0300" channel="102">
+    <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΤΖΑΜΆΙΚΑ [Jamaica]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508063000 +0300" stop="20200508073000 +0300" channel="102">
+    <title lang="el">ΕΛΛΗΝΩΝ ΔΡΩΜΕΝΑ</title>
+    <desc lang="el">Eπεισόδιο 10 - Η Κάσος μεσοπέλαγα</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508073000 +0300" stop="20200508083000 +0300" channel="102">
+    <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508083000 +0300" stop="20200508090000 +0300" channel="102">
+    <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 15 - ΛΙΜΝΗ ΣΟΥΠΙΡΙΟΡ[ LAKE SUPERIOR ]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508090000 +0300" stop="20200508100000 +0300" channel="102">
+    <title lang="el">BALKAN EXPRESS</title>
+    <desc lang="el">Eπεισόδιο 9 - Βουλγαρία – Σόφια</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="102">
+    <title lang="el">ΚΑΘΕ ΜΕΡΑ ΕΛΛΑΔΑ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508120000 +0300" stop="20200508130000 +0300" channel="102">
+    <title lang="el">ΚΑΘΕ ΤΟΠΟΣ ΚΑΙ ΤΡΑΓΟΥΔΙ</title>
+    <desc lang="el">Eπεισόδιο 8 - Της γαλήνης του Πηλίου εραστές-ΚΙΣΣΟΣ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="102">
+    <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΜΟΓΓΟΛΙΑ[MONGOLIA]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508140000 +0300" stop="20200508150000 +0300" channel="102">
+    <title lang="el">ΕΙΔΗΣΕΙΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508150000 +0300" stop="20200508153000 +0300" channel="102">
+    <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΣΡΙ ΛΑΝΚΑ- Η ΓΗ ΤΩΝ ΕΛΕΦΑΝΤΩΝ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508153000 +0300" stop="20200508163000 +0300" channel="102">
+    <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 8</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508163000 +0300" stop="20200508170000 +0300" channel="102">
+    <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 15 - ΛΙΜΝΗ ΣΟΥΠΙΡΙΟΡ[ LAKE SUPERIOR ]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508170000 +0300" stop="20200508172000 +0300" channel="102">
+    <title lang="el">ΕΙΔΗΣΕΙΣ - ΚΑΙΡΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508172000 +0300" stop="20200508190000 +0300" channel="102">
+    <title lang="el">ΜΕ...ΜΕΤΡΟ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="102">
+    <title lang="el">Η ΖΩΝΤΑΝΙΑ ΤΗΣ ΠΟΛΗΣ (Α' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - ΠΑΡΙΣΙ[PARIS]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508200000 +0300" stop="20200508210000 +0300" channel="102">
+    <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΜΟΓΓΟΛΙΑ[MONGOLIA]</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508210000 +0300" stop="20200508220000 +0300" channel="102">
+    <title lang="el">ΦΕΛΙΞ</title>
+    <desc lang="el">Σειρά Eπεισόδιο 3</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200508220000 +0300" stop="20200508230000 +0300" channel="102">
+    <title lang="el">THE GOOD FIGHT (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200508230000 +0300" stop="20200509000000 +0300" channel="102">
+    <title lang="el">Ο ΑΓΝΩΣΤΟΣ ΠΟΛΕΜΟΣ ΤΗΣ ΣΑΝΕΛ</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509000000 +0300" stop="20200509014500 +0300" channel="102">
+    <title lang="el">ΦΕΛΙΞ &amp; ΜΕΙΡΑ</title>
+    <desc lang="el">Ταινία</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509014500 +0300" stop="20200509024500 +0300" channel="102">
+    <title lang="el">ΦΕΛΙΞ</title>
+    <desc lang="el">Σειρά Eπεισόδιο 3</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509024500 +0300" stop="20200509033000 +0300" channel="102">
+    <title lang="el">Ο ΑΓΝΩΣΤΟΣ ΠΟΛΕΜΟΣ ΤΗΣ ΣΑΝΕΛ</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509033000 +0300" stop="20200509053000 +0300" channel="102">
+    <title lang="el">ΚΑΘΕ ΜΕΡΑ ΕΛΛΑΔΑ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509053000 +0300" stop="20200509060000 +0300" channel="102">
+    <title lang="el">ΚΑΘΕ ΤΟΠΟΣ ΚΑΙ ΤΡΑΓΟΥΔΙ</title>
+    <desc lang="el">Eπεισόδιο 8 - Της γαλήνης του Πηλίου εραστές-ΚΙΣΣΟΣ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508060000 +0300" stop="20200508080000 +0300" channel="103">
+    <title lang="el">AJAX TV</title>
+    <desc lang="el">«Ajax - Chelsea»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508080000 +0300" stop="20200508100000 +0300" channel="103">
+    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
+    <desc lang="el">«ΚΟΛΟΜΒΙΑ - ΑΚΤΗ ΕΛΕΦ.» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="103">
+    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
+    <desc lang="el">«ΙΑΠΩΝΙΑ - ΕΛΛΑΔΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508120000 +0300" stop="20200508140000 +0300" channel="103">
+    <title lang="el">ΣΤΙΒΟΣ - DIAMOND LEAGUE (ΟΣΛΟ)</title>
+    <desc lang="el">(13/6/19)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508140000 +0300" stop="20200508150000 +0300" channel="103">
+    <title lang="el">THE FOOTBALL SHOW</title>
+    <desc lang="el">Ντοκιμαντέρ «Lisbon»</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508150000 +0300" stop="20200508170000 +0300" channel="103">
+    <title lang="el">ΒΟΛΕΪ ΕΥΡΩΠΑΪΚΟ ΑΝΔΡΩΝ: ΕΛΛΑΔΑ - ΠΟΡΤΟΓΑΛΙΑ</title>
+    <desc lang="el">(17/9/19)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="103">
+    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508180000 +0300" stop="20200508190000 +0300" channel="103">
+    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="103">
+    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508200000 +0300" stop="20200508220000 +0300" channel="103">
+    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
+    <desc lang="el">«ΚΑΜΕΡΟΥΝ - ΒΡΑΖΙΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (23/6/14)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508220000 +0300" stop="20200509000000 +0300" channel="103">
+    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
+    <desc lang="el">«ΙΤΑΛΙΑ - ΟΥΡΟΥΓΟΥΑΗ» - ΦΑΣΗ ΟΜΙΛΩΝ (24/6/14)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200509000000 +0300" stop="20200509020000 +0300" channel="103">
+    <title lang="el">ΜΠΑΣΚΕΤ ΤΟΥΡΝΟΥΑ ΑΚΡΟΠΟΛΙΣ: ΕΛΛΑΔΑ - ΣΕΡΒΙΑ</title>
+    <desc lang="el">(18/8/19)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200509020000 +0300" stop="20200509040000 +0300" channel="103">
+    <title lang="el">FORMULA 1 - ΓΚΡΑΝ ΠΡΙ ΙΣΠΑΝΙΑΣ (ΒΑΡΚΕΛΩΝΗ)</title>
+    <desc lang="el">(12/5/19)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200509040000 +0300" stop="20200509060000 +0300" channel="103">
+    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΠΡΩΤΑΘΛΗΜΑ ΥΓΡΟΥ ΣΤΙΒΟΥ (GWANGJU)</title>
+    <desc lang="el">5η μέρα (25/7/19)</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
+  <programme start="20200508081500 +0300" stop="20200508082000 +0300" channel="104">
+    <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΣΤΗΝ ΠΟΛΙΤΙΚΗ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508082000 +0300" stop="20200508090000 +0300" channel="104">
+    <title lang="el">ΠΡΩΙΝΗ ΕΠΙΣΚΟΠΗΣΗ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508090000 +0300" stop="20200508130000 +0300" channel="104">
+    <title lang="el">ΚΟΙΝΟΒΟΥΛΕΥΤΙΚΟ ΕΡΓΟ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508130000 +0300" stop="20200508190000 +0300" channel="104">
+    <title lang="el">ΚΟΙΝΟΒΟΥΛΕΥΤΙΚΟ ΕΡΓΟ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="104">
+    <title lang="el">ΣΥΝΑΝΤΗΣΗ</title>
+    <desc lang="el">Συνάντηση με τον Τζόρτζ Πελεκάνος</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200508200000 +0300" stop="20200508203000 +0300" channel="104">
+    <title lang="el">ΛΟΓΩ ΤΕΧΝΗΣ</title>
+    <desc lang="el">Ντοκιμαντέρ Η Εναλλακτική Πλευρά της Λυρικής</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508203000 +0300" stop="20200508210000 +0300" channel="104">
+    <title lang="el">ΘΕΑΤΡΟΣΚΟΠΙΟ</title>
+    <desc lang="el">Ντοκιμαντέρ «Ο Χρόνος Σταματά» του Ντόναλντ Μάργκουλις</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K</value>
+    </rating>
+  </programme>
+  <programme start="20200508210000 +0300" stop="20200508220000 +0300" channel="104">
+    <title lang="el">ΜΙΑ ΤΑΙΝΙΑ, ΜΙΑ ΕΠΟΧΗ</title>
+    <desc lang="el">Σειρά Κίνγκ Κόνγκ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200508220000 +0300" stop="20200509000000 +0300" channel="104">
+    <title lang="el">ΤΟ ΜΑΧΑΙΡΙ ΣΤΟ ΝΕΡΟ</title>
+    <desc lang="el">Ταινία</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509000000 +0300" stop="20200509010000 +0300" channel="104">
+    <title lang="el">ΜΟΥΣΙΚΕΣ ΜΟΡΦΕΣ</title>
+    <desc lang="el">Ελληνική Γλώσσα και Διαχρονία, με Προσκεκλημένο τον Καθηγητή Ιωάννη Πετρόπουλο</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="104">
+    <title lang="el">ΙΧΝΗ ΑΝΑΒΙΩΣΗ ΑΡΧΑΙΟΥ ΔΡΑΜΑΤΟΣ ΟΙ ΠΡΩΤΟΠΟΡΟΙ ΘΕΑΤΡΟ ΤΕΧΝΗΣ και ΘΕΑΤΡΙΚΟΣ ΟΡΓΑΝΙΣΜΟΣ ΚΥΠΡΟΥ Β΄ Μέρος</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K8</value>
+    </rating>
+  </programme>
+  <programme start="20200509020000 +0300" stop="20200509060000 +0300" channel="104">
+    <title lang="el">ΕΠΑΝΑΛΗΨΗ ΠΡΟΓΡΑΜΜΑΤΟΣ</title>
+    <desc lang="el"></desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K16</value>
+    </rating>
+  </programme>
   <programme start="20200508062000 +0300" stop="20200508070000 +0300" channel="1">
     <title lang="el">Θυρίδα Τηλεπώλησης</title>
     <desc lang="el">Τηλεαγορά.</desc>
@@ -31176,7 +32825,7 @@
   </programme>
   <programme start="20200508203000 +0300" stop="20200508213000 +0300" channel="100">
     <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 4</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31191,8 +32840,8 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508213000 +0300" stop="20200508230000 +0300" channel="100">
-    <title lang="el">ΤΗΣ ΖΗΛΕΙΑΣ ΤΑ ΚΑΜΩΜΑΤΑ (ΕΛΛΗΝΙΚΗ ΤΑΙΝΙΑ)</title>
+  <programme start="20200508213000 +0300" stop="20200508231500 +0300" channel="100">
+    <title lang="el">Ο ΕΜΙΡΗΣ ΚΑΙ Ο ΚΑΚΟΜΟΙΡΗΣ (ΕΛΛΗΝΙΚΗ ΤΑΙΝΙΑ)</title>
     <desc lang="el">Ταινία</desc>
     <video>
       <present>yes</present>
@@ -31208,9 +32857,9 @@
       <value>K</value>
     </rating>
   </programme>
-  <programme start="20200508230000 +0300" stop="20200509000000 +0300" channel="100">
-    <title lang="el">10</title>
-    <desc lang="el"></desc>
+  <programme start="20200508231500 +0300" stop="20200509000000 +0300" channel="100">
+    <title lang="el">ΣΗΜΕΙΟ ΣΥΝΑΝΤΗΣΗΣ</title>
+    <desc lang="el">«Φώτης Σεργουλόπουλος-Τζένη Μπότση»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31242,9 +32891,9 @@
       <value>K16</value>
     </rating>
   </programme>
-  <programme start="20200509001500 +0300" stop="20200509013000 +0300" channel="100">
+  <programme start="20200509001500 +0300" stop="20200509011000 +0300" channel="100">
     <title lang="el">FARGO  (Γ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5 - «Το σπίτι του ειδικού σκοπού» (The House of Special Purpose)</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 6 - «Ο Ανελέητος Κύριος» (The Lord of No Mercy)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31259,9 +32908,26 @@
       <value>K16</value>
     </rating>
   </programme>
-  <programme start="20200509013000 +0300" stop="20200509020000 +0300" channel="100">
+  <programme start="20200509011000 +0300" stop="20200509024500 +0300" channel="100">
+    <title lang="el">ΠΙΑΝΟ ΜΠΛΟΥΖ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
+    <video>
+      <present>yes</present>
+      <colour>yes</colour>
+      <aspect>16:9</aspect>
+      <quality>SDTV</quality>
+    </video>
+    <audio>
+      <present>yes</present>
+      <stereo>stereo</stereo>
+    </audio>
+    <rating system="Greek">
+      <value>K12</value>
+    </rating>
+  </programme>
+  <programme start="20200509024500 +0300" stop="20200509034500 +0300" channel="100">
     <title lang="el">ΤΑΞΙΔΕΥΟΝΤΑΣ ΣΤΗΝ ΕΛΛΑΔΑ</title>
-    <desc lang="el">Ντοκιμαντέρ «Παξοί»</desc>
+    <desc lang="el">Ντοκιμαντέρ «Φλώρινα»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31276,9 +32942,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509020000 +0300" stop="20200509023000 +0300" channel="100">
+  <programme start="20200509034500 +0300" stop="20200509041500 +0300" channel="100">
     <title lang="el">ON THE ROAD</title>
-    <desc lang="el">Ντοκιμαντέρ «Αναρρίχηση-Ελεύθερη Πτώση»</desc>
+    <desc lang="el">Ντοκιμαντέρ «Πάρνηθα»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31293,9 +32959,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509023000 +0300" stop="20200509032000 +0300" channel="100">
-    <title lang="el">CHINA: TIME OF XI</title>
-    <desc lang="el">Ντοκιμαντέρ «Running China now»</desc>
+  <programme start="20200509041500 +0300" stop="20200509045000 +0300" channel="100">
+    <title lang="el">ΣΗΜΕΙΟ ΣΥΝΑΝΤΗΣΗΣ</title>
+    <desc lang="el"></desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31310,24 +32976,7 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509032000 +0300" stop="20200509042000 +0300" channel="100">
-    <title lang="el">Η ΜΗΧΑΝΗ ΤΟΥ ΧΡΟΝΟΥ</title>
-    <desc lang="el">«Λήσταρχος Γιαγκούλας»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509042000 +0300" stop="20200509051000 +0300" channel="100">
+  <programme start="20200509045000 +0300" stop="20200509054000 +0300" channel="100">
     <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ)</title>
     <desc lang="el">Σειρά</desc>
     <video>
@@ -31344,7 +32993,7 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509051000 +0300" stop="20200509060000 +0300" channel="100">
+  <programme start="20200509054000 +0300" stop="20200509060000 +0300" channel="100">
     <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΤΟΝ 20ο ΑΙΩΝΑ</title>
     <desc lang="el">Ντοκιμαντέρ</desc>
     <video>
@@ -31363,7 +33012,7 @@
   </programme>
   <programme start="20200508070000 +0300" stop="20200508074500 +0300" channel="101">
     <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 13ο &amp; 14ο</desc>
+    <desc lang="el">Παιδικό Επεισόδια 1ο &amp; 2ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31380,7 +33029,7 @@
   </programme>
   <programme start="20200508074500 +0300" stop="20200508080000 +0300" channel="101">
     <title lang="el">OLD TOM</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 42</desc>
+    <desc lang="el">Παιδικό Eπεισόδιο 43</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31397,7 +33046,7 @@
   </programme>
   <programme start="20200508080000 +0300" stop="20200508083500 +0300" channel="101">
     <title lang="el">Ο ΑΡΘΟΥΡΟΣ ΚΑΙ ΤΑ ΠΑΙΔΙΑ ΤΗΣ ΣΤΡΟΓΓΥΛΗΣ ΤΡΑΠΕΖΗΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 19ο &amp; 20ο &amp; 21ο</desc>
+    <desc lang="el">Παιδικό Επεισόδια 22ο &amp; 23ο &amp; 24ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31414,7 +33063,7 @@
   </programme>
   <programme start="20200508083500 +0300" stop="20200508090000 +0300" channel="101">
     <title lang="el">ΜΟΥΚ</title>
-    <desc lang="el">Παιδικό Επεισόδια 17ο &amp; 18ο</desc>
+    <desc lang="el">Παιδικό Επεισόδια 19ο &amp; 20ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31431,7 +33080,7 @@
   </programme>
   <programme start="20200508090000 +0300" stop="20200508092000 +0300" channel="101">
     <title lang="el">PAPRIKA</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 18</desc>
+    <desc lang="el">Παιδικό Eπεισόδιο 19</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31448,7 +33097,7 @@
   </programme>
   <programme start="20200508092000 +0300" stop="20200508093000 +0300" channel="101">
     <title lang="el">ΛΟΥΙ</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 3</desc>
+    <desc lang="el">Παιδικό Eπεισόδιο 4</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31465,7 +33114,7 @@
   </programme>
   <programme start="20200508093000 +0300" stop="20200508095000 +0300" channel="101">
     <title lang="el">MOLANG</title>
-    <desc lang="el">Παιδικό Επεισόδια 102ο &amp; 103ο &amp; 104ο &amp; 105ο &amp; 106ο &amp; 107ο</desc>
+    <desc lang="el">Παιδικό Επεισόδια 108ο &amp; 109ο &amp; 110ο &amp; 111ο &amp; 112ο &amp; 113ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31482,7 +33131,7 @@
   </programme>
   <programme start="20200508095000 +0300" stop="20200508100000 +0300" channel="101">
     <title lang="el">ΓΙΑΚΑΡΙ - (SEASON 4 &amp; SEASON 5)</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 3</desc>
+    <desc lang="el">Παιδικό Eπεισόδιο 4</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31499,7 +33148,7 @@
   </programme>
   <programme start="20200508100000 +0300" stop="20200508113000 +0300" channel="101">
     <title lang="el">ΜΑΘΑΙΝΟΥΜΕ ΣΤΟ ΣΠΙΤΙ</title>
-    <desc lang="el">Eπεισόδιο 25 - «Θεατρική Αγωγή Α' - Γ' &amp; Φυσική Αγωγή Α' - Β' &amp; Γλώσσα E' - ΣΤ' &amp; Φυσική ΣΤ΄»</desc>
+    <desc lang="el">Eπεισόδιο 26 - «Διαθεματικό Β' &amp; Μαθηματικά Δ' - ΣΤ' &amp; Γλώσσα Δ' - ΣΤ' &amp; Γεωγραφία ΣΤ'»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31516,7 +33165,7 @@
   </programme>
   <programme start="20200508113000 +0300" stop="20200508113500 +0300" channel="101">
     <title lang="el">ΙΣΤΟΡΙΕΣ ΓΙΑ ΠΑΙΔΙΑ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">«Ένα γράμμα στη Μίνα»</desc>
+    <desc lang="el">«Η κουκουβάγια και η πέρδικα»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31533,7 +33182,7 @@
   </programme>
   <programme start="20200508113500 +0300" stop="20200508123000 +0300" channel="101">
     <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 13ο &amp; 14ο</desc>
+    <desc lang="el">Παιδικό Επεισόδια 1ο &amp; 2ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31550,7 +33199,7 @@
   </programme>
   <programme start="20200508123000 +0300" stop="20200508130000 +0300" channel="101">
     <title lang="el">1.000 ΧΡΩΜΑΤΑ ΤΟΥ ΧΡΗΣΤΟΥ (2019-2020)</title>
-    <desc lang="el">Eπεισόδιο 23 - «Παναγιώτης»</desc>
+    <desc lang="el">Eπεισόδιο 24 - «Μιχάλης - Άγγελος - Γιάννης - Βαγγέλης»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31567,7 +33216,7 @@
   </programme>
   <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="101">
     <title lang="el">ΑΓΡΙΟΙ ΟΡΙΖΟΝΤΕΣ ΤΗΣ ΑΦΡΙΚΗΣ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - «Βρέντεφορτ: Κρατήρας της ζωής» (Vredefort Dome - Crater of Life)</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - «Η Μεγάλη Όαση της Αφρικής: Δέλτα του Οκαβάνγκο» (Africa’s Great Oasis - The Okavango)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31584,7 +33233,7 @@
   </programme>
   <programme start="20200508140000 +0300" stop="20200508143000 +0300" channel="101">
     <title lang="el">ΟΛΑ ΓΙΑ ΤΟΝ ΚΗΠΟ</title>
-    <desc lang="el">«Οξύφιλα»</desc>
+    <desc lang="el">«Πολυετείς πόες – Αρωματικά φυτά»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31601,7 +33250,7 @@
   </programme>
   <programme start="20200508143000 +0300" stop="20200508150000 +0300" channel="101">
     <title lang="el">ΒΟΤΑΝΑ, ΜΥΣΤΙΚΑ ΚΑΙ ΘΕΡΑΠΕΙΕΣ</title>
-    <desc lang="el">Ντοκιμαντέρ «Ανατολική Αρκαδία»</desc>
+    <desc lang="el">Ντοκιμαντέρ «Καλή Βρύση Δράμας – Όρος Παγγαίο»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31618,7 +33267,7 @@
   </programme>
   <programme start="20200508150000 +0300" stop="20200508160000 +0300" channel="101">
     <title lang="el">ΣΤΑ ΦΤΕΡΑ ΤΟΥ ΕΡΩΤΑ - Β΄ ΚΥΚΛΟΣ (EΡΤ ΑΡΧΕΙΟ)</title>
-    <desc lang="el">Σειρά Επεισόδια 109ο &amp; 110ο</desc>
+    <desc lang="el">Σειρά Επεισόδια 111ο &amp; 112ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31635,7 +33284,7 @@
   </programme>
   <programme start="20200508160000 +0300" stop="20200508170000 +0300" channel="101">
     <title lang="el">ΟΡΙΑΝ ΕΞΠΡΕΣ, ΑΓΑΠΗ ΜΟΥ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 1 - «Παρίσι το μαγευτικό, Στρασβούργο, Γερμανία»</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - «Βαρύ παρελθόν στο Μόναχο, ελαφρότητα στη Βιέννη»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31652,7 +33301,7 @@
   </programme>
   <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="101">
     <title lang="el">Η ΑΥΤΟΚΡΑΤΟΡΙΑ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - «Κάνοντας περιουσία»(Making a fortune)</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - «Κάνοντας καλό» (Doing Good)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31669,7 +33318,7 @@
   </programme>
   <programme start="20200508180000 +0300" stop="20200508194500 +0300" channel="101">
     <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ (Γ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Επεισόδια 147ο &amp; 148ο</desc>
+    <desc lang="el">Επεισόδια 149ο &amp; 150ο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31686,7 +33335,7 @@
   </programme>
   <programme start="20200508194500 +0300" stop="20200508200000 +0300" channel="101">
     <title lang="el">ΕΝΤΟΣ ΑΤΤΙΚΗΣ</title>
-    <desc lang="el">«Όρος Μερρέντα – Κουβαράς - Δασκαλειό»</desc>
+    <desc lang="el">«Κέντρο Γης και Πύργος Βασιλίσσης»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31701,9 +33350,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508200000 +0300" stop="20200508203000 +0300" channel="101">
-    <title lang="el">ΑΠΟ ΠΕΤΡΑ ΚΑΙ ΧΡΟΝΟ (2020)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 7 - «Αμφίκλεια»</desc>
+  <programme start="20200508200000 +0300" stop="20200508210000 +0300" channel="101">
+    <title lang="el">ΤΑ ΣΤΕΚΙΑ - ΙΣΤΟΡΙΕΣ ΑΓΟΡΑΙΟΥ ΠΟΛΙΤΙΣΜΟΥ (2020)</title>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - «Ροκ-Πανκ στην Πλάκα»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31718,9 +33367,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508203000 +0300" stop="20200508210000 +0300" channel="101">
-    <title lang="el">ΕΣ ΑΥΡΙΟΝ ΤΑ ΣΠΟΥΔΑΙΑ</title>
-    <desc lang="el">Ντοκιμαντέρ «Σεναριακή πάλη»</desc>
+  <programme start="20200508210000 +0300" stop="20200508230000 +0300" channel="101">
+    <title lang="el">Η ΑΥΛΗ ΤΩΝ ΧΡΩΜΑΤΩΝ</title>
+    <desc lang="el">«Αγαπημένα λαϊκά τραγούδια με την Φωτεινή Βελεσιώτου»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31735,42 +33384,8 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508210000 +0300" stop="20200508221500 +0300" channel="101">
-    <title lang="el">ΜΕ ΤΑ ΜΑΤΙΑ ΤΗΣ ΤΕΡΕΖΑΣ (Α' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 8</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200508221500 +0300" stop="20200508230000 +0300" channel="101">
-    <title lang="el">MR. SELFRIDGE - Γ΄ ΚΥΚΛΟΣ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 6</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200508230000 +0300" stop="20200509003000 +0300" channel="101">
-    <title lang="el">45 ΧΡΟΝΙΑ</title>
+  <programme start="20200508230000 +0300" stop="20200509010000 +0300" channel="101">
+    <title lang="el">ΤΟ ΔΩΜΑΤΙΟ</title>
     <desc lang="el">Ταινία</desc>
     <video>
       <present>yes</present>
@@ -31783,11 +33398,11 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K8</value>
+      <value>K12</value>
     </rating>
   </programme>
-  <programme start="20200509003000 +0300" stop="20200509013000 +0300" channel="101">
-    <title lang="el">ΟΙ ΚΑΤΑΣΚΟΠΟΙ ΤΟΥ ΧΟΛΙΓΟΥΝΤ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="101">
+    <title lang="el">ΧΟΛΙΓΟΥΝΤ: ΟΧΙ ΑΛΛΟ ΣΕΞ, ΠΑΡΑΚΑΛΩ! (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
     <desc lang="el">Ντοκιμαντέρ</desc>
     <video>
       <present>yes</present>
@@ -31801,27 +33416,10 @@
     </audio>
     <rating system="Greek">
       <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509013000 +0300" stop="20200509020000 +0300" channel="101">
-    <title lang="el">ΑΠΟ ΠΕΤΡΑ ΚΑΙ ΧΡΟΝΟ (2020)</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
     </rating>
   </programme>
   <programme start="20200509020000 +0300" stop="20200509030000 +0300" channel="101">
-    <title lang="el">Η ΑΥΤΟΚΡΑΤΟΡΙΑ</title>
+    <title lang="el">ΤΑ ΣΤΕΚΙΑ - ΙΣΤΟΡΙΕΣ ΑΓΟΡΑΙΟΥ ΠΟΛΙΤΙΣΜΟΥ (2020)</title>
     <desc lang="el">Ντοκιμαντέρ</desc>
     <video>
       <present>yes</present>
@@ -31837,9 +33435,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509030000 +0300" stop="20200509041000 +0300" channel="101">
-    <title lang="el">ΜΕ ΤΑ ΜΑΤΙΑ ΤΗΣ ΤΕΡΕΖΑΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά</desc>
+  <programme start="20200509030000 +0300" stop="20200509050000 +0300" channel="101">
+    <title lang="el">Η ΑΥΛΗ ΤΩΝ ΧΡΩΜΑΤΩΝ</title>
+    <desc lang="el"></desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31851,28 +33449,11 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K12</value>
+      <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509041000 +0300" stop="20200509051000 +0300" channel="101">
-    <title lang="el">MR. SELFRIDGE - Γ΄ ΚΥΚΛΟΣ</title>
-    <desc lang="el">Σειρά</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509051000 +0300" stop="20200509060000 +0300" channel="101">
-    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ</title>
+  <programme start="20200509050000 +0300" stop="20200509060000 +0300" channel="101">
+    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ (Γ' ΚΥΚΛΟΣ)</title>
     <desc lang="el"></desc>
     <video>
       <present>yes</present>
@@ -31890,7 +33471,7 @@
   </programme>
   <programme start="20200508060000 +0300" stop="20200508063000 +0300" channel="102">
     <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - ΜΑΔΑΓΑΣΚΑΡΗ (Madagascar)</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΤΖΑΜΆΙΚΑ [Jamaica]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31906,8 +33487,8 @@
     </rating>
   </programme>
   <programme start="20200508063000 +0300" stop="20200508073000 +0300" channel="102">
-    <title lang="el">ΑΝΘΡΩΠΩΝ ΠΡΑΞΕΙΣ</title>
-    <desc lang="el">Eπεισόδιο 7 - Προσφορά και θεραπεία</desc>
+    <title lang="el">ΕΛΛΗΝΩΝ ΔΡΩΜΕΝΑ</title>
+    <desc lang="el">Eπεισόδιο 10 - Η Κάσος μεσοπέλαγα</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31924,7 +33505,7 @@
   </programme>
   <programme start="20200508073000 +0300" stop="20200508083000 +0300" channel="102">
     <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 6</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31941,7 +33522,7 @@
   </programme>
   <programme start="20200508083000 +0300" stop="20200508090000 +0300" channel="102">
     <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 14 - ΚΟΛΟΜΒΙΑ: Η ΠΡΩΤΕΥΟΥΣΑ ΚΙ Ο ΚΑΦΕΣ ΤΗΣ[COLOMBIA, CAPITAL AND COFFEE ]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 15 - ΛΙΜΝΗ ΣΟΥΠΙΡΙΟΡ[ LAKE SUPERIOR ]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31958,7 +33539,7 @@
   </programme>
   <programme start="20200508090000 +0300" stop="20200508100000 +0300" channel="102">
     <title lang="el">BALKAN EXPRESS</title>
-    <desc lang="el">Eπεισόδιο 8 - Border stories – Βοϊβοντίνα – Σλοβενία – Κροατία – Μόσταρ</desc>
+    <desc lang="el">Eπεισόδιο 9 - Βουλγαρία – Σόφια</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -31991,8 +33572,8 @@
     </rating>
   </programme>
   <programme start="20200508120000 +0300" stop="20200508130000 +0300" channel="102">
-    <title lang="el">ΕΛΛΗΝΩΝ ΔΡΩΜΕΝΑ</title>
-    <desc lang="el">Eπεισόδιο 10 - Η Κάσος μεσοπέλαγα</desc>
+    <title lang="el">ΚΑΘΕ ΤΟΠΟΣ ΚΑΙ ΤΡΑΓΟΥΔΙ</title>
+    <desc lang="el">Eπεισόδιο 8 - Της γαλήνης του Πηλίου εραστές-ΚΙΣΣΟΣ</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32009,7 +33590,7 @@
   </programme>
   <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="102">
     <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΣΟΥΗΔΙΑ[SWEDEN]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΜΟΓΓΟΛΙΑ[MONGOLIA]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32043,7 +33624,7 @@
   </programme>
   <programme start="20200508150000 +0300" stop="20200508153000 +0300" channel="102">
     <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΤΖΑΜΆΙΚΑ [Jamaica]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΣΡΙ ΛΑΝΚΑ- Η ΓΗ ΤΩΝ ΕΛΕΦΑΝΤΩΝ</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32060,7 +33641,7 @@
   </programme>
   <programme start="20200508153000 +0300" stop="20200508163000 +0300" channel="102">
     <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 8</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32077,7 +33658,7 @@
   </programme>
   <programme start="20200508163000 +0300" stop="20200508170000 +0300" channel="102">
     <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 14 - ΚΟΛΟΜΒΙΑ: Η ΠΡΩΤΕΥΟΥΣΑ ΚΙ Ο ΚΑΦΕΣ ΤΗΣ[COLOMBIA, CAPITAL AND COFFEE ]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 15 - ΛΙΜΝΗ ΣΟΥΠΙΡΙΟΡ[ LAKE SUPERIOR ]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32128,7 +33709,7 @@
   </programme>
   <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="102">
     <title lang="el">Η ΖΩΝΤΑΝΙΑ ΤΗΣ ΠΟΛΗΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - ΜΕΔΕΓΙΝ [MEDELLIN]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - ΠΑΡΙΣΙ[PARIS]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32145,7 +33726,7 @@
   </programme>
   <programme start="20200508200000 +0300" stop="20200508210000 +0300" channel="102">
     <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΣΟΥΗΔΙΑ[SWEDEN]</desc>
+    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 5 - ΜΟΓΓΟΛΙΑ[MONGOLIA]</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32162,7 +33743,7 @@
   </programme>
   <programme start="20200508210000 +0300" stop="20200508220000 +0300" channel="102">
     <title lang="el">ΦΕΛΙΞ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 2</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 3</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32178,8 +33759,8 @@
     </rating>
   </programme>
   <programme start="20200508220000 +0300" stop="20200508230000 +0300" channel="102">
-    <title lang="el">BABYLON BERLIN (Β' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
+    <title lang="el">THE GOOD FIGHT (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
+    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32191,11 +33772,11 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K16</value>
+      <value>K12</value>
     </rating>
   </programme>
   <programme start="20200508230000 +0300" stop="20200509000000 +0300" channel="102">
-    <title lang="el">ΤΟ ΑΡΩΜΑ, Η ΙΣΤΟΡΙΑ ΤΟΥ</title>
+    <title lang="el">Ο ΑΓΝΩΣΤΟΣ ΠΟΛΕΜΟΣ ΤΗΣ ΣΑΝΕΛ</title>
     <desc lang="el">Ντοκιμαντέρ</desc>
     <video>
       <present>yes</present>
@@ -32211,9 +33792,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509000000 +0300" stop="20200509010000 +0300" channel="102">
-    <title lang="el">MERCY STREET (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 4</desc>
+  <programme start="20200509000000 +0300" stop="20200509014500 +0300" channel="102">
+    <title lang="el">ΦΕΛΙΞ &amp; ΜΕΙΡΑ</title>
+    <desc lang="el">Ταινία</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32228,9 +33809,9 @@
       <value>K12</value>
     </rating>
   </programme>
-  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="102">
+  <programme start="20200509014500 +0300" stop="20200509024500 +0300" channel="102">
     <title lang="el">ΦΕΛΙΞ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 2</desc>
+    <desc lang="el">Σειρά Eπεισόδιο 3</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32245,9 +33826,9 @@
       <value>K12</value>
     </rating>
   </programme>
-  <programme start="20200509020000 +0300" stop="20200509030000 +0300" channel="102">
-    <title lang="el">BABYLON BERLIN (Β' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
+  <programme start="20200509024500 +0300" stop="20200509033000 +0300" channel="102">
+    <title lang="el">Ο ΑΓΝΩΣΤΟΣ ΠΟΛΕΜΟΣ ΤΗΣ ΣΑΝΕΛ</title>
+    <desc lang="el">Ντοκιμαντέρ</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32259,10 +33840,10 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K16</value>
+      <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509030000 +0300" stop="20200509050000 +0300" channel="102">
+  <programme start="20200509033000 +0300" stop="20200509053000 +0300" channel="102">
     <title lang="el">ΚΑΘΕ ΜΕΡΑ ΕΛΛΑΔΑ</title>
     <desc lang="el"></desc>
     <video>
@@ -32279,9 +33860,9 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200509050000 +0300" stop="20200509060000 +0300" channel="102">
-    <title lang="el">Η ΖΩΝΤΑΝΙΑ ΤΗΣ ΠΟΛΗΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - ΜΕΔΕΓΙΝ [MEDELLIN]</desc>
+  <programme start="20200509053000 +0300" stop="20200509060000 +0300" channel="102">
+    <title lang="el">ΚΑΘΕ ΤΟΠΟΣ ΚΑΙ ΤΡΑΓΟΥΔΙ</title>
+    <desc lang="el">Eπεισόδιο 8 - Της γαλήνης του Πηλίου εραστές-ΚΙΣΣΟΣ</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32297,8 +33878,8 @@
     </rating>
   </programme>
   <programme start="20200508060000 +0300" stop="20200508080000 +0300" channel="103">
-    <title lang="el">BARCA TV</title>
-    <desc lang="el">«Inter - Barcelona»</desc>
+    <title lang="el">AJAX TV</title>
+    <desc lang="el">«Ajax - Chelsea»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32315,7 +33896,7 @@
   </programme>
   <programme start="20200508080000 +0300" stop="20200508100000 +0300" channel="103">
     <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΑΥΣΤΡΑΛΙΑ - ΟΛΛΑΝΔΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (18/6/14)</desc>
+    <desc lang="el">«ΚΟΛΟΜΒΙΑ - ΑΚΤΗ ΕΛΕΦ.» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32332,7 +33913,7 @@
   </programme>
   <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="103">
     <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΟΥΡΟΥΓΟΥΑΗ - ΑΓΓΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
+    <desc lang="el">«ΙΑΠΩΝΙΑ - ΕΛΛΑΔΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32348,8 +33929,8 @@
     </rating>
   </programme>
   <programme start="20200508120000 +0300" stop="20200508140000 +0300" channel="103">
-    <title lang="el">ΣΤΙΒΟΣ - DIAMOND LEAGUE ΡΩΜΗ</title>
-    <desc lang="el">(6/6/19)</desc>
+    <title lang="el">ΣΤΙΒΟΣ - DIAMOND LEAGUE (ΟΣΛΟ)</title>
+    <desc lang="el">(13/6/19)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32366,7 +33947,7 @@
   </programme>
   <programme start="20200508140000 +0300" stop="20200508150000 +0300" channel="103">
     <title lang="el">THE FOOTBALL SHOW</title>
-    <desc lang="el">Ντοκιμαντέρ «Buenos Aires»</desc>
+    <desc lang="el">Ντοκιμαντέρ «Lisbon»</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32382,8 +33963,8 @@
     </rating>
   </programme>
   <programme start="20200508150000 +0300" stop="20200508170000 +0300" channel="103">
-    <title lang="el">ΒΟΛΕΪ ΕΥΡΩΠΑΪΚΟ ΑΝΔΡΩΝ: ΡΟΥΜΑΝΙΑ - ΕΛΛΑΔΑ</title>
-    <desc lang="el">(16/9/19)</desc>
+    <title lang="el">ΒΟΛΕΪ ΕΥΡΩΠΑΪΚΟ ΑΝΔΡΩΝ: ΕΛΛΑΔΑ - ΠΟΡΤΟΓΑΛΙΑ</title>
+    <desc lang="el">(17/9/19)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32399,8 +33980,8 @@
     </rating>
   </programme>
   <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="103">
-    <title lang="el">Η ΙΣΤΟΡΙΑ ΤΟΥ ΕΛΛΗΝΙΚΟΥ ΠΟΔΟΣΦΑΙΡΟΥ</title>
-    <desc lang="el">«Ο ΠΑΟΚ της σεζόν 1984 - 85»</desc>
+    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
+    <desc lang="el"></desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32451,7 +34032,7 @@
   </programme>
   <programme start="20200508200000 +0300" stop="20200508220000 +0300" channel="103">
     <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΕΛΒΕΤΙΑ - ΓΑΛΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (20/6/14)</desc>
+    <desc lang="el">«ΚΑΜΕΡΟΥΝ - ΒΡΑΖΙΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (23/6/14)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32468,7 +34049,7 @@
   </programme>
   <programme start="20200508220000 +0300" stop="20200509000000 +0300" channel="103">
     <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΓΕΡΜΑΝΙΑ - ΓΚΑΝΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (21/6/14)</desc>
+    <desc lang="el">«ΙΤΑΛΙΑ - ΟΥΡΟΥΓΟΥΑΗ» - ΦΑΣΗ ΟΜΙΛΩΝ (24/6/14)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32484,8 +34065,8 @@
     </rating>
   </programme>
   <programme start="20200509000000 +0300" stop="20200509020000 +0300" channel="103">
-    <title lang="el">ΜΠΑΣΚΕΤ ΤΟΥΡΝΟΥΑ ΑΚΡΟΠΟΛΙΣ: ΕΛΛΑΔΑ - ΤΟΥΡΚΙΑ</title>
-    <desc lang="el">(17/8/19)</desc>
+    <title lang="el">ΜΠΑΣΚΕΤ ΤΟΥΡΝΟΥΑ ΑΚΡΟΠΟΛΙΣ: ΕΛΛΑΔΑ - ΣΕΡΒΙΑ</title>
+    <desc lang="el">(18/8/19)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32501,8 +34082,8 @@
     </rating>
   </programme>
   <programme start="20200509020000 +0300" stop="20200509040000 +0300" channel="103">
-    <title lang="el">FORMULA 1 - ΜΠΑΚΟΥ</title>
-    <desc lang="el">(28/4/19)</desc>
+    <title lang="el">FORMULA 1 - ΓΚΡΑΝ ΠΡΙ ΙΣΠΑΝΙΑΣ (ΒΑΡΚΕΛΩΝΗ)</title>
+    <desc lang="el">(12/5/19)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32519,7 +34100,7 @@
   </programme>
   <programme start="20200509040000 +0300" stop="20200509060000 +0300" channel="103">
     <title lang="el">ΠΑΓΚΟΣΜΙΟ ΠΡΩΤΑΘΛΗΜΑ ΥΓΡΟΥ ΣΤΙΒΟΥ (GWANGJU)</title>
-    <desc lang="el">4η μέρα (24/7/19)</desc>
+    <desc lang="el">5η μέρα (25/7/19)</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32534,7 +34115,7 @@
       <value>K16</value>
     </rating>
   </programme>
-  <programme start="20200508085500 +0300" stop="20200508090000 +0300" channel="104">
+  <programme start="20200508081500 +0300" stop="20200508082000 +0300" channel="104">
     <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΣΤΗΝ ΠΟΛΙΤΙΚΗ</title>
     <desc lang="el"></desc>
     <video>
@@ -32551,7 +34132,7 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508090000 +0300" stop="20200508100000 +0300" channel="104">
+  <programme start="20200508082000 +0300" stop="20200508090000 +0300" channel="104">
     <title lang="el">ΠΡΩΙΝΗ ΕΠΙΣΚΟΠΗΣΗ</title>
     <desc lang="el"></desc>
     <video>
@@ -32568,7 +34149,7 @@
       <value>K8</value>
     </rating>
   </programme>
-  <programme start="20200508100000 +0300" stop="20200508160000 +0300" channel="104">
+  <programme start="20200508090000 +0300" stop="20200508130000 +0300" channel="104">
     <title lang="el">ΚΟΙΝΟΒΟΥΛΕΥΤΙΚΟ ΕΡΓΟ</title>
     <desc lang="el"></desc>
     <video>
@@ -32585,60 +34166,9 @@
       <value>K</value>
     </rating>
   </programme>
-  <programme start="20200508160000 +0300" stop="20200508170000 +0300" channel="104">
-    <title lang="el">ΑΣΤΙΚΟ ΤΟΠΙΟ</title>
-    <desc lang="el">Ντοκιμαντέρ Νέα Πτέρυγα Χειρουργείων στο Νοσοκομείο Ευαγγελισμός</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="104">
-    <title lang="el">Ο ΛΟΓΟΣ ΤΗΣ ΓΡΑΦΗΣ ΙΙ</title>
-    <desc lang="el">Παιδικό Φίλιππος Δρακονταειδής</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508180000 +0300" stop="20200508183000 +0300" channel="104">
-    <title lang="el">ΜΑΓΙΚΟΣ ΦΑΝΟΣ</title>
-    <desc lang="el">Μιχάλης Συριόπουλος</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508183000 +0300" stop="20200508190000 +0300" channel="104">
-    <title lang="el">ΑΠΟ ΤΟ ΜΙΚΡΟ ΣΤΟ ΜΕΓΑΛΟ (ΣΤΙΧΟΥΡΓΟΙ)</title>
-    <desc lang="el">Ευτυχία Παπαγιαννοπούλου</desc>
+  <programme start="20200508130000 +0300" stop="20200508190000 +0300" channel="104">
+    <title lang="el">ΚΟΙΝΟΒΟΥΛΕΥΤΙΚΟ ΕΡΓΟ</title>
+    <desc lang="el"></desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32655,7 +34185,7 @@
   </programme>
   <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="104">
     <title lang="el">ΣΥΝΑΝΤΗΣΗ</title>
-    <desc lang="el">Συνάντηση με τον Γιώργο Αρβανίτη</desc>
+    <desc lang="el">Συνάντηση με τον Τζόρτζ Πελεκάνος</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32672,7 +34202,7 @@
   </programme>
   <programme start="20200508200000 +0300" stop="20200508203000 +0300" channel="104">
     <title lang="el">ΛΟΓΩ ΤΕΧΝΗΣ</title>
-    <desc lang="el">Ντοκιμαντέρ Αλίκη Καγιαλόγλου</desc>
+    <desc lang="el">Ντοκιμαντέρ Η Εναλλακτική Πλευρά της Λυρικής</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32687,9 +34217,9 @@
       <value>K</value>
     </rating>
   </programme>
-  <programme start="20200508203000 +0300" stop="20200508213000 +0300" channel="104">
+  <programme start="20200508203000 +0300" stop="20200508210000 +0300" channel="104">
     <title lang="el">ΘΕΑΤΡΟΣΚΟΠΙΟ</title>
-    <desc lang="el">Ντοκιμαντέρ «Δόξα Κοινή» Β' Μέρος</desc>
+    <desc lang="el">Ντοκιμαντέρ «Ο Χρόνος Σταματά» του Ντόναλντ Μάργκουλις</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32704,9 +34234,9 @@
       <value>K</value>
     </rating>
   </programme>
-  <programme start="20200508213000 +0300" stop="20200508230000 +0300" channel="104">
-    <title lang="el">ΤΙ ΛΕΕΙ Ο ΝΟΜΟΣ</title>
-    <desc lang="el">Για τον Εθνικό Μηχανισμό Διαχείρισης Κρίσεων και Αντιμετώπισης Κινδύνων</desc>
+  <programme start="20200508210000 +0300" stop="20200508220000 +0300" channel="104">
+    <title lang="el">ΜΙΑ ΤΑΙΝΙΑ, ΜΙΑ ΕΠΟΧΗ</title>
+    <desc lang="el">Σειρά Κίνγκ Κόνγκ</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32718,11 +34248,11 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K8</value>
+      <value>K12</value>
     </rating>
   </programme>
-  <programme start="20200508230000 +0300" stop="20200509003000 +0300" channel="104">
-    <title lang="el">ΜΙΚΡΕΣ ΑΦΡΟΔΙΤΕΣ</title>
+  <programme start="20200508220000 +0300" stop="20200509000000 +0300" channel="104">
+    <title lang="el">ΤΟ ΜΑΧΑΙΡΙ ΣΤΟ ΝΕΡΟ</title>
     <desc lang="el">Ταινία</desc>
     <video>
       <present>yes</present>
@@ -32738,9 +34268,9 @@
       <value>K12</value>
     </rating>
   </programme>
-  <programme start="20200509003000 +0300" stop="20200509010000 +0300" channel="104">
-    <title lang="el">ΕΝΑ ΤΡΑΓΟΥΔΙ ΓΙΑ ΤΗΝ ΗΠΕΙΡΟ</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
+  <programme start="20200509000000 +0300" stop="20200509010000 +0300" channel="104">
+    <title lang="el">ΜΟΥΣΙΚΕΣ ΜΟΡΦΕΣ</title>
+    <desc lang="el">Ελληνική Γλώσσα και Διαχρονία, με Προσκεκλημένο τον Καθηγητή Ιωάννη Πετρόπουλο</desc>
     <video>
       <present>yes</present>
       <colour>yes</colour>
@@ -32752,11 +34282,11 @@
       <stereo>stereo</stereo>
     </audio>
     <rating system="Greek">
-      <value>K</value>
+      <value>K8</value>
     </rating>
   </programme>
   <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="104">
-    <title lang="el">ΙΧΝΗ - ΑΝΑΒΙΩΣΗ ΑΡΧΑΙΟΥ ΔΡΑΜΑΤΟΣ: ΟΙ ΠΡΩΤΟΠΟΡΟΙ (ΑΠΟ ΤΟΝ ΑΙΣΧΥΛΟ ΣΤΟΥΣ ΑΠΟΓΟΝΟΥΣ) Α΄ Μέρος</title>
+    <title lang="el">ΙΧΝΗ ΑΝΑΒΙΩΣΗ ΑΡΧΑΙΟΥ ΔΡΑΜΑΤΟΣ ΟΙ ΠΡΩΤΟΠΟΡΟΙ ΘΕΑΤΡΟ ΤΕΧΝΗΣ και ΘΕΑΤΡΙΚΟΣ ΟΡΓΑΝΙΣΜΟΣ ΚΥΠΡΟΥ Β΄ Μέρος</title>
     <desc lang="el"></desc>
     <video>
       <present>yes</present>
@@ -41561,1774 +43091,6 @@
     </audio>
     <rating system="Greek">
       <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508053000 +0300" stop="20200508100000 +0300" channel="100">
-    <title lang="el">...ΑΠΟ ΤΙΣ ΕΞΙ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="100">
-    <title lang="el">ΕΠΙΚΟΙΝΩΝΙΑ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508120000 +0300" stop="20200508130000 +0300" channel="100">
-    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508130000 +0300" stop="20200508150000 +0300" channel="100">
-    <title lang="el">ΣΥΝΔΕΣΕΙΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508150000 +0300" stop="20200508160000 +0300" channel="100">
-    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508160000 +0300" stop="20200508173000 +0300" channel="100">
-    <title lang="el">COVID-19: ΣΥΝΕΧΗΣ ΕΝΗΜΕΡΩΣΗ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508173000 +0300" stop="20200508180000 +0300" channel="100">
-    <title lang="el">ΕΙΔΗΣΕΙΣ/ΔΕΛΤΙΟ ΣΤΗ ΝΟΗΜΑΤΙΚΗ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508180000 +0300" stop="20200508190000 +0300" channel="100">
-    <title lang="el">COVID-19: ΣΥΝΕΧΗΣ ΕΝΗΜΕΡΩΣΗ</title>
-    <desc lang="el">(συνέχεια εκπομπής)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508190000 +0300" stop="20200508203000 +0300" channel="100">
-    <title lang="el">ΚΕΝΤΡΙΚΟ ΔΕΛΤΙΟ ΕΙΔΗΣΕΩΝ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508203000 +0300" stop="20200508213000 +0300" channel="100">
-    <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 4</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508213000 +0300" stop="20200508230000 +0300" channel="100">
-    <title lang="el">ΤΗΣ ΖΗΛΕΙΑΣ ΤΑ ΚΑΜΩΜΑΤΑ (ΕΛΛΗΝΙΚΗ ΤΑΙΝΙΑ)</title>
-    <desc lang="el">Ταινία</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508230000 +0300" stop="20200509000000 +0300" channel="100">
-    <title lang="el">10</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509000000 +0300" stop="20200509001500 +0300" channel="100">
-    <title lang="el">ΕΙΔΗΣΕΙΣ - ΑΘΛΗΤΙΚΑ - ΚΑΙΡΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509001500 +0300" stop="20200509013000 +0300" channel="100">
-    <title lang="el">FARGO  (Γ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5 - «Το σπίτι του ειδικού σκοπού» (The House of Special Purpose)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509013000 +0300" stop="20200509020000 +0300" channel="100">
-    <title lang="el">ΤΑΞΙΔΕΥΟΝΤΑΣ ΣΤΗΝ ΕΛΛΑΔΑ</title>
-    <desc lang="el">Ντοκιμαντέρ «Παξοί»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509020000 +0300" stop="20200509023000 +0300" channel="100">
-    <title lang="el">ON THE ROAD</title>
-    <desc lang="el">Ντοκιμαντέρ «Αναρρίχηση-Ελεύθερη Πτώση»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509023000 +0300" stop="20200509032000 +0300" channel="100">
-    <title lang="el">CHINA: TIME OF XI</title>
-    <desc lang="el">Ντοκιμαντέρ «Running China now»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509032000 +0300" stop="20200509042000 +0300" channel="100">
-    <title lang="el">Η ΜΗΧΑΝΗ ΤΟΥ ΧΡΟΝΟΥ</title>
-    <desc lang="el">«Λήσταρχος Γιαγκούλας»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509042000 +0300" stop="20200509051000 +0300" channel="100">
-    <title lang="el">MADAM SECRETARY - Η ΚΥΡΙΑ ΥΠΟΥΡΓΟΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509051000 +0300" stop="20200509060000 +0300" channel="100">
-    <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΤΟΝ 20ο ΑΙΩΝΑ</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508070000 +0300" stop="20200508074500 +0300" channel="101">
-    <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 13ο &amp; 14ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508074500 +0300" stop="20200508080000 +0300" channel="101">
-    <title lang="el">OLD TOM</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 42</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508080000 +0300" stop="20200508083500 +0300" channel="101">
-    <title lang="el">Ο ΑΡΘΟΥΡΟΣ ΚΑΙ ΤΑ ΠΑΙΔΙΑ ΤΗΣ ΣΤΡΟΓΓΥΛΗΣ ΤΡΑΠΕΖΗΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 19ο &amp; 20ο &amp; 21ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508083500 +0300" stop="20200508090000 +0300" channel="101">
-    <title lang="el">ΜΟΥΚ</title>
-    <desc lang="el">Παιδικό Επεισόδια 17ο &amp; 18ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508090000 +0300" stop="20200508092000 +0300" channel="101">
-    <title lang="el">PAPRIKA</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 18</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508092000 +0300" stop="20200508093000 +0300" channel="101">
-    <title lang="el">ΛΟΥΙ</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 3</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508093000 +0300" stop="20200508095000 +0300" channel="101">
-    <title lang="el">MOLANG</title>
-    <desc lang="el">Παιδικό Επεισόδια 102ο &amp; 103ο &amp; 104ο &amp; 105ο &amp; 106ο &amp; 107ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508095000 +0300" stop="20200508100000 +0300" channel="101">
-    <title lang="el">ΓΙΑΚΑΡΙ - (SEASON 4 &amp; SEASON 5)</title>
-    <desc lang="el">Παιδικό Eπεισόδιο 3</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508100000 +0300" stop="20200508113000 +0300" channel="101">
-    <title lang="el">ΜΑΘΑΙΝΟΥΜΕ ΣΤΟ ΣΠΙΤΙ</title>
-    <desc lang="el">Eπεισόδιο 25 - «Θεατρική Αγωγή Α' - Γ' &amp; Φυσική Αγωγή Α' - Β' &amp; Γλώσσα E' - ΣΤ' &amp; Φυσική ΣΤ΄»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508113000 +0300" stop="20200508113500 +0300" channel="101">
-    <title lang="el">ΙΣΤΟΡΙΕΣ ΓΙΑ ΠΑΙΔΙΑ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">«Ένα γράμμα στη Μίνα»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508113500 +0300" stop="20200508123000 +0300" channel="101">
-    <title lang="el">ΡΟΖ ΠΑΝΘΗΡΑΣ</title>
-    <desc lang="el">Παιδικό Επεισόδια 13ο &amp; 14ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508123000 +0300" stop="20200508130000 +0300" channel="101">
-    <title lang="el">1.000 ΧΡΩΜΑΤΑ ΤΟΥ ΧΡΗΣΤΟΥ (2019-2020)</title>
-    <desc lang="el">Eπεισόδιο 23 - «Παναγιώτης»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="101">
-    <title lang="el">ΑΓΡΙΟΙ ΟΡΙΖΟΝΤΕΣ ΤΗΣ ΑΦΡΙΚΗΣ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - «Βρέντεφορτ: Κρατήρας της ζωής» (Vredefort Dome - Crater of Life)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508140000 +0300" stop="20200508143000 +0300" channel="101">
-    <title lang="el">ΟΛΑ ΓΙΑ ΤΟΝ ΚΗΠΟ</title>
-    <desc lang="el">«Οξύφιλα»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508143000 +0300" stop="20200508150000 +0300" channel="101">
-    <title lang="el">ΒΟΤΑΝΑ, ΜΥΣΤΙΚΑ ΚΑΙ ΘΕΡΑΠΕΙΕΣ</title>
-    <desc lang="el">Ντοκιμαντέρ «Ανατολική Αρκαδία»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508150000 +0300" stop="20200508160000 +0300" channel="101">
-    <title lang="el">ΣΤΑ ΦΤΕΡΑ ΤΟΥ ΕΡΩΤΑ - Β΄ ΚΥΚΛΟΣ (EΡΤ ΑΡΧΕΙΟ)</title>
-    <desc lang="el">Σειρά Επεισόδια 109ο &amp; 110ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508160000 +0300" stop="20200508170000 +0300" channel="101">
-    <title lang="el">ΟΡΙΑΝ ΕΞΠΡΕΣ, ΑΓΑΠΗ ΜΟΥ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 1 - «Παρίσι το μαγευτικό, Στρασβούργο, Γερμανία»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="101">
-    <title lang="el">Η ΑΥΤΟΚΡΑΤΟΡΙΑ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - «Κάνοντας περιουσία»(Making a fortune)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508180000 +0300" stop="20200508194500 +0300" channel="101">
-    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ (Γ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Επεισόδια 147ο &amp; 148ο</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508194500 +0300" stop="20200508200000 +0300" channel="101">
-    <title lang="el">ΕΝΤΟΣ ΑΤΤΙΚΗΣ</title>
-    <desc lang="el">«Όρος Μερρέντα – Κουβαράς - Δασκαλειό»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508200000 +0300" stop="20200508203000 +0300" channel="101">
-    <title lang="el">ΑΠΟ ΠΕΤΡΑ ΚΑΙ ΧΡΟΝΟ (2020)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 7 - «Αμφίκλεια»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508203000 +0300" stop="20200508210000 +0300" channel="101">
-    <title lang="el">ΕΣ ΑΥΡΙΟΝ ΤΑ ΣΠΟΥΔΑΙΑ</title>
-    <desc lang="el">Ντοκιμαντέρ «Σεναριακή πάλη»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508210000 +0300" stop="20200508221500 +0300" channel="101">
-    <title lang="el">ΜΕ ΤΑ ΜΑΤΙΑ ΤΗΣ ΤΕΡΕΖΑΣ (Α' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 8</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200508221500 +0300" stop="20200508230000 +0300" channel="101">
-    <title lang="el">MR. SELFRIDGE - Γ΄ ΚΥΚΛΟΣ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 6</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200508230000 +0300" stop="20200509003000 +0300" channel="101">
-    <title lang="el">45 ΧΡΟΝΙΑ</title>
-    <desc lang="el">Ταινία</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509003000 +0300" stop="20200509013000 +0300" channel="101">
-    <title lang="el">ΟΙ ΚΑΤΑΣΚΟΠΟΙ ΤΟΥ ΧΟΛΙΓΟΥΝΤ (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509013000 +0300" stop="20200509020000 +0300" channel="101">
-    <title lang="el">ΑΠΟ ΠΕΤΡΑ ΚΑΙ ΧΡΟΝΟ (2020)</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509020000 +0300" stop="20200509030000 +0300" channel="101">
-    <title lang="el">Η ΑΥΤΟΚΡΑΤΟΡΙΑ</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509030000 +0300" stop="20200509041000 +0300" channel="101">
-    <title lang="el">ΜΕ ΤΑ ΜΑΤΙΑ ΤΗΣ ΤΕΡΕΖΑΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509041000 +0300" stop="20200509051000 +0300" channel="101">
-    <title lang="el">MR. SELFRIDGE - Γ΄ ΚΥΚΛΟΣ</title>
-    <desc lang="el">Σειρά</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509051000 +0300" stop="20200509060000 +0300" channel="101">
-    <title lang="el">Ο ΠΑΡΑΔΕΙΣΟΣ ΤΩΝ ΚΥΡΙΩΝ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508060000 +0300" stop="20200508063000 +0300" channel="102">
-    <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 3 - ΜΑΔΑΓΑΣΚΑΡΗ (Madagascar)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508063000 +0300" stop="20200508073000 +0300" channel="102">
-    <title lang="el">ΑΝΘΡΩΠΩΝ ΠΡΑΞΕΙΣ</title>
-    <desc lang="el">Eπεισόδιο 7 - Προσφορά και θεραπεία</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508073000 +0300" stop="20200508083000 +0300" channel="102">
-    <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 6</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508083000 +0300" stop="20200508090000 +0300" channel="102">
-    <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 14 - ΚΟΛΟΜΒΙΑ: Η ΠΡΩΤΕΥΟΥΣΑ ΚΙ Ο ΚΑΦΕΣ ΤΗΣ[COLOMBIA, CAPITAL AND COFFEE ]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508090000 +0300" stop="20200508100000 +0300" channel="102">
-    <title lang="el">BALKAN EXPRESS</title>
-    <desc lang="el">Eπεισόδιο 8 - Border stories – Βοϊβοντίνα – Σλοβενία – Κροατία – Μόσταρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="102">
-    <title lang="el">ΚΑΘΕ ΜΕΡΑ ΕΛΛΑΔΑ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508120000 +0300" stop="20200508130000 +0300" channel="102">
-    <title lang="el">ΕΛΛΗΝΩΝ ΔΡΩΜΕΝΑ</title>
-    <desc lang="el">Eπεισόδιο 10 - Η Κάσος μεσοπέλαγα</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508130000 +0300" stop="20200508140000 +0300" channel="102">
-    <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΣΟΥΗΔΙΑ[SWEDEN]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508140000 +0300" stop="20200508150000 +0300" channel="102">
-    <title lang="el">ΕΙΔΗΣΕΙΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508150000 +0300" stop="20200508153000 +0300" channel="102">
-    <title lang="el">Η ΟΜΟΡΦΙΑ ΤΟΥ ΚΟΣΜΟΥ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΤΖΑΜΆΙΚΑ [Jamaica]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508153000 +0300" stop="20200508163000 +0300" channel="102">
-    <title lang="el">Ο ΤΟΠΟΣ ΤΗΣ ΚΑΡΔΙΑΣ ΜΑΣ (ΙΑ' ΚΥΚΛΟΣ) (Α' ΤΗΛΕΟΠΤΙΚΗ ΜΕΤΑΔΟΣΗ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 7</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508163000 +0300" stop="20200508170000 +0300" channel="102">
-    <title lang="el">ΕΚΕΙ ΣΤΗΝ ΑΜΕΡΙΚΗ</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 14 - ΚΟΛΟΜΒΙΑ: Η ΠΡΩΤΕΥΟΥΣΑ ΚΙ Ο ΚΑΦΕΣ ΤΗΣ[COLOMBIA, CAPITAL AND COFFEE ]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508170000 +0300" stop="20200508172000 +0300" channel="102">
-    <title lang="el">ΕΙΔΗΣΕΙΣ - ΚΑΙΡΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508172000 +0300" stop="20200508190000 +0300" channel="102">
-    <title lang="el">ΜΕ...ΜΕΤΡΟ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="102">
-    <title lang="el">Η ΖΩΝΤΑΝΙΑ ΤΗΣ ΠΟΛΗΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - ΜΕΔΕΓΙΝ [MEDELLIN]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508200000 +0300" stop="20200508210000 +0300" channel="102">
-    <title lang="el">ΑΠΙΘΑΝΑ ΤΑΞΙΔΙΑ ΜΕ ΤΡΕΝΟ (ΣΤ' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 4 - ΣΟΥΗΔΙΑ[SWEDEN]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508210000 +0300" stop="20200508220000 +0300" channel="102">
-    <title lang="el">ΦΕΛΙΞ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 2</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200508220000 +0300" stop="20200508230000 +0300" channel="102">
-    <title lang="el">BABYLON BERLIN (Β' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508230000 +0300" stop="20200509000000 +0300" channel="102">
-    <title lang="el">ΤΟ ΑΡΩΜΑ, Η ΙΣΤΟΡΙΑ ΤΟΥ</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509000000 +0300" stop="20200509010000 +0300" channel="102">
-    <title lang="el">MERCY STREET (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 4</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="102">
-    <title lang="el">ΦΕΛΙΞ</title>
-    <desc lang="el">Σειρά Eπεισόδιο 2</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509020000 +0300" stop="20200509030000 +0300" channel="102">
-    <title lang="el">BABYLON BERLIN (Β' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Σειρά Eπεισόδιο 5</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509030000 +0300" stop="20200509050000 +0300" channel="102">
-    <title lang="el">ΚΑΘΕ ΜΕΡΑ ΕΛΛΑΔΑ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509050000 +0300" stop="20200509060000 +0300" channel="102">
-    <title lang="el">Η ΖΩΝΤΑΝΙΑ ΤΗΣ ΠΟΛΗΣ (Α' ΚΥΚΛΟΣ)</title>
-    <desc lang="el">Ντοκιμαντέρ Eπεισόδιο 2 - ΜΕΔΕΓΙΝ [MEDELLIN]</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508060000 +0300" stop="20200508080000 +0300" channel="103">
-    <title lang="el">BARCA TV</title>
-    <desc lang="el">«Inter - Barcelona»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508080000 +0300" stop="20200508100000 +0300" channel="103">
-    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΑΥΣΤΡΑΛΙΑ - ΟΛΛΑΝΔΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (18/6/14)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508100000 +0300" stop="20200508120000 +0300" channel="103">
-    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΟΥΡΟΥΓΟΥΑΗ - ΑΓΓΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (19/6/14)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508120000 +0300" stop="20200508140000 +0300" channel="103">
-    <title lang="el">ΣΤΙΒΟΣ - DIAMOND LEAGUE ΡΩΜΗ</title>
-    <desc lang="el">(6/6/19)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508140000 +0300" stop="20200508150000 +0300" channel="103">
-    <title lang="el">THE FOOTBALL SHOW</title>
-    <desc lang="el">Ντοκιμαντέρ «Buenos Aires»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508150000 +0300" stop="20200508170000 +0300" channel="103">
-    <title lang="el">ΒΟΛΕΪ ΕΥΡΩΠΑΪΚΟ ΑΝΔΡΩΝ: ΡΟΥΜΑΝΙΑ - ΕΛΛΑΔΑ</title>
-    <desc lang="el">(16/9/19)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="103">
-    <title lang="el">Η ΙΣΤΟΡΙΑ ΤΟΥ ΕΛΛΗΝΙΚΟΥ ΠΟΔΟΣΦΑΙΡΟΥ</title>
-    <desc lang="el">«Ο ΠΑΟΚ της σεζόν 1984 - 85»</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508180000 +0300" stop="20200508190000 +0300" channel="103">
-    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="103">
-    <title lang="el">ΣΠΟΡ ΙΣΤΟΡΙΕΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508200000 +0300" stop="20200508220000 +0300" channel="103">
-    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΕΛΒΕΤΙΑ - ΓΑΛΛΙΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (20/6/14)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508220000 +0300" stop="20200509000000 +0300" channel="103">
-    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΚΥΠΕΛΛΟ ΠΟΔΟΣΦΑΙΡΟΥ - 2014</title>
-    <desc lang="el">«ΓΕΡΜΑΝΙΑ - ΓΚΑΝΑ» - ΦΑΣΗ ΟΜΙΛΩΝ (21/6/14)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509000000 +0300" stop="20200509020000 +0300" channel="103">
-    <title lang="el">ΜΠΑΣΚΕΤ ΤΟΥΡΝΟΥΑ ΑΚΡΟΠΟΛΙΣ: ΕΛΛΑΔΑ - ΤΟΥΡΚΙΑ</title>
-    <desc lang="el">(17/8/19)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509020000 +0300" stop="20200509040000 +0300" channel="103">
-    <title lang="el">FORMULA 1 - ΜΠΑΚΟΥ</title>
-    <desc lang="el">(28/4/19)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200509040000 +0300" stop="20200509060000 +0300" channel="103">
-    <title lang="el">ΠΑΓΚΟΣΜΙΟ ΠΡΩΤΑΘΛΗΜΑ ΥΓΡΟΥ ΣΤΙΒΟΥ (GWANGJU)</title>
-    <desc lang="el">4η μέρα (24/7/19)</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
-    </rating>
-  </programme>
-  <programme start="20200508085500 +0300" stop="20200508090000 +0300" channel="104">
-    <title lang="el">ΣΑΝ ΣΗΜΕΡΑ ΣΤΗΝ ΠΟΛΙΤΙΚΗ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508090000 +0300" stop="20200508100000 +0300" channel="104">
-    <title lang="el">ΠΡΩΙΝΗ ΕΠΙΣΚΟΠΗΣΗ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508100000 +0300" stop="20200508160000 +0300" channel="104">
-    <title lang="el">ΚΟΙΝΟΒΟΥΛΕΥΤΙΚΟ ΕΡΓΟ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508160000 +0300" stop="20200508170000 +0300" channel="104">
-    <title lang="el">ΑΣΤΙΚΟ ΤΟΠΙΟ</title>
-    <desc lang="el">Ντοκιμαντέρ Νέα Πτέρυγα Χειρουργείων στο Νοσοκομείο Ευαγγελισμός</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508170000 +0300" stop="20200508180000 +0300" channel="104">
-    <title lang="el">Ο ΛΟΓΟΣ ΤΗΣ ΓΡΑΦΗΣ ΙΙ</title>
-    <desc lang="el">Παιδικό Φίλιππος Δρακονταειδής</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508180000 +0300" stop="20200508183000 +0300" channel="104">
-    <title lang="el">ΜΑΓΙΚΟΣ ΦΑΝΟΣ</title>
-    <desc lang="el">Μιχάλης Συριόπουλος</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508183000 +0300" stop="20200508190000 +0300" channel="104">
-    <title lang="el">ΑΠΟ ΤΟ ΜΙΚΡΟ ΣΤΟ ΜΕΓΑΛΟ (ΣΤΙΧΟΥΡΓΟΙ)</title>
-    <desc lang="el">Ευτυχία Παπαγιαννοπούλου</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508190000 +0300" stop="20200508200000 +0300" channel="104">
-    <title lang="el">ΣΥΝΑΝΤΗΣΗ</title>
-    <desc lang="el">Συνάντηση με τον Γιώργο Αρβανίτη</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508200000 +0300" stop="20200508203000 +0300" channel="104">
-    <title lang="el">ΛΟΓΩ ΤΕΧΝΗΣ</title>
-    <desc lang="el">Ντοκιμαντέρ Αλίκη Καγιαλόγλου</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508203000 +0300" stop="20200508213000 +0300" channel="104">
-    <title lang="el">ΘΕΑΤΡΟΣΚΟΠΙΟ</title>
-    <desc lang="el">Ντοκιμαντέρ «Δόξα Κοινή» Β' Μέρος</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200508213000 +0300" stop="20200508230000 +0300" channel="104">
-    <title lang="el">ΤΙ ΛΕΕΙ Ο ΝΟΜΟΣ</title>
-    <desc lang="el">Για τον Εθνικό Μηχανισμό Διαχείρισης Κρίσεων και Αντιμετώπισης Κινδύνων</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200508230000 +0300" stop="20200509003000 +0300" channel="104">
-    <title lang="el">ΜΙΚΡΕΣ ΑΦΡΟΔΙΤΕΣ</title>
-    <desc lang="el">Ταινία</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K12</value>
-    </rating>
-  </programme>
-  <programme start="20200509003000 +0300" stop="20200509010000 +0300" channel="104">
-    <title lang="el">ΕΝΑ ΤΡΑΓΟΥΔΙ ΓΙΑ ΤΗΝ ΗΠΕΙΡΟ</title>
-    <desc lang="el">Ντοκιμαντέρ</desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K</value>
-    </rating>
-  </programme>
-  <programme start="20200509010000 +0300" stop="20200509020000 +0300" channel="104">
-    <title lang="el">ΙΧΝΗ - ΑΝΑΒΙΩΣΗ ΑΡΧΑΙΟΥ ΔΡΑΜΑΤΟΣ: ΟΙ ΠΡΩΤΟΠΟΡΟΙ (ΑΠΟ ΤΟΝ ΑΙΣΧΥΛΟ ΣΤΟΥΣ ΑΠΟΓΟΝΟΥΣ) Α΄ Μέρος</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K8</value>
-    </rating>
-  </programme>
-  <programme start="20200509020000 +0300" stop="20200509060000 +0300" channel="104">
-    <title lang="el">ΕΠΑΝΑΛΗΨΗ ΠΡΟΓΡΑΜΜΑΤΟΣ</title>
-    <desc lang="el"></desc>
-    <video>
-      <present>yes</present>
-      <colour>yes</colour>
-      <aspect>16:9</aspect>
-      <quality>SDTV</quality>
-    </video>
-    <audio>
-      <present>yes</present>
-      <stereo>stereo</stereo>
-    </audio>
-    <rating system="Greek">
-      <value>K16</value>
     </rating>
   </programme>
 </tv>
