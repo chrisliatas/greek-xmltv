@@ -59,12 +59,12 @@ class JsonToXmltv:
     """
 
     def __init__(self, json_file: Optional[str] = None, xmltv_file: Optional[str] = None,
-                 cache_file: Optional[str] = None, multi_json: bool = False) -> None:
+                 cache_file: Optional[str] = None, use_proj_dir: bool = True, multi_json: bool = False) -> None:
         self._project_dir = Path(get_project_root())  # or Path(__file__).parent.parent giving: /home/xxxxxxx/PycharmProjects/greek-xmltv/xmltv
         self.multi_json = multi_json
         self.json_file = json_file
-        self.xmltv_file = xmltv_file
-        self.cache_file = cache_file
+        self.xmltv_file = (xmltv_file, use_proj_dir)
+        self.cache_file = (cache_file, use_proj_dir)
         self.json_data: list = []
         self.chnl_cache: dict = {}
         self._dataloaded: bool = False
@@ -82,7 +82,7 @@ class JsonToXmltv:
         return self.__jsonfile
 
     @json_file.setter
-    def json_file(self, jsonf: Optional[str] = None) -> None:
+    def json_file(self, jsonf: Optional[str]) -> None:
         if self.multi_json:
             if jsonf and Path(jsonf).parent.is_dir():
                 self.__jsonfile = glob.glob(jsonf)
@@ -101,7 +101,8 @@ class JsonToXmltv:
         return self.__xmltvfile
 
     @xmltv_file.setter
-    def xmltv_file(self, xmltvf: Optional[str] = None, use_proj_dir: bool = True) -> None:
+    def xmltv_file(self, values: Tuple[Optional[str], bool]) -> None:
+        (xmltvf, use_proj_dir) = values
         if xmltvf and use_proj_dir:
             self.__xmltvfile = self._project_dir / XMLTV_FILE_PATH / xmltvf
         elif xmltvf and Path(xmltvf).parent.exists():
@@ -114,7 +115,8 @@ class JsonToXmltv:
         return self.__cachefile
 
     @cache_file.setter
-    def cache_file(self, cachef: Optional[str] = None, use_proj_dir: bool = True) -> None:
+    def cache_file(self, values: Tuple[Optional[str], bool]) -> None:
+        (cachef, use_proj_dir) = values
         if use_proj_dir:
             (self._project_dir / CACHE_DIR).mkdir(parents=True, exist_ok=True)
         if cachef and use_proj_dir:
@@ -303,5 +305,5 @@ class JsonToXmltv:
 if __name__ == '__main__':
     xmltv_f = JsonToXmltv(multi_json=True)
     xmltv_f.generate_xmltv()
-    xmltv_f.xmltv_file = 'grxmltv_nat_el.xml'
+    xmltv_f.xmltv_file = ('grxmltv_nat_el.xml', True)
     xmltv_f.generate_xmltv(pref_regions=('Nationwide', 'Attica-R-Z-9', 'National-public'))
