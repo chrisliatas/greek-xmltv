@@ -1,4 +1,6 @@
 name: Deploy to ghcr
+# Ref: https://github.com/metcalfc/docker-action-examples/blob/main/.github/workflows/main-ci.yml
+# https://www.docker.com/blog/docker-github-actions/
  
 on:
  push:
@@ -11,6 +13,23 @@ jobs:
     steps:
       - name: Checkout the repo
         uses: actions/checkout@v2
+      
+      - name: Prepare
+        id: prep
+        run: |
+          DOCKER_IMAGE=ghcr.io/${{ github.repository }}
+          VERSION=edge
+          if [[ $GITHUB_REF == refs/tags/* ]]; then
+            VERSION=${GITHUB_REF#refs/tags/v}
+          fi
+          if [ "${{ github.event_name }}" = "schedule" ]; then
+            VERSION=nightly
+          fi
+          TAGS="${DOCKER_IMAGE}:${VERSION}"
+          if [[ $VERSION =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
+            TAGS="$TAGS,${DOCKER_IMAGE}:latest"
+          fi
+          echo ::set-output name=tags::${TAGS}
 
       - name: Set up Docker Buildx
         id: buildx
@@ -49,8 +68,6 @@ jobs:
           file: ./Dockerfile
           # target: prod
           push: true
-          tags: |
-            ghcr.io/${{ github.repository }}:${{ github.ref }}
-            ghcr.io/${{ github.repository }}:latest
+          tags: ${{ steps.prep.outputs.tags }}
           cache-from: type=local,src=/tmp/.buildx-cache
           cache-to: type=local,dest=/tmp/.buildx-cache
