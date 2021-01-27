@@ -9,10 +9,11 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Run a one-line script
-        run: echo Hello, world!
       - name: Check-out the repo under $GITHUB_WORKSPACE
         uses: actions/checkout@v2
+      - name: Run a one-line script
+        run: echo Hello, world!
+      - name: Push a commit using the built-in token
         run: |
           date > generated.txt
           git config user.name github-actions
