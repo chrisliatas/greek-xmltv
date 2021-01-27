@@ -31,14 +31,14 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
 
-      - name: Test
-        id: docker_test
-        uses: docker/build-push-action@v2
-        with:
-          builder: ${{ steps.buildx.outputs.name }}
-          context: ./
-          file: ./Dockerfile
-          target: test
+      # - name: Test
+      #   id: docker_test
+      #   uses: docker/build-push-action@v2
+      #   with:
+      #     builder: ${{ steps.buildx.outputs.name }}
+      #     context: ./
+      #     file: ./Dockerfile
+      #     target: test
 
       - name: Build and push
         id: docker_build
@@ -47,7 +47,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           context: ./
           file: ./Dockerfile
-          target: prod
+          # target: prod
           push: true
           tags: |
             ghcr.io/${{ github.repository }}:${{ github.ref }}
