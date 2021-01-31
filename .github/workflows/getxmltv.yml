@@ -3,11 +3,12 @@ name: Get xmltv data
 # so, to grub xmltv data at 5.00 local need to schedule cron for 3.00 UTC.
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: '47 3 * * *'
 
 jobs:
-  Deploy:
+  Scheduled:
     runs-on: ubuntu-latest
     env:
       DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
