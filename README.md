@@ -8,6 +8,7 @@ Python grubber for Greek public channels. Produces a custom aggregated xmltv for
 Taking advantage of GitHub's ci/cd Actions will be migrating the workflow there (as long as it is freely allowed). Daily commits will be added by the actions bot from now on. The files for local development will be kept as they were, until further changes make these obsolete.
 
 ![Get xmltv data](https://github.com/chrisliatas/greek-xmltv/workflows/Get%20xmltv%20data/badge.svg)
+[![GitHub release](https://img.shields.io/github/v/release/chrisliatas/greek-xmltv)](https://github.com/chrisliatas/greek-xmltv/releases/)
 
 # Usage
 

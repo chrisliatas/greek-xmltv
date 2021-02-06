@@ -1,0 +1,112 @@
+name: CD
+# Actions use UTC time, which is -2 hours from Europe/Athens.
+# so, to grub xmltv data at 5.00 local need to schedule cron for 3.00 UTC.
+
+on:
+  push:
+    branches:
+      - '!*'
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: 'Name of version  (ie 1.2.0)'
+  schedule:
+    - cron: '45 3 * * *'
+
+jobs:
+  # Get xmltv data and prepare release assets
+  get-xmltv:
+    name: Grub xmltv data
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v2
+      - name: Login to ghcr
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+      - name: Cache assets
+        id: cache-xmltv
+        uses: actions/cache@v2
+        with:
+          path: generated_xmltv
+          key: ${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
+      - name: Create output directories and run the spiders
+        if: steps.cache-xmltv.outputs.cache-hit != 'true'
+        run: |
+          mkdir -p ${{ github.workspace }}/{generated_xmltv,scrapy_export}
+          docker-compose -f docker-compose.ci.yml up --exit-code-from crawler
+      - name: Prepare release assets
+        if: steps.cache-xmltv.outputs.cache-hit != 'true'
+        run: |
+          cp scrapy_export/*.xml generated_xmltv/
+          chmod 666 generated_xmltv/*
+
+  create-release:
+    name: Create release and upload assets
+    runs-on: ubuntu-latest
+    needs: get-xmltv
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v2
+      - name: Cache assets
+        id: cache-xmltv
+        uses: actions/cache@v2
+        with:
+          path: generated_xmltv
+          key: ${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
+      - name: Fail job if cache restore failed
+        if: steps.cache-xmltv.outputs.cache-hit != 'true'
+        run: |
+          echo "Failed to restore generated xmltv files from cache"
+          exit 1
+      - name: Create tag name
+        run: |
+          if [ -z ${{ github.event.inputs.version_name }} ]; then
+            echo "REL_TAG=$(TZ=':Europe/Athens' date '+%Y.%-m.%-d')" >> $GITHUB_ENV; else
+            echo "REL_TAG=${{ github.event.inputs.version_name }}" >> $GITHUB_ENV
+          fi
+          echo "BODY_TS=$(TZ=':Europe/Athens' date '+%d-%m-%Y %H:%M:%S')" >> $GITHUB_ENV
+      - name: Check if release tag exists
+        id: check_release
+        run: |
+          rel_resp=$(curl -s -o /dev/null -I -w "%{http_code}" https://github.com/${{ github.repository }}/releases/tag/${{ env.REL_TAG }})
+          [[ "$rel_resp" == 200 ]] && echo "::set-output name=exists::true" || echo "::set-output name=exists::false"
+      - name: Fail job if release tag exists
+        if: steps.check_release.outputs.exists == 'true'
+        run: |
+          echo "A release with the same tag: ${{ env.REL_TAG }} exists"
+          exit 1
+      # TODO: a) find existing release tag id, b) jump to upload assets to update existing release
+      - name: Create compressed xml files
+        run: |
+          gzip -rk generated_xmltv
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ env.REL_TAG }}
+          release_name: Release ${{ env.REL_TAG }}
+          body: |
+            Auto generated xmltv files for ${{ env.BODY_TS }}
+            - Channel data for Nationwide channels and Attica: `grxmltv_nat_el.xml` and `grxmltv_nat_el.xml.gz`
+            - Channel data from all regions available at Digea.gr and all available national channels from Ert.gr: `xmltv_GREECE_el.xml` and `xmltv_GREECE_el.xml.gz`
+          draft: false
+          prerelease: false
+      - name: Upload Release Assets
+        id: upload-release-assets
+        uses: shogo82148/actions-upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./generated_xmltv/*
+          overwrite: true
