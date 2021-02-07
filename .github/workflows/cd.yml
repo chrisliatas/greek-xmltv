@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
+    outputs:
+      cache_v: ${{ steps.cache-version.outputs.cache_v }}
     steps:
       - name: Checkout code from GitHub
         uses: actions/checkout@v2
@@ -31,12 +33,16 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.CR_PAT }}
+      - name: Set cache version
+        id: cache-version
+        run: |
+            echo "::set-output name=cache_v::$(TZ=':Europe/Athens' date '+%Y%m%d')"
       - name: Cache assets
         id: cache-xmltv
         uses: actions/cache@v2
         with:
           path: generated_xmltv
-          key: ${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
+          key: ${{ steps.cache-version.outputs.cache_v }}-${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
       - name: Create output directories and run the spiders
         if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
@@ -60,7 +66,7 @@ jobs:
         uses: actions/cache@v2
         with:
           path: generated_xmltv
-          key: ${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
+          key: ${{ needs.get-xmltv.outputs.cache_v }}-${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
       - name: Fail job if cache restore failed
         if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
