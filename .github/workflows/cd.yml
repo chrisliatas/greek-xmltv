@@ -116,3 +116,10 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_path: ./generated_xmltv/*
           overwrite: true
+      - name: Cleanup older releases
+        uses: dev-drprasad/delete-older-releases@v0.2.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          keep_latest: 7
+          delete_tags: true
