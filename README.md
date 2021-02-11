@@ -7,7 +7,7 @@ Python grubber for Greek public channels. Produces a custom aggregated xmltv for
 
 Daily releases are published containing updated xmltv files for each day, instead of the previous workflow with daily commits. Compressed (`.gz`) versions for the xmltv files are included in daily releases. The files for local development will be kept as they were, for the ones wishing to produce xmltv files on their own.
 
-![Get xmltv data](https://github.com/chrisliatas/greek-xmltv/workflows/Get%20xmltv%20data/badge.svg)
+![CD](https://github.com/chrisliatas/greek-xmltv/workflows/CD/badge.svg)
 [![GitHub release](https://img.shields.io/github/v/release/chrisliatas/greek-xmltv)](https://github.com/chrisliatas/greek-xmltv/releases/)
 
 # Usage
