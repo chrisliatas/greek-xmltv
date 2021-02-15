@@ -13,7 +13,7 @@ on:
       version_name:
         description: 'Name of version  (ie 1.2.0)'
   schedule:
-    - cron: '45 3 * * *'
+    - cron: '55 3 * * *'
 
 jobs:
   # Get xmltv data and prepare release assets
