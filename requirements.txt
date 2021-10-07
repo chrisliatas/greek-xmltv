@@ -19,7 +19,7 @@ pyOpenSSL==19.1.0
 pytz==2019.3
 queuelib==1.5.0
 Scrapy==2.0.1
-scrapy-splash==0.7.2
+scrapy-splash==0.8.0
 service-identity==18.1.0
 six==1.14.0
 Twisted==20.3.0
