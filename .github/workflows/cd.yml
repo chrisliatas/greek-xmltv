@@ -109,7 +109,7 @@ jobs:
           prerelease: false
       - name: Upload Release Assets
         id: upload-release-assets
-        uses: shogo82148/actions-upload-release-asset@v1.6.4
+        uses: shogo82148/actions-upload-release-asset@v1.6.5
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
