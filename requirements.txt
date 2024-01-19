@@ -22,6 +22,6 @@ Scrapy==2.6.2
 scrapy-splash==0.8.0
 service-identity==18.1.0
 six==1.14.0
-Twisted==22.10.0
+Twisted==23.10.0
 w3lib==1.21.0
 zope.interface==5.1.0
