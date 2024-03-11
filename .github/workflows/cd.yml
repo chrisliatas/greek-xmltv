@@ -117,7 +117,7 @@ jobs:
           asset_path: ./generated_xmltv/*
           overwrite: true
       - name: Cleanup older releases
-        uses: dev-drprasad/delete-older-releases@v0.3.2
+        uses: dev-drprasad/delete-older-releases@v0.3.3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
