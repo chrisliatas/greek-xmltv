@@ -1,4 +1,10 @@
-# Description
+# Greek XMLTV EPG generator
+
+## UPDATE 16-6-2024
+
+*After the latest changes  in the Digea.gr website, the current version of the application is not able to produce the xmltv files. I will try to update the application given enough time, but I cannot guarantee that it will be done soon. For the time being, daily releases will be paused.*
+
+## Description
 
 Python grubber for Greek public channels. Produces a custom aggregated xmltv formatted file for EPG. Custom generated xmltv formatted guide(s) produced for Greek tv channel guide data, available from [Digea.gr][digeagr
 ] and [Ert.gr][ertgr]. May be used in Plex, Kodi, or similar as a custom guide for setting up a dvr EPG. Generated files at this stage use greek language only, for programme names, descriptions and channel names, where available.
@@ -10,7 +16,7 @@ Daily releases are published containing updated xmltv files for each day, instea
 ![CD](https://github.com/chrisliatas/greek-xmltv/workflows/CD/badge.svg)
 [![GitHub release](https://img.shields.io/github/v/release/chrisliatas/greek-xmltv)](https://github.com/chrisliatas/greek-xmltv/releases/)
 
-# Usage
+## Usage
 
 ### Using the generated xmltv files
 
@@ -35,7 +41,7 @@ Additionally, `cron_xmltv.sh` will create a crontab entry to daily run the scrip
  series of other operations (like copying, moving files, etc.) after grubbing the EPG data and generating the desired
   xmltv files.
 
-# Disclaimer
+## Disclaimer
 
 This is an open-source project produced for personal/home use and not intended for commercial use. I do not own
  any of the  data used or gathered by the application. All EPG, channels, programmes data belong and are produced by
