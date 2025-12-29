@@ -11,8 +11,8 @@ ENV TERM=xterm \
 COPY requirements.txt ./
 
 RUN apk update \
-    && apk add --virtual .build-deps gcc openssl-dev python3-dev musl-dev \
-    && apk add libffi-dev libxslt-dev jpeg-dev zlib-dev libjpeg curl ca-certificates \
+    && apk add --no-cache --virtual .build-deps build-base cargo rust openssl-dev python3-dev musl-dev \
+    && apk add --no-cache libffi-dev libxslt-dev jpeg-dev zlib-dev libjpeg curl ca-certificates \
     && pip install --no-cache-dir -r requirements.txt \
     && apk del .build-deps
 
