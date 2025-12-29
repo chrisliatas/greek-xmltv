@@ -3,9 +3,11 @@ name: Deploy to ghcr
 # https://www.docker.com/blog/docker-github-actions/
  
 on:
- push:
-   branches:
-     - docker-ghcr
+  push:
+    branches:
+      - master
+      - docker-ghcr
+  workflow_dispatch:
 
 jobs:
   Deploy:
@@ -29,7 +31,7 @@ jobs:
           if [[ $VERSION =~ ^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$ ]]; then
             TAGS="$TAGS,${DOCKER_IMAGE}:latest"
           fi
-          echo ::set-output name=tags::${TAGS}
+          echo "tags=${TAGS}" >> "${GITHUB_OUTPUT}"
 
       - name: Set up Docker Buildx
         id: buildx
