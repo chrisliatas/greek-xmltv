@@ -23,8 +23,6 @@ jobs:
     env:
       DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
       DOCKER_CACHE: ghcr.io/${{ github.repository }}:edge-cache
-    outputs:
-      cache_v: ${{ steps.cache-version.outputs.cache_v }}
     steps:
       - name: Checkout code from GitHub
         uses: actions/checkout@v6
@@ -45,26 +43,20 @@ jobs:
           tags: ${{ env.DOCKER_IMAGE }}
           cache-from: type=registry,ref=${{ env.DOCKER_CACHE }}
           cache-to: type=registry,ref=${{ env.DOCKER_CACHE }},mode=max
-      - name: Set cache version
-        id: cache-version
-        run: |
-            echo "cache_v=$(TZ=':Europe/Athens' date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
-      - name: Cache assets
-        id: cache-xmltv
-        uses: actions/cache@v5
-        with:
-          path: generated_xmltv
-          key: ${{ steps.cache-version.outputs.cache_v }}-${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
       - name: Create output directories and run the spiders
-        if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
           mkdir -p ${{ github.workspace }}/{generated_xmltv,scrapy_export}
           docker compose -f docker-compose.ci.yml up --exit-code-from crawler
       - name: Prepare release assets
-        if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
           cp scrapy_export/*.xml generated_xmltv/
           chmod 666 generated_xmltv/*
+      # Use artifacts for handoff to avoid stale/empty cache restores.
+      - name: Upload generated xmltv files
+        uses: actions/upload-artifact@v4
+        with:
+          name: generated-xmltv
+          path: generated_xmltv
 
   create-release:
     name: Create release and upload assets
@@ -73,17 +65,19 @@ jobs:
     steps:
       - name: Checkout code from GitHub
         uses: actions/checkout@v6
-      - name: Cache assets
-        id: cache-xmltv
-        uses: actions/cache@v5
+      - name: Download generated xmltv files
+        uses: actions/download-artifact@v4
         with:
+          name: generated-xmltv
           path: generated_xmltv
-          key: ${{ needs.get-xmltv.outputs.cache_v }}-${{ runner.os }}-el-xmltv-${{ hashFiles('grxmltv_nat_el.xml') }}-${{ hashFiles('xmltv_GREECE_el.xml') }}
-      - name: Fail job if cache restore failed
-        if: steps.cache-xmltv.outputs.cache-hit != 'true'
+      - name: Validate generated xmltv files
         run: |
-          echo "Failed to restore generated xmltv files from cache"
-          exit 1
+          for f in generated_xmltv/grxmltv_nat_el.xml generated_xmltv/xmltv_GREECE_el.xml; do
+            if [ ! -s "$f" ]; then
+              echo "Missing or empty asset: $f"
+              exit 1
+            fi
+          done
       - name: Create tag name
         run: |
           if [ -z ${{ github.event.inputs.version_name }} ]; then
