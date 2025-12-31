@@ -18,6 +18,7 @@ lxml==6.0.2
 packaging==25.0
 parsel==1.10.0
 Protego==0.5.0
+pytz==2025.2
 pyasn1==0.6.1
 pyasn1_modules==0.4.2
 pycparser==2.23
