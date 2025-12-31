@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
-from datetime import datetime, timedelta
+from datetime import datetime
 from itertools import count
-from urllib.parse import urljoin, quote
+from urllib.parse import urljoin
 
 import scrapy
 from pytz import timezone
@@ -9,18 +9,14 @@ from scrapy.loader import ItemLoader
 
 from ..items import XmltvItem
 
-START_URL = 'https://program.ert.gr/'
-# START_URL = 'https://webtv.ert.gr/'
-ert_channels = [
-    'Ert1',
-    'Ert2',
-    'Ert3',
-    'ErtSportsHD',
-    'Vouli'
-    # 'programma-ert1',
-    # 'programma-ert2',
-    # 'programma-ert3',
-    # 'programma-ertsportshd',
+START_URL = 'https://www.ert.gr/tv/program/'
+ERT_CHANNELS = [
+    'ert1',
+    'ert2',
+    'ert3',
+    'ertnews',
+    'ertsports',
+    'vouli',
 ]
 LOCAL_TZ = 'Europe/Athens'
 DEFAULT_PRG_DECR_EL = 'Δεν υπάρχουν πληροφορίες προγράμματος'
@@ -30,14 +26,17 @@ chnl_cntr = count(start=10, step=10)
 
 class ErtprogSpider(scrapy.Spider):
     name = 'ertprog'
-    allowed_domains = ['program.ert.gr']
-    start_urls = [f'{urljoin(START_URL, x)}/' for x in ert_channels]
-    custom_settings = {"FEED_FORMAT": 'json',
-                       "FEED_URI": 'export/ert_%(time)s.json',
-                       "FEED_EXPORT_ENCODING": 'utf-8',
-                       "USER_AGENT": 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) '
-                                     'Chrome/80.0.3987.106 Safari/537.36'
-                       }
+    allowed_domains = ['www.ert.gr', 'ert.gr']
+    start_urls = [urljoin(START_URL, f'{slug}/') for slug in ERT_CHANNELS]
+    custom_settings = {
+        "FEED_FORMAT": 'json',
+        "FEED_URI": 'export/ert_%(time)s.json',
+        "FEED_EXPORT_ENCODING": 'utf-8',
+        "USER_AGENT": (
+            'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 '
+            '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        ),
+    }
 
     def parse(self, response):
         if response.status != 200:
@@ -48,61 +47,69 @@ class ErtprogSpider(scrapy.Spider):
             )
             return
 
-        main_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[1]/*')
-        night_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[2]/*')
-        if len(main_t) < 3:
-            self.logger.warning(
-                "ERT page layout unexpected for %s (main table rows=%s).",
-                response.url,
-                len(main_t),
-            )
-            return
-        img_src = main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get()
-        chanl_img = response.urljoin(quote(img_src)) if img_src else ''
-        # date_txt = main_t[2].xpath('./td/table/tr/td[2]/table/tr/td[2]/b/text()').get()[-10:]
+        channel_logo = response.xpath(
+            "//div[contains(@class,'broadcast')]//img[contains(@src,'logo')][1]/@src"
+        ).get()
+        channel_name = response.xpath(
+            "//div[contains(@class,'broadcast')]//img[contains(@src,'logo')][1]/@alt"
+        ).get()
+        if not channel_name:
+            channel_name = response.url.rstrip('/').split('/')[-1].upper()
+
+        articles = response.xpath("//article[@data-start-time]")
+        programmes = []
+        for article in articles:
+            programme = self._parse_programme(article)
+            if programme:
+                programmes.append(programme)
+
+        if not programmes:
+            self.logger.warning("No programme entries parsed for %s.", response.url)
+
         loader = ItemLoader(item=XmltvItem(), response=response)
         loader.add_value('id', f'channel-0{str(next(chnl_cntr))}')
         loader.add_value('region', 'National-public')
-        loader.add_value('name', f'{response.url.split("/")[3]}')
-        loader.add_value('img_url', chanl_img)
-        # Ert programs comprise of two tables, one until nigh and another for nightly repetitions.
-        programmes = list(self.parse_programs([*main_t[5::2], *night_t[5::2]]))
-        if not programmes:
-            self.logger.warning(
-                "No programme entries parsed for %s.", response.url
-            )
+        loader.add_value('name', channel_name.strip())
+        loader.add_value('img_url', response.urljoin(channel_logo or ''))
         loader.add_value('programmes', programmes)
         yield loader.load_item()
 
-    def parse_programs(self, response):
-        tprg = datetime(datetime.today().year, datetime.today().month, datetime.today().day, 5, 30, 0)
-        tprg = timezone(LOCAL_TZ).localize(tprg)
-        for prg in response:
-            newt = prg.xpath('./td/text()').get()
-            h = int(newt[:2])
-            m = int(newt[-2:])
-            if tprg.time() <= datetime.strptime(newt, '%H:%M').time():
-                tprg = tprg + timedelta(hours=(h - tprg.hour), minutes=(m - tprg.minute))
-            else:
-                tprg = tprg + timedelta(days=1, hours=(h - tprg.hour), minutes=(m - tprg.minute))
-            try:
-                pg = f"[{prg.xpath('./td[3]/img/@src').get().split('/')[3].split('.')[0]}]"
-            except AttributeError:
-                pg = '[K16]'
-            title = prg.xpath('./td[4]/table/tr/td[2]/a/text()').get().strip().replace('\n', ' ').replace('\xa0', '')
-            details = prg.xpath('./td[4]/table/tr[2]/td[2]/font/text()').get()
-            details = details.strip().replace('\n', ' ').replace('\xa0', '') if details else ''
-            prg_type = prg.xpath('./td[4]/table/tr/td[2]/img/@alt').get()
-            prg_type = prg_type.strip().replace('\n', ' ').replace('\xa0', '') if prg_type else ''
-            descritpion = prg_type or ''
-            if descritpion and details:
-                descritpion = f'{descritpion} {details}'
-            elif details and not descritpion:
-                descritpion = details
-            yield {
-                "desc": descritpion or DEFAULT_PRG_DECR_EL,
-                "start": newt,
-                "date": tprg.strftime('%Y%m%d'),
-                "airDateTime": tprg.strftime('%Y%m%d%H%M%S %z'),
-                "title": f'{pg} {title}'
-            }
+    @staticmethod
+    def _parse_programme(article) -> dict | None:
+        start_raw = article.attrib.get("data-start-time")
+        end_raw = article.attrib.get("data-end-time")
+        if not start_raw:
+            return None
+
+        start_dt = ErtprogSpider._parse_datetime(start_raw)
+        end_dt = ErtprogSpider._parse_datetime(end_raw) if end_raw else start_dt
+
+        title = article.xpath(
+            ".//strong[contains(@class,'section-title')]/text()"
+        ).get(default="").strip()
+        desc_parts = article.xpath(
+            ".//*[self::em or self::span][contains(@class,'fs-ms')]/text()"
+        ).getall()
+        desc = " ".join(
+            part.strip().replace("\xa0", " ") for part in desc_parts if part.strip()
+        ).strip()
+
+        return {
+            "desc": desc or DEFAULT_PRG_DECR_EL,
+            "start": start_dt.strftime('%H:%M'),
+            "date": start_dt.strftime('%Y%m%d'),
+            "airDateTime": start_dt.strftime('%Y%m%d%H%M%S %z'),
+            "title": title or DEFAULT_PRG_DECR_EL,
+            "end": end_dt.strftime('%Y%m%d%H%M%S %z'),
+        }
+
+    @staticmethod
+    def _parse_datetime(raw_value: str) -> datetime:
+        local_tz = timezone(LOCAL_TZ)
+        try:
+            parsed = datetime.strptime(raw_value, "%Y-%m-%d %H:%M:%S%z")
+        except ValueError:
+            parsed = datetime.strptime(raw_value, "%Y-%m-%d %H:%M:%S")
+        if parsed.tzinfo is None:
+            return local_tz.localize(parsed)
+        return parsed.astimezone(local_tz)

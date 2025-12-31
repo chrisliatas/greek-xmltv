@@ -2,7 +2,7 @@
 
 ## UPDATE 2025-12-31
 
-*The Digea EPG moved to new JSON endpoints (`/el/api/epg/*`) and the crawler has been updated accordingly. The Splash dependency has been removed, so the stack now runs as a single crawler service.*
+*The Digea EPG moved to new JSON endpoints (`/el/api/epg/*`) and the crawler has been updated accordingly. ERT channel schedules now come from `https://www.ert.gr/tv/program/` (per-channel pages). The Splash dependency has been removed, so the stack now runs as a single crawler service.*
 
 ## Description
 
@@ -52,4 +52,4 @@ This is an open-source project produced for personal/home use and not intended f
 [grxmltvrels]: https://github.com/chrisliatas/greek-xmltv/releases
 [Plexguide]: https://support.plex.tv/articles/using-an-xmltv-guide/
 [digeagr]: https://www.digea.gr/el/tileoptikoi-stathmoi/ilektronikos-odigos-programmatos
-[ertgr]: https://program.ert.gr/
+[ertgr]: https://www.ert.gr/tv/program/
