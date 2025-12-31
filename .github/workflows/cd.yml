@@ -93,27 +93,28 @@ jobs:
           echo "BODY_TS=$(TZ=':Europe/Athens' date '+%d-%m-%Y %H:%M:%S')" >> $GITHUB_ENV
       - name: Check if release tag exists
         id: check_release
-        run: |
-          rel_resp=$(curl -s -o /dev/null -I -w "%{http_code}" https://github.com/${{ github.repository }}/releases/tag/${{ env.REL_TAG }})
-          if [[ "$rel_resp" == 200 ]]; then
-            echo "exists=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "exists=false" >> "$GITHUB_OUTPUT"
-          fi
-      - name: Fetch existing release upload URL
-        if: steps.check_release.outputs.exists == 'true'
-        id: fetch_release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          resp=$(curl -s \
+          api_url="https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.REL_TAG }}"
+          status=$(curl -s -o release.json -w "%{http_code}" \
             -H "Authorization: Bearer $GITHUB_TOKEN" \
             -H "Accept: application/vnd.github+json" \
-            https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.REL_TAG }})
-          upload_url=$(echo "$resp" | jq -r '.upload_url')
-          if [ -z "$upload_url" ] || [ "$upload_url" = "null" ]; then
-            echo "Failed to fetch release upload_url"
-            echo "$resp"
+            "$api_url")
+          if [ "$status" = "200" ]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+            upload_url=$(jq -r '.upload_url' release.json)
+            if [ -z "$upload_url" ] || [ "$upload_url" = "null" ]; then
+              echo "Failed to fetch release upload_url"
+              cat release.json
+              exit 1
+            fi
+            echo "upload_url=$upload_url" >> "$GITHUB_OUTPUT"
+          elif [ "$status" = "404" ]; then
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "Unexpected response when checking release tag (HTTP $status)"
+            cat release.json
             exit 1
           fi
           echo "upload_url=$upload_url" >> "$GITHUB_OUTPUT"
@@ -142,7 +143,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.fetch_release.outputs.upload_url || steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.check_release.outputs.upload_url || steps.create_release.outputs.upload_url }}
           asset_path: ./generated_xmltv/*
           overwrite: true
       - name: Cleanup older releases
