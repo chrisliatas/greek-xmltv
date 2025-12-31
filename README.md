@@ -1,13 +1,11 @@
 # Greek XMLTV EPG generator
 
-## UPDATE 2025-12-31
-
-*The Digea EPG moved to new JSON endpoints (`/el/api/epg/*`) and the crawler has been updated accordingly. ERT channel schedules now come from `https://www.ert.gr/tv/program/` (per-channel pages). The Splash dependency has been removed, so the stack now runs as a single crawler service.*
-
 ## Description
 
-Python grubber for Greek public channels. Produces a custom aggregated xmltv formatted file for EPG. Custom generated xmltv formatted guide(s) produced for Greek tv channel guide data, available from [Digea.gr][digeagr
+Python grabber for Greek public channels. Produces a custom aggregated xmltv formatted file for EPG. Custom generated xmltv formatted guide(s) produced for Greek tv channel guide data, available from [Digea.gr][digeagr
 ] and [Ert.gr][ertgr]. May be used in Plex, Kodi, or similar as a custom guide for setting up a dvr EPG. Generated files at this stage use greek language only, for programme names, descriptions and channel names, where available.
+
+Recent changes (December 31, 2025): The Digea EPG moved to new JSON endpoints (`/el/api/epg/*`) and the Digea parser was updated. ERT channel schedules now come from the per-channel pages at `https://www.ert.gr/tv/program/`, with the ERT parser updated to match. The Splash dependency was removed so the stack now runs as a single crawler service. Daily releases are re-enabled.
 
 ### Xmltv files with daily releases
 
