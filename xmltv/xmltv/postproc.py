@@ -228,13 +228,14 @@ class JsonToXmltv:
                 _chnl["idx"] += 1
 
         def add_chnl_programmes(station: dict) -> None:
-            for i, prgm in enumerate(station["programmes"]):
+            programmes = station.get("programmes") or []
+            for i, prgm in enumerate(programmes):
                 attrib_lang = {"lang": LANG_GR}
                 # programme
                 start = datetime.strptime(prgm["airDateTime"], "%Y%m%d%H%M%S %z")
                 #   calculate duration
                 try:
-                    next_start = datetime.strptime(station["programmes"][i + 1]["airDateTime"], "%Y%m%d%H%M%S %z")
+                    next_start = datetime.strptime(programmes[i + 1]["airDateTime"], "%Y%m%d%H%M%S %z")
                 except IndexError:
                     next_start = start.replace(hour=6, minute=0)
                 duration = next_start - start  # duration is eg. datetime.timedelta(seconds=5400)
