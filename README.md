@@ -34,8 +34,8 @@ Assuming you are going to use an Ubuntu (or similar) system:
 
 1. Clone the repository
 2. Create a working directory `scrapy_export` at the application root (`greek-xmltv/scrapy_export`).
-3. Assuming docker and docker-compose is installed, change directory to application root and run
-```docker-compose up```
+3. Assuming Docker and the Docker Compose plugin are installed, change directory to application root and run
+```docker compose up```
 
 Additionally, `cron_xmltv.sh` will create a crontab entry to daily run the script in `getxmltv.sh`, which does a
  series of other operations (like copying, moving files, etc.) after grubbing the EPG data and generating the desired

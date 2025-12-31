@@ -5,7 +5,7 @@ WORKDIR /app
 # PIP_TIMEOUT so installation doesn't hang forever
 ENV TERM=xterm \
     PIP_TIMEOUT=180 \
-    PYTHONPATH=$PYTHONPATH:/app \
+    PYTHONPATH=/app \
     SCRAPY_SETTINGS_MODULE=xmltv.settings
 
 COPY requirements.txt ./

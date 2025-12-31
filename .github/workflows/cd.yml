@@ -47,7 +47,7 @@ jobs:
       - name: Set cache version
         id: cache-version
         run: |
-            echo "::set-output name=cache_v::$(TZ=':Europe/Athens' date '+%Y%m%d')"
+            echo "cache_v=$(TZ=':Europe/Athens' date '+%Y%m%d')" >> "$GITHUB_OUTPUT"
       - name: Cache assets
         id: cache-xmltv
         uses: actions/cache@v5
@@ -58,7 +58,7 @@ jobs:
         if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
           mkdir -p ${{ github.workspace }}/{generated_xmltv,scrapy_export}
-          docker-compose -f docker-compose.ci.yml up --exit-code-from crawler
+          docker compose -f docker-compose.ci.yml up --exit-code-from crawler
       - name: Prepare release assets
         if: steps.cache-xmltv.outputs.cache-hit != 'true'
         run: |
@@ -94,7 +94,11 @@ jobs:
         id: check_release
         run: |
           rel_resp=$(curl -s -o /dev/null -I -w "%{http_code}" https://github.com/${{ github.repository }}/releases/tag/${{ env.REL_TAG }})
-          [[ "$rel_resp" == 200 ]] && echo "::set-output name=exists::true" || echo "::set-output name=exists::false"
+          if [[ "$rel_resp" == 200 ]]; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
       - name: Fail job if release tag exists
         if: steps.check_release.outputs.exists == 'true'
         run: |
