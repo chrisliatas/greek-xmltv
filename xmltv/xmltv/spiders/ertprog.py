@@ -40,9 +40,25 @@ class ErtprogSpider(scrapy.Spider):
                        }
 
     def parse(self, response):
+        if response.status != 200:
+            self.logger.warning(
+                "ERT program page returned status %s for %s",
+                response.status,
+                response.url,
+            )
+            return
+
         main_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[1]/*')
         night_t = response.xpath('/html/body/table[2]/tr[4]/td/table/tr/td[3]/table[2]/*')
-        chanl_img = response.urljoin(quote(main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get()))
+        if len(main_t) < 3:
+            self.logger.warning(
+                "ERT page layout unexpected for %s (main table rows=%s).",
+                response.url,
+                len(main_t),
+            )
+            return
+        img_src = main_t[2].xpath('./td/table/tr/td[1]/a/img/@src').get()
+        chanl_img = response.urljoin(quote(img_src)) if img_src else ''
         # date_txt = main_t[2].xpath('./td/table/tr/td[2]/table/tr/td[2]/b/text()').get()[-10:]
         loader = ItemLoader(item=XmltvItem(), response=response)
         loader.add_value('id', f'channel-0{str(next(chnl_cntr))}')
@@ -50,7 +66,12 @@ class ErtprogSpider(scrapy.Spider):
         loader.add_value('name', f'{response.url.split("/")[3]}')
         loader.add_value('img_url', chanl_img)
         # Ert programs comprise of two tables, one until nigh and another for nightly repetitions.
-        loader.add_value('programmes', self.parse_programs([*main_t[5::2], *night_t[5::2]]))
+        programmes = list(self.parse_programs([*main_t[5::2], *night_t[5::2]]))
+        if not programmes:
+            self.logger.warning(
+                "No programme entries parsed for %s.", response.url
+            )
+        loader.add_value('programmes', programmes)
         yield loader.load_item()
 
     def parse_programs(self, response):

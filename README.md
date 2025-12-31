@@ -1,8 +1,8 @@
 # Greek XMLTV EPG generator
 
-## UPDATE 16-6-2024
+## UPDATE 2025-12-31
 
-*After the latest changes  in the Digea.gr website, the current version of the application is not able to produce the xmltv files. I will try to update the application given enough time, but I cannot guarantee that it will be done soon. For the time being, daily releases will be paused.*
+*The Digea EPG moved to new JSON endpoints (`/el/api/epg/*`) and the crawler has been updated accordingly. The Splash dependency has been removed, so the stack now runs as a single crawler service.*
 
 ## Description
 
@@ -32,10 +32,10 @@ Since, at the moment, generated xmltv files provide greek language names and des
 
 Assuming you are going to use an Ubuntu (or similar) system:
 
-1. Clone the repository
-2. Create a working directory `scrapy_export` at the application root (`greek-xmltv/scrapy_export`).
-3. Assuming Docker and the Docker Compose plugin are installed, change directory to application root and run
-```docker compose up```
+1. Clone the repository.
+2. Assuming Docker and the Docker Compose plugin are installed, change directory to the application root and run:
+```docker compose up --build```
+3. Generated `.json` and `.xml` files will appear under `scrapy_export/` (created automatically by Docker Compose).
 
 Additionally, `cron_xmltv.sh` will create a crontab entry to daily run the script in `getxmltv.sh`, which does a
  series of other operations (like copying, moving files, etc.) after grubbing the EPG data and generating the desired
@@ -51,5 +51,5 @@ This is an open-source project produced for personal/home use and not intended f
 
 [grxmltvrels]: https://github.com/chrisliatas/greek-xmltv/releases
 [Plexguide]: https://support.plex.tv/articles/using-an-xmltv-guide/
-[digeagr]: https://www.digea.gr/EPG/
+[digeagr]: https://www.digea.gr/el/tileoptikoi-stathmoi/ilektronikos-odigos-programmatos
 [ertgr]: https://program.ert.gr/
