@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
+      DOCKER_CACHE: ghcr.io/${{ github.repository }}:edge-cache
     outputs:
       cache_v: ${{ steps.cache-version.outputs.cache_v }}
     steps:
@@ -42,8 +43,8 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: ${{ env.DOCKER_IMAGE }}
-          cache-from: type=registry,ref=${{ env.DOCKER_IMAGE }}
-          cache-to: type=registry,ref=${{ env.DOCKER_IMAGE }},mode=max
+          cache-from: type=registry,ref=${{ env.DOCKER_CACHE }}
+          cache-to: type=registry,ref=${{ env.DOCKER_CACHE }},mode=max
       - name: Set cache version
         id: cache-version
         run: |
