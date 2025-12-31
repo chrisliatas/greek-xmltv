@@ -5,12 +5,8 @@ services:
     image: "${DOCKER_IMAGE}"
     environment:
       TZ: "Europe/Athens"
-    command: ["./wait-for.sh", "splash:8050", "--", "python", "./xmltv/main.py"]
+    command: ["python", "./xmltv/main.py"]
     # For volumes: instead of adding /app/xmltv/export as it would be normal, we add /app/export because /app has been
     # added to the PYTHONPATH in Dockerfile.
     volumes:
       - ./scrapy_export:/app/export
-    depends_on:
-      - splash
-  splash:
-    image: scrapinghub/splash

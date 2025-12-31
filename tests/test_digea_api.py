@@ -4,8 +4,9 @@ import json
 import unittest
 from datetime import date
 from http import HTTPStatus
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Optional
 from urllib.error import HTTPError, URLError
+from urllib.parse import urlencode
 from urllib.request import Request, urlopen
 
 
@@ -23,9 +24,21 @@ class DigeaApiSmokeTests(unittest.TestCase):
     """Basic connectivity checks against the public Digea EPG API."""
 
     @staticmethod
-    def _fetch_json(path: str) -> List[Dict[str, Any]]:
+    def _fetch_json(
+        path: str,
+        *,
+        method: str = "GET",
+        data: Optional[Dict[str, Any]] = None,
+    ) -> List[Dict[str, Any]]:
         """Retrieve a JSON payload from the Digea API."""
-        req = Request(f"{API_BASE}/{path}", headers=HEADERS)
+        req_data = None
+        headers = dict(HEADERS)
+        if data is not None:
+            req_data = urlencode(data).encode("utf-8")
+            headers.setdefault(
+                "Content-Type", "application/x-www-form-urlencoded; charset=UTF-8"
+            )
+        req = Request(f"{API_BASE}/{path}", headers=headers, data=req_data, method=method)
         with urlopen(req, timeout=30) as resp:  # noqa: S310
             if resp.status != HTTPStatus.OK:
                 raise AssertionError(
@@ -39,8 +52,16 @@ class DigeaApiSmokeTests(unittest.TestCase):
     def test_perioxes_and_channels_available(self) -> None:
         """Ensure perioxes and channels endpoints respond with non-empty lists."""
         try:
-            perioxes = self._fetch_json("get-perioxes")
-            channels = self._fetch_json("get-channels")
+            perioxes = self._fetch_json(
+                "get-perioxes",
+                method="POST",
+                data={"action": "get_perioxes", "lang": "el"},
+            )
+            channels = self._fetch_json(
+                "get-channels",
+                method="POST",
+                data={"action": "get_chanels", "lang": "el"},
+            )
         except (HTTPError, URLError) as exc:  # pragma: no cover - network flaky
             raise AssertionError(f"Network request failed: {exc}") from exc
 
@@ -54,9 +75,14 @@ class DigeaApiSmokeTests(unittest.TestCase):
         The response can legitimately be empty depending on the broadcast
         schedule, so we only assert that it is reachable and returns JSON.
         """
-        today = date.today().isoformat()
+        today = date.today()
+        today_str = f"{today.year}-{today.month}-{today.day}"
         try:
-            events = self._fetch_json(f"get-events?date={today}")
+            events = self._fetch_json(
+                "get-events",
+                method="POST",
+                data={"action": "get_events", "date": today_str},
+            )
         except (HTTPError, URLError) as exc:  # pragma: no cover - network flaky
             raise AssertionError(f"Network request failed: {exc}") from exc
 

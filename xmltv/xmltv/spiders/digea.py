@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 from datetime import date, datetime
+from pathlib import Path
 from typing import Iterable
 from urllib.parse import urljoin
 
@@ -47,12 +48,17 @@ class DigeaSpider(scrapy.Spider):
     }
 
     def start_requests(self) -> Iterable[scrapy.Request]:
+        self._ensure_export_dir()
         # The new Digea site exposes JSON endpoints for regions, channels,
         # and programme events. Begin by retrieving the region metadata so we
         # can map API identifiers to the legacy region names used elsewhere
         # in the project.
         regions_url = urljoin(BASE_URL, f'{API_PREFIX}/get-perioxes')
-        yield scrapy.Request(regions_url, callback=self.parse_regions)
+        yield scrapy.FormRequest(
+            regions_url,
+            formdata={'action': 'get_perioxes', 'lang': 'el'},
+            callback=self.parse_regions,
+        )
 
     def parse_regions(
         self, response: scrapy.http.Response
@@ -63,8 +69,9 @@ class DigeaSpider(scrapy.Spider):
         }
 
         channels_url = urljoin(BASE_URL, f'{API_PREFIX}/get-channels')
-        yield scrapy.Request(
+        yield scrapy.FormRequest(
             channels_url,
+            formdata={'action': 'get_chanels', 'lang': 'el'},
             callback=self.parse_channels,
             cb_kwargs={'region_lookup': region_lookup},
         )
@@ -74,12 +81,18 @@ class DigeaSpider(scrapy.Spider):
     ) -> Iterable[scrapy.Request]:
         channels = response.json()
         # Keep the raw channel definitions handy when parsing programme events.
-        events_date = date.today().isoformat()
-        events_url = urljoin(BASE_URL, f'{API_PREFIX}/get-events?date={events_date}')
-        yield scrapy.Request(
+        today = date.today()
+        events_date = f'{today.year}-{today.month}-{today.day}'
+        events_url = urljoin(BASE_URL, f'{API_PREFIX}/get-events')
+        yield scrapy.FormRequest(
             events_url,
+            formdata={'action': 'get_events', 'date': events_date},
             callback=self.parse_events,
-            cb_kwargs={'channels': channels, 'region_lookup': region_lookup},
+            cb_kwargs={
+                'channels': channels,
+                'region_lookup': region_lookup,
+                'events_date': events_date,
+            },
         )
 
     def parse_events(
@@ -87,8 +100,16 @@ class DigeaSpider(scrapy.Spider):
         response: scrapy.http.Response,
         channels: list[dict[str, str]],
         region_lookup: dict[str, str],
+        events_date: str | None = None,
     ) -> Iterable[XmltvItem]:
         events: list[dict[str, str]] = response.json()
+        if not events:
+            self.logger.warning(
+                'Digea events response is empty (date=%s, url=%s, method=%s).',
+                events_date or 'unknown',
+                response.url,
+                response.request.method,
+            )
         events_by_channel: dict[str, list[dict[str, str]]] = {}
 
         # Group events by channel id to simplify programme construction.
@@ -167,3 +188,21 @@ class DigeaSpider(scrapy.Spider):
             )
 
         return programmes
+
+    def _ensure_export_dir(self) -> None:
+        feed_uri = (
+            self.custom_settings.get("FEED_URI")
+            if self.custom_settings
+            else None
+        )
+        if not feed_uri or "://" in feed_uri:
+            return
+        export_dir = Path(feed_uri).expanduser().parent
+        try:
+            export_dir.mkdir(parents=True, exist_ok=True)
+        except OSError as exc:
+            self.logger.warning(
+                "Failed to create export directory %s: %s",
+                export_dir,
+                exc,
+            )
