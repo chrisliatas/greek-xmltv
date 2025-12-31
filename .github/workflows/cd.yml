@@ -100,17 +100,30 @@ jobs:
           else
             echo "exists=false" >> "$GITHUB_OUTPUT"
           fi
-      - name: Fail job if release tag exists
+      - name: Fetch existing release upload URL
         if: steps.check_release.outputs.exists == 'true'
+        id: fetch_release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo "A release with the same tag: ${{ env.REL_TAG }} exists"
-          exit 1
+          resp=$(curl -s \
+            -H "Authorization: Bearer $GITHUB_TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/${{ github.repository }}/releases/tags/${{ env.REL_TAG }})
+          upload_url=$(echo "$resp" | jq -r '.upload_url')
+          if [ -z "$upload_url" ] || [ "$upload_url" = "null" ]; then
+            echo "Failed to fetch release upload_url"
+            echo "$resp"
+            exit 1
+          fi
+          echo "upload_url=$upload_url" >> "$GITHUB_OUTPUT"
       # TODO: a) find existing release tag id, b) jump to upload assets to update existing release
       - name: Create compressed xml files
         run: |
           gzip -rk generated_xmltv
       - name: Create Release
         id: create_release
+        if: steps.check_release.outputs.exists != 'true'
         uses: actions/create-release@v1.1.4
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -129,7 +142,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          upload_url: ${{ steps.fetch_release.outputs.upload_url || steps.create_release.outputs.upload_url }}
           asset_path: ./generated_xmltv/*
           overwrite: true
       - name: Cleanup older releases
