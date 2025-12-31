@@ -53,7 +53,7 @@ jobs:
           chmod 666 generated_xmltv/*
       # Use artifacts for handoff to avoid stale/empty cache restores.
       - name: Upload generated xmltv files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: generated-xmltv
           path: generated_xmltv
