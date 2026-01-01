@@ -1,0 +1,131 @@
+name: CD
+# Actions use UTC time, which is -2 hours from Europe/Athens.
+# so, to grub xmltv data at 5.00 local need to schedule cron for 3.00 UTC.
+
+on:
+  push:
+    branches:
+      - '!*'
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+*'
+  workflow_dispatch:
+    inputs:
+      version_name:
+        description: 'Name of version  (ie 1.2.0)'
+  schedule:
+    - cron: '5 4 * * *'
+
+jobs:
+  # Get xmltv data and prepare release assets
+  get-xmltv:
+    name: Grub xmltv data
+    runs-on: ubuntu-latest
+    env:
+      DOCKER_IMAGE: ghcr.io/${{ github.repository }}:edge
+      DOCKER_CACHE: ghcr.io/${{ github.repository }}:edge-cache
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v6
+      - name: Login to ghcr
+        uses: docker/login-action@v3.6.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.CR_PAT }}
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build and push edge image
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: ${{ env.DOCKER_IMAGE }}
+          cache-from: type=registry,ref=${{ env.DOCKER_CACHE }}
+          cache-to: type=registry,ref=${{ env.DOCKER_CACHE }},mode=max
+      - name: Create output directories and run the spiders
+        run: |
+          mkdir -p ${{ github.workspace }}/{generated_xmltv,scrapy_export}
+          docker compose -f docker-compose.ci.yml up --exit-code-from crawler
+      - name: Prepare release assets
+        run: |
+          cp scrapy_export/*.xml generated_xmltv/
+          chmod 666 generated_xmltv/*
+      # Use artifacts for handoff to avoid stale/empty cache restores.
+      - name: Upload generated xmltv files
+        uses: actions/upload-artifact@v6
+        with:
+          name: generated-xmltv
+          path: generated_xmltv
+
+  create-release:
+    name: Create release and upload assets
+    runs-on: ubuntu-latest
+    needs: get-xmltv
+    steps:
+      - name: Checkout code from GitHub
+        uses: actions/checkout@v6
+      - name: Download generated xmltv files
+        uses: actions/download-artifact@v7
+        with:
+          name: generated-xmltv
+          path: generated_xmltv
+      - name: Validate generated xmltv files
+        run: |
+          for f in generated_xmltv/grxmltv_nat_el.xml generated_xmltv/xmltv_GREECE_el.xml; do
+            if [ ! -s "$f" ]; then
+              echo "Missing or empty asset: $f"
+              exit 1
+            fi
+          done
+      - name: Create tag name
+        run: |
+          if [ -z ${{ github.event.inputs.version_name }} ]; then
+            echo "REL_TAG=$(TZ=':Europe/Athens' date '+%Y.%-m.%-d')" >> $GITHUB_ENV; else
+            echo "REL_TAG=${{ github.event.inputs.version_name }}" >> $GITHUB_ENV
+          fi
+          echo "BODY_TS=$(TZ=':Europe/Athens' date '+%d-%m-%Y %H:%M:%S')" >> $GITHUB_ENV
+      - name: Check if release tag exists
+        id: check_release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if gh release view "${{ env.REL_TAG }}" --repo "${{ github.repository }}" >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+          echo "upload_url=$upload_url" >> "$GITHUB_OUTPUT"
+      # TODO: a) find existing release tag id, b) jump to upload assets to update existing release
+      - name: Create compressed xml files
+        run: |
+          gzip -rk generated_xmltv
+      - name: Create Release
+        if: steps.check_release.outputs.exists != 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          notes=$(cat <<EOF
+          Auto generated xmltv files for ${BODY_TS}
+          - Channel data for Nationwide channels and Attica: \`grxmltv_nat_el.xml\` and \`grxmltv_nat_el.xml.gz\`
+          - Channel data from all regions available at Digea.gr and all available national channels from Ert.gr: \`xmltv_GREECE_el.xml\` and \`xmltv_GREECE_el.xml.gz\`
+          EOF
+          )
+          gh release create "${REL_TAG}" \
+            --repo "${{ github.repository }}" \
+            --title "Release ${REL_TAG}" \
+            --notes "$notes"
+      - name: Upload Release Assets
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release upload "${REL_TAG}" ./generated_xmltv/* \
+            --repo "${{ github.repository }}" \
+            --clobber
+      - name: Cleanup older releases
+        uses: dev-drprasad/delete-older-releases@v0.3.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          keep_latest: 7
+          delete_tags: true

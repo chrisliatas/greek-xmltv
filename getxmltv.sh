@@ -11,11 +11,11 @@ export_dir="${appdir}/scrapy_export"
 target_dir="/mnt/storage/Downloads/xmltv"
 generated_xmltv_dir="${appdir}/generated_xmltv"
 
-echo "$(timestamp): getxmltv - Starting docker-compose services"
+echo "$(timestamp): getxmltv - Starting docker compose services"
 echo ""
-/usr/local/bin/docker-compose -f "$compose_file" up -d && sleep 300; /usr/local/bin/docker-compose -f "$compose_file" stop
+docker compose -f "$compose_file" up -d && sleep 300; docker compose -f "$compose_file" stop
 echo ""
-echo "$(timestamp): getxmltv - Stopped docker-compose services"
+echo "$(timestamp): getxmltv - Stopped docker compose services"
 [ ! -d "$target_dir" ] && mkdir -p "$target_dir" && chmod 777 "$target_dir"
 [ ! -d "$generated_xmltv_dir" ] && mkdir -p "$generated_xmltv_dir" && chmod 777 "$generated_xmltv_dir"
 cp "${export_dir}"/* "${target_dir}"/
