@@ -7,7 +7,7 @@ constantly==23.10.4
 cryptography==46.0.3  # pyOpenSSL requires >=45.0.7,<47
 cssselect==1.3.0
 defusedxml==0.7.1
-filelock==3.20.1
+filelock==3.20.3
 hyperlink==21.0.0
 idna==3.11
 Incremental==24.11.0
