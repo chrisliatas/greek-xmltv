@@ -30,7 +30,7 @@ requests-file==3.0.1
 Scrapy==2.14.2
 service-identity==24.2.0
 tldextract==5.3.1
-Twisted==24.7.0
+Twisted==26.4.0rc2
 typing_extensions==4.15.0
 urllib3==2.6.3
 w3lib==2.3.1
