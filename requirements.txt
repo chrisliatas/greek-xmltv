@@ -23,14 +23,14 @@ pyasn1==0.6.3
 pyasn1_modules==0.4.2
 pycparser==2.23
 PyDispatcher==2.0.7
-pyOpenSSL==26.0.0  # TLS stack compatible with Scrapy 2.13.4
+pyOpenSSL==26.0.0  # TLS stack compatible with Scrapy 2.14.2
 queuelib==1.8.0
 requests==2.33.0
 requests-file==3.0.1
 Scrapy==2.14.2
 service-identity==24.2.0
 tldextract==5.3.1
-Twisted==26.4.0rc2
+Twisted==25.5.0
 typing_extensions==4.15.0
 urllib3==2.6.3
 w3lib==2.3.1
