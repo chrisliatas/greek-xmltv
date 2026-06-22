@@ -4,7 +4,7 @@ certifi==2025.11.12
 cffi==2.0.0
 charset-normalizer==3.4.4
 constantly==23.10.4
-cryptography==48.0.1  # pyOpenSSL requires >=45.0.7,<47
+cryptography==48.0.1  # pyOpenSSL requires >=48.0.0,<49
 cssselect==1.3.0
 defusedxml==0.7.1
 filelock==3.20.3
@@ -23,7 +23,7 @@ pyasn1==0.6.3
 pyasn1_modules==0.4.2
 pycparser==2.23
 PyDispatcher==2.0.7
-pyOpenSSL==26.0.0  # TLS stack compatible with Scrapy 2.14.2
+pyOpenSSL==26.2.0  # TLS stack compatible with Scrapy 2.14.2
 queuelib==1.8.0
 requests==2.33.0
 requests-file==3.0.1
