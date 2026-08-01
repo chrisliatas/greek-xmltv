@@ -26,6 +26,8 @@ XMLTV_FILE = f'xmltv_{COUNTRY}_{LANG_GR}.xml'
 LOCAL_TZ = 'Europe/Athens'
 CACHE_DIR = 'cache/'
 CACHE_FILE = 'channels_id.json'
+DEFAULT_RATING = '[K16]'
+RATING_PREFIXES = {'[K]', '[K8]', '[K12]', '[K16]', '[K18]'}
 HD_CHANNELS = (
     # 'ERT SPORTS',   # ERT SPORTS HD
     'ALPHA',          # ALPHA HD
@@ -35,6 +37,14 @@ HD_CHANNELS = (
     'SKAI',           # SKAI HD
     'STAR'            # STAR HD
 )
+
+
+def _split_rating_and_title(programme_title: str) -> Tuple[str, str]:
+    """Extract a legacy bracketed rating without altering unprefixed titles."""
+    parts = programme_title.split(maxsplit=1)
+    if len(parts) == 2 and parts[0] in RATING_PREFIXES:
+        return parts[0], parts[1]
+    return DEFAULT_RATING, programme_title
 
 
 def get_project_root() -> str:
@@ -245,11 +255,7 @@ class JsonToXmltv:
                     "stop": stop.astimezone(timezone(LOCAL_TZ)).strftime("%Y%m%d%H%M%S %z"),
                     "channel": self.chnl_cache[station["id"][0]]["id"]}
                 programme = et.SubElement(self.root, "programme", attrib=programme_attrib)
-                try:
-                    (rating_value, title) = prgm["title"].split(maxsplit=1)
-                except ValueError:
-                    title = prgm["title"]
-                    rating_value = '[K16]'
+                rating_value, title = _split_rating_and_title(prgm["title"])
                 # programme title
                 et.SubElement(programme, "title", attrib=attrib_lang).text = title
                 # description
