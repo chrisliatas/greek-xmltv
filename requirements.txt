@@ -1,6 +1,6 @@
 attrs==25.4.0
 Automat==25.4.16
-certifi==2025.11.12
+certifi==2026.10.19
 cffi==2.0.0
 charset-normalizer==3.4.4
 constantly==23.10.4
